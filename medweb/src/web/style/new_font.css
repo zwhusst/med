@@ -1,0 +1,111 @@
+A:link {
+	COLOR: #0000cc
+}
+A:visited {
+	COLOR: #0000cc
+}
+A:hover {
+	COLOR: #0000cc
+}
+A:active {
+	COLOR: #0000cc
+}
+.f12 {
+	FONT-SIZE: 12px
+}
+.f12l18 {
+	FONT-SIZE: 12px; LINE-HEIGHT: 18px
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.f14b {
+	color: white; FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+.bgblue {
+	BACKGROUND-POSITION: right top; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(../../img/jiao.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #d9e5f5
+}
+.boxblue {
+	BORDER-RIGHT: #d9e5f5 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #d9e5f5 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #d9e5f5 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #d9e5f5 1px solid
+}
+.bgyellow {
+	BACKGROUND-POSITION: right top; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(../../img/jiao.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #f1deb4
+}
+.boxyellow {
+	BORDER-RIGHT: #f1deb4 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #f1deb4 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #f1deb4 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #f1deb4 1px solid
+}
+.bgviolet {
+	BACKGROUND-POSITION: right top; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(../../img/jiao.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #e0d8f0
+}
+.boxviolet {
+	BORDER-RIGHT: #e0d8f0 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #e0d8f0 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #e0d8f0 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #e0d8f0 1px solid
+}
+.bggreen {
+	BACKGROUND-POSITION: right top; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(../../img/jiao.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #dce8ba
+}
+.bggreen2 {
+	BACKGROUND-POSITION: right top; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(../../img/jiao.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #8EE100
+}
+.boxgreen {
+	BORDER-RIGHT: #dce8ba 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #dce8ba 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #dce8ba 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #dce8ba 1px solid
+}
+.lh1 {
+	LINE-HEIGHT: 25px
+}
+.dwall {
+	WIDTH: 760px
+}
+.dwleft {
+	FLOAT: left; WIDTH: 155px; LINE-HEIGHT: 20px; TEXT-ALIGN: left
+}
+.dwri_yellow {
+	PADDING-LEFT: 22px; FLOAT: left; BORDER-LEFT: #f1deb4 1px solid; WIDTH: 582px; TEXT-ALIGN: left
+}
+.dwri_bule {
+	PADDING-LEFT: 22px; FLOAT: left; BORDER-LEFT: #d9e5f5 1px solid; WIDTH: 582px; TEXT-ALIGN: left
+}
+.dwri_violet {
+	PADDING-LEFT: 22px; FLOAT: left; BORDER-LEFT: #e0d8f0 1px solid; WIDTH: 582px; TEXT-ALIGN: left
+}
+.dwri_green {
+	PADDING-LEFT: 22px; FLOAT: left; BORDER-LEFT: #dce8ba 1px solid; WIDTH: 582px; TEXT-ALIGN: left
+}
+.dwri_brightGreen {
+	PADDING-LEFT: 22px; FLOAT: left; BORDER-LEFT: #8EE100 1px solid; WIDTH: 582px; TEXT-ALIGN: left
+}
+.padL_1 {
+	PADDING-LEFT: 38px
+}
+.padL_2 {
+	PADDING-LEFT: 13px
+}
+.padL_3 {
+	PADDING-LEFT: 25px
+}
+.padT_1 {
+	PADDING-TOP: 12px
+}
+.marT_1 {
+	MARGIN-TOP: 12px
+}
+.t_bg_yellow {
+	BACKGROUND-POSITION: left top; PADDING-LEFT: 13px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../../img/ico_01.gif); BACKGROUND-REPEAT: no-repeat
+}
+.t_bg_violet {
+	BACKGROUND-POSITION: left top; PADDING-LEFT: 13px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../../img/ico_01.gif); BACKGROUND-REPEAT: no-repeat
+}
+.t_bg_green {
+	BACKGROUND-POSITION: left top; PADDING-LEFT: 13px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../../img/ico_01.gif); BACKGROUND-REPEAT: no-repeat
+}
+.l_box_yellow {
+	BORDER-RIGHT: #fad467 1px solid; BORDER-TOP: #fad467 1px solid; PADDING-LEFT: 13px; PADDING-BOTTOM: 7px; BORDER-LEFT: #fad467 1px solid; WIDTH: 86px; PADDING-TOP: 7px; BORDER-BOTTOM: #fad467 1px solid
+}
+.l_box_violet {
+	BORDER-RIGHT: #e0d8f0 1px solid; BORDER-TOP: #e0d8f0 1px solid; PADDING-LEFT: 13px; PADDING-BOTTOM: 7px; BORDER-LEFT: #e0d8f0 1px solid; WIDTH: 86px; PADDING-TOP: 7px; BORDER-BOTTOM: #e0d8f0 1px solid
+}
+.l_box_green {
+	BORDER-RIGHT: #dce8ba 1px solid; BORDER-TOP: #dce8ba 1px solid; PADDING-LEFT: 13px; PADDING-BOTTOM: 7px; BORDER-LEFT: #dce8ba 1px solid; WIDTH: 86px; PADDING-TOP: 7px; BORDER-BOTTOM: #dce8ba 1px solid
+}
+.f_col_1 {
+	COLOR: #4b4b4b
+}

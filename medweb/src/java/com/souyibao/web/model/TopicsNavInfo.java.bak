@@ -1,0 +1,33 @@
+package com.souyibao.web.model;
+
+import java.util.Set;
+
+import com.souyibao.shared.MedEntityManager;
+import com.souyibao.shared.entity.Topic;
+
+public class TopicsNavInfo {
+	private Set<Topic> avaliableTopics = null;
+
+	private Set<Topic> curTopics = null;
+
+	public Set<Topic> getAvaliableTopics() {
+		return avaliableTopics;
+	}
+
+	public void setAvaliableTopics(Set<Topic> avaliableTopics) {
+		this.avaliableTopics = avaliableTopics;
+	}
+
+	public String[] getCurTopics() {
+		if (curTopics == null) {
+			// it is to indicate all the topics
+			return new String[]{"" + MedEntityManager.ROOT_TOPIC_ID};
+		} else {
+			return this.curTopics;
+		}
+	}
+
+	public void setCurTopics(String[] curTopics) {
+		this.curTopics = curTopics;
+	}
+}

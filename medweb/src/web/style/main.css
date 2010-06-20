@@ -1,0 +1,78 @@
+﻿BODY {
+	TEXT-ALIGN: center; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(../image/mainbg.png) #ecf7dc repeat-x; PADDING-TOP: 0px
+}
+A {
+	COLOR: #0458cb; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:active {
+	TEXT-DECORATION: underline
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+#wapper {
+	POSITION: relative; TEXT-ALIGN: left; MARGIN: 0px auto; WIDTH: 1004px
+}
+#title-bg {
+	Z-INDEX: 0; POSITION: absolute; MARGIN-LEFT: -150px; LEFT: 50%
+}
+#title-bg IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; MARGIN: -20px 0px 0px 30px; WIDTH: 244px; HEIGHT: 176px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+#header {
+	POSITION: relative; MARGIN: 0px; WIDTH: 100%; BACKGROUND: url(../image/mainline.png) repeat-x center bottom; HEIGHT: 30px
+}
+#header UL {
+	POSITION: absolute; PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px 宋体, Arial, Helvetica, sans-serif; COLOR: #ffffff; TOP: 5px; PADDING-TOP: 0px; LEFT: 0px
+}
+#header UL LI {
+	DISPLAY: inline
+}
+#header UL LI A {
+	COLOR: #ffffff
+}
+#header UL LI A:hover {
+	COLOR: #ff9900; FONT-WEIGHT: bold
+}
+#main UL LI A:active {
+	COLOR: #ff9900; FONT-WEIGHT: bold
+}
+#header H5 {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; FONT: bold 21px 宋体, Arial, Helvetica, sans-serif; COLOR: #ffffff; PADDING-TOP: 2px
+}
+#header P {
+	POSITION: absolute; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px 宋体, Arial, Helvetica, sans-serif; TOP: 0px; RIGHT: 20px; PADDING-TOP: 5px
+}
+#header P A {
+	MARGIN: 0px 5px; COLOR: #ffffff
+}
+#main {
+	POSITION: relative; HEIGHT: 520px
+}
+#main-img {
+	POSITION: absolute; MARGIN: 0px auto 0px -99px; WIDTH: 198px; HEIGHT: 68px; TOP: 8em; LEFT: 50%
+}
+#search-text {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 385px; BACKGROUND: url(../image/inputbg.png) no-repeat; HEIGHT: 33px; FONT-SIZE: 14px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 8px
+}
+#search-bt {
+	WIDTH: 102px; BACKGROUND: url(../image/inputbt.png) no-repeat; HEIGHT: 37px
+}
+#search-wrapper {
+	POSITION: absolute; MARGIN-LEFT: 300px; TOP: 14.3em
+}
+#search-des {
+	POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px -192px; PADDING-LEFT: 0px; WIDTH: 32em; PADDING-RIGHT: 0px; FONT: 12px 宋体, Arial, Helvetica, sans-serif; COLOR: #999999; TOP: 19em; PADDING-TOP: 0px; LEFT: 50%
+}
+#google {
+	WIDTH: 52px; HEIGHT: 20px
+}
+#footer {
+	POSITION: relative
+}
+#footer P {
+	TEXT-ALIGN: center; FONT: 12px 宋体, Arial, Helvetica, sans-serif
+}

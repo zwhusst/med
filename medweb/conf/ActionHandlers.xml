@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<handlers>
+    <handler name="search" type="com.souyibao.web.handler.SearchActionHandler">
+        <forward name="success" path="/search.jsp"/>
+    </handler>
+    <handler name="tr" type="com.souyibao.web.handler.TopicResultActionHandler">
+        <forward name="topicResult" path="/topicResult.jsp"/>
+        <forward name="topicFilterResult" path="/topicFilterResult.jsp"/>
+    </handler>
+
+    <handler name="keye" type="com.souyibao.web.handler.RefineSearchDlgActionHandler">
+        <forward name="success" path="/refinesearchdlg.jsp"/>
+    </handler>
+    <handler name="thos" type="com.souyibao.web.handler.TopHospitalActionHandler">
+    	<forward name="success" path="/topHospital.jsp"/>
+    </handler>
+    <handler name="tdoc" type="com.souyibao.web.handler.TopDoctorActionHandler">
+    	<forward name="success" path="/topDoctor.jsp"/>
+    </handler>    
+    <handler name="exception" type="com.souyibao.web.handler.ExceptionActionHander">
+        <forward name="success" path="/error.jsp"/>
+    </handler>
+    <handler name="et" type="com.souyibao.web.handler.EntityActionHander">
+    	<forward name="h" path="/hospitaloif.jsp"/>
+    </handler>
+    <handler name="cmu" type="com.souyibao.web.handler.CategoryMenuActionHandler">
+    	<forward name="success" path="/categoryMenu.jsp"/>
+    </handler>
+    <handler name="topd" type="com.souyibao.web.handler.TopDataActionHandler">
+    	<forward name="success" path="/top.jsp"/>
+    </handler>    
+</handlers>

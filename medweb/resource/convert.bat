@@ -1,0 +1,1 @@
+native2ascii.exe -encoding utf-8 Resource_cn.properties Resource.properties

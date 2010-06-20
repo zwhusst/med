@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<modules>
+	<module name="document">
+		<indexs>
+			<dir>${document_module_idx}</dir>
+		</indexs>
+		<topics>1,2,3,4</topics>
+		<fields>	
+			<field>
+				<name>content</name>
+				<boost>1</boost>
+			</field>                 
+		</fields>
+	</module>
+</modules>

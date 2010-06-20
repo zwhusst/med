@@ -1,0 +1,50 @@
+package com.souyibao.shared.viewer;
+
+import com.souyibao.shared.MedEntityManager;
+import com.souyibao.shared.entity.Doctor;
+
+public class DoctorDataProvider implements IDataProvider{
+	private Doctor doctor = null;
+	private String id = null;
+	
+	private boolean loaded = false;
+	
+	public DoctorDataProvider(String id) {
+		this.id = id;
+	}
+	
+	public DoctorDataProvider(Doctor doctor) {
+		this.doctor = doctor;
+	}
+	
+	@Override
+	public String getAlias() {
+		return (doctor == null)? "" : doctor.getAlias();
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public String getName() {
+		checkDoctor();
+		return (doctor == null)? "" : doctor.getName();
+	}
+
+	@Override
+	public String getTopicId() {
+		// TODO: 
+		return MedEntityManager.TOPIC_DOCTOR_ID;
+	}
+	
+	private void checkDoctor() {
+		if (loaded) {
+			return;
+		}
+
+		this.doctor = MedEntityManager.getInstance().getDoctorById(this.id);		
+		loaded = true;
+	}
+}

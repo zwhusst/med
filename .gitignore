@@ -1,0 +1,12 @@
+.DS_Store
+**/.DS_Store
+**/target
+**/*/target
+**/.hg
+.classpath
+.project
+.settings
+target
+bin
+build
+doc2keyword

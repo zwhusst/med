@@ -1,0 +1,2 @@
+<%@ page session="false" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%><%@ taglib uri="http://com.medsearch.org/taglibs/search-1.0" prefix="medsearch"%>
+<medsearch:kexplain searchResult="searchResult"/>

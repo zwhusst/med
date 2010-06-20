@@ -1,0 +1,168 @@
+﻿body {
+	margin: 0 auto;
+	padding: 0 auto;
+	background:url('../image/mainbg.png');
+	background-repeat:repeat-x;
+	background-color:#ECF7DC;
+}
+a
+{
+	color:#0458CB;
+	text-decoration:none;
+}
+a:hover,a:active
+{
+	text-decoration:underline
+}
+img{
+	border:0;
+}
+
+#wapper
+{
+	position:relative;
+	margin:0 auto;
+	width:1004px;
+}
+#header
+{
+	position:relative;
+	height:30px;
+	width:100%;
+	margin:0 0;
+	background:url('../image/mainline.png');
+	background-repeat:repeat-x;
+	background-position:center bottom;
+}
+#header ul
+{
+	padding:0 0;
+	margin:0 0;
+	list-style:none;
+	font:14px 宋体, Arial, Helvetica, sans-serif;
+	position:absolute;
+	top:5px;
+	left:0;
+	color:#FFFFFF;
+
+}
+#header ul li
+{
+	display:inline;
+}
+#header ul li a
+{
+	color:#FFFFFF;
+}
+#header ul li a:hover,#main ul li a:active
+{
+	color:#FF9900;
+	font-weight:bold;	
+}
+
+#header h5
+{
+	color:#FFFFFF;
+	text-align:center;
+	font:21px 宋体, Arial, Helvetica, sans-serif;
+	padding:2px 0;
+	font-weight:bold;
+	width:100%;
+	margin:0 0;
+}
+#header p
+{
+	position:absolute;
+	right:20px;
+	top:0;
+	margin:0 0;
+	padding:5px 0;
+	text-align:right;
+	font:14px 宋体, Arial, Helvetica, sans-serif;
+	
+}
+#header p a
+{
+	color:#FFFFFF;
+	margin:0 5px;
+}
+
+#main
+{
+	position:relative;
+	height:520px;
+}
+#main-img
+{
+	position:absolute;
+	top:6.5em;
+	left:50%;
+	margin:0 auto;
+	margin-left:-113px;
+	width:294px;
+	height:96px;
+}
+
+#search-text
+{
+	width:385px;
+	height:33px;
+	background:url('../image/inputbg.png');
+	background-repeat:no-repeat;
+	border:0;
+	padding-top:8px;
+	position:absolute;
+	top:16.5em;
+	left:50%;
+	margin-left:-192px;
+}
+#search-bt
+{
+	position:absolute;
+	top:13.6em;
+	left:50%;
+	margin-left:200px;
+	background:url('../image/inputbt.png');
+	background-repeat:no-repeat;
+	width:102px;
+	height:37px;
+	color:#FFFFFF;
+	text-indent:-9999px;
+}
+#search-des
+{
+	position:absolute;
+	top:23em;
+	font:12px 宋体, Arial, Helvetica, sans-serif;
+	margin:0 0;
+	padding:0 0;
+	left:50%;
+	margin-left:-192px;
+	width:32em;
+	color:#999999;
+
+}
+#google
+{
+	position:absolute;
+	top:14.5em;
+	left:80%;
+	width:52px;
+	height:20px;
+}
+
+#footer 
+{
+	position:relative;
+
+}
+#footer p
+{
+	text-align:center;
+	font:12px 宋体, Arial, Helvetica, sans-serif;
+}
+
+
+
+
+

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<project name="medpipeline" default="jar">
+
+	<!-- Load all the default properties-->
+	<property file="${basedir}/default.properties" />
+
+	<!-- the normal classpath -->
+	<path id="classpath">
+		<pathelement location="${build.classes}" />
+        <fileset dir="${shared.lib.dir}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${build.dir}">
+            <include name="*.jar" />
+        </fileset>		
+	</path>
+
+	<!-- ====================================================== -->
+	<!-- Stuff needed by all targets                            -->
+	<!-- ====================================================== -->
+	<target name="init">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes}" />
+	</target>
+
+	<!-- ====================================================== -->
+	<!-- Compile the Java files                                 -->
+	<!-- ====================================================== -->
+	<target name="compile-shared" depends="init">
+      <ant antfile="${shared.ant.file}" inheritAll="false" inheritRefs="false" target="jar">
+      	<property name="build.dir" value="${build.dir}"/>
+      </ant>
+	  <!-- copy the shared jar file to current project build dir -->
+	  <move todir="${build.dir}/">
+	    <fileset dir="${shared.jar.dir}">
+	      <include name="*.jar"/>
+	    </fileset>
+	  </move>	
+	  <ant antfile="${shared.ant.file}" inheritAll="false" inheritRefs="false" target="clean">
+	  </ant>
+	</target>
+	
+	<target name="compile" depends="compile-shared">
+		<javac encoding="${build.encoding}" srcdir="${src.dir}" 			includes="com/souyibao/pipe/**/*.java" 			destdir="${build.classes}" 			debug="${javac.debug}" 			optimize="${javac.optimize}" 			target="${javac.version}" 			source="${javac.version}" 			deprecation="${javac.deprecation}">
+			<classpath refid="classpath" />
+		</javac>	</target>
+
+	<!-- ================================================================== -->
+	<!-- Make medsearch.jar                                                     -->
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<target name="jar" depends="compile">		<jar jarfile="${build.dir}/${final.name}.jar" basedir="${build.classes}">
+			<manifest>
+			</manifest>
+		</jar>
+	</target>
+	<!-- ================================================================== -->
+	<!-- Clean.  Delete the build files, and their directories              -->
+	<!-- ================================================================== -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+</project>

@@ -1,0 +1,233 @@
+package com.souyibao.shared;
+
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.souyibao.shared.db.DBManager;
+import com.souyibao.shared.model.Keyword;
+import com.souyibao.shared.model.Topic;
+import com.souyibao.shared.util.FingerPrintUtil;
+
+public class KeywordManager {
+
+	private static final Log LOG = LogFactory
+		.getLog("com.souyibao.shared.KeyWordManager");
+
+	private static KeywordManager instance = new KeywordManager();
+
+	private HashMap<Integer, Keyword> keywordMap = new HashMap<Integer, Keyword>();
+	// use to keep all the keyword alias information
+	// key: hash code of the keyword alias
+	// value: the id of the primary keyword
+	private HashMap<Integer, Integer> aliasKeywordMap = new HashMap<Integer, Integer>();
+	private String keywordPath = null;
+	
+	private KeywordManager() {
+		loadKeywords();
+	}
+	
+	public static KeywordManager getInstance() {
+		return instance;
+	}
+	
+	private void loadKeywords() {		
+		ResultSet resultSet = null;
+		try {
+			resultSet = DBManager.getInstance().getTableData("topic");
+		} catch (SQLException e1) {
+			throw new RuntimeException("Exception to load topic data:" + e1.getMessage());
+		}
+		
+		try {
+			while (resultSet.next()) {
+				Topic topic = new Topic(resultSet);
+				topicsIdToTopic.put(topic.getId(), topic);
+				
+				// load topic fields
+				String filter = "topicId=" + topic.getId();
+				ResultSet fieldsResultset = DBManager.getInstance()
+						.getDataWithFilter("topicfield", filter);
+				topic.addFieldsResultset(fieldsResultset);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	
+		
+		if (keywordPath == null) {
+			URL resourceURL = KeywordManager.class.getClassLoader()
+					.getResource("keywords.xml");
+			loadKeywords(resourceURL.toString());
+		} else {
+			loadKeywords(keywordPath);
+		}
+	}
+
+	private void loadKeywords(String keywordPath) {
+		Document doc = null;
+
+		try {
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance()
+					.newDocumentBuilder();
+			doc = builder.parse(keywordPath);
+		} catch (Exception e) {
+			LOG
+					.fatal("Exception occured in loading keywords file : keywords.xml");
+			throw new RuntimeException(e);
+		}
+
+		if (doc == null) {
+			throw new RuntimeException(keywordPath + " not found");
+		}
+
+		Element root = doc.getDocumentElement();
+		NodeList keywordNodeList = root.getChildNodes();
+		for (int i = 0; i < keywordNodeList.getLength(); i++) {
+			Node keywordNode = keywordNodeList.item(i);
+			if (!(keywordNode instanceof Element))
+				continue;
+
+			Element keywordEle = (Element) keywordNode;
+			if (!"keyword".equals(keywordEle.getTagName()))
+				LOG.fatal("bad conf file: element not <keyword>");
+			Keyword keyword = new Keyword(keywordEle);
+			keywordMap.put(keyword.getId(), keyword);
+			
+			// check the keyword alias and keep it
+			Collection<String> aliases = keyword.getAliases();
+			if((aliases != null ) && (!aliases.isEmpty())) {
+				for (Iterator<String> iterator = aliases.iterator(); iterator
+						.hasNext();) {
+					int aliasKey = FingerPrintUtil.genStringId(iterator.next());
+					aliasKeywordMap.put(aliasKey, keyword.getId());
+				}
+			}
+		}
+	}
+
+	public Collection<Keyword> getAllKeywords() {
+		return keywordMap.values();
+	}
+
+	public Keyword getKeywordById(int id) {
+		return keywordMap.get(id);
+	}
+	
+	public Keyword getKeywordByName(String value) {
+		int key = FingerPrintUtil.genStringId(value);
+		Keyword keyword = keywordMap.get(key);
+		
+		// TODO : need to compare the value with the keyword name?
+		if (keyword == null) {
+			// tries to find from the alias keyword
+			int possibleVal = getMapIntObject(aliasKeywordMap,key);
+			if (possibleVal != 0) {
+				keyword = keywordMap.get(possibleVal);
+			}
+		}
+				
+		return keyword;
+	}
+
+	public boolean isKeyword(String value) {
+		// check from the alias first
+		int key = FingerPrintUtil.genStringId(value);
+		int possibleVal = getMapIntObject(aliasKeywordMap,key);
+		if (possibleVal != 0) {
+			Keyword keyword = keywordMap.get(possibleVal);
+			
+			Collection<String> aliases = keyword.getAliases();
+			if (aliases == null) {
+				return false;
+			}
+			
+			return aliases.contains(value);
+		}
+
+		Keyword keyword = keywordMap.get(key);
+		if ((keyword != null) && (keyword.getName().equals(value))) {
+			return true;
+		}
+
+		return false;
+	}
+	
+	public Collection<String> getAllKeywordNames(String value) {
+		int key = FingerPrintUtil.genStringId(value);
+		int possibleVal = getMapIntObject(aliasKeywordMap,key);
+		
+		Keyword keyword = null;
+		if (possibleVal != 0) {
+			keyword = keywordMap.get(possibleVal);
+			Collection<String> aliases = keyword.getAliases();
+			if ((aliases == null) || (!aliases.contains(value))) {
+				return null;
+			}
+			Collection<String> result = new ArrayList<String>(aliases);
+			result.add(keyword.getName());
+			
+			return result;
+		}
+		
+		// check from the keyword map
+		keyword = keywordMap.get(key);
+		if ((keyword != null) && (keyword.getName().equals(value))) {
+			Collection<String> aliases = keyword.getAliases();
+			Collection<String> result = new ArrayList<String>();
+			if (aliases != null) {
+				result.addAll(aliases);
+			}
+			result.add(keyword.getName());
+			return result;
+		}
+		
+		return null;
+	}
+	
+	private int getMapIntObject(Map<Integer, Integer> map, int key) {
+		Object object = map.get(key);
+		if (object == null) {
+			return 0;
+		}
+		
+		return (Integer)object;
+	}
+	
+	public static void main(String[] args) {
+		KeywordManager instance = KeywordManager.getInstance();
+		Collection<Keyword> keywords = instance.getAllKeywords();
+		for (Iterator<Keyword> iterator = keywords.iterator(); iterator
+				.hasNext();) {
+			Keyword keyword = iterator.next();
+			System.out.println(keyword.getId() + " : " + keyword.getTopicId()
+					+ " : " + keyword.getName());
+		}
+		
+		boolean isKeyword = instance.isKeyword("十二指肠3溃疡");
+		
+		System.out.println("消化性溃疡 is keyword : " + isKeyword);
+		
+		Collection<String> names = instance.getAllKeywordNames("十二指肠3溃疡");
+		if (names != null) {
+			for (Iterator<String> iterator = names.iterator(); iterator.hasNext();) {
+				System.out.println("keyword : " + iterator.next());
+			}
+		}
+	}
+}

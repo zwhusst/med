@@ -1,0 +1,285 @@
+package com.souyibao.pipe.keyword;
+
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.souyibao.shared.TopicsManager;
+import com.souyibao.shared.model.Topic;
+import com.souyibao.shared.model.TopicItem;
+import com.souyibao.shared.util.DOMUtil;
+import com.souyibao.shared.util.DOMWriter;
+import com.souyibao.shared.util.FingerPrintUtil;
+import com.souyibao.shared.util.MedUtil;
+
+public class KeywordGenerator {
+	private static final Log LOG = LogFactory
+			.getLog("com.souyibao.feed.FeedManager");
+
+	private static HashMap<String, Pattern> patternMap = new HashMap<String, Pattern>();
+	
+	private static String[] REMOVED_WORDS = {"市医院", "总部", "连锁", "肺炎", "头痛",
+			"祛痰药", "心脏病", "机构" };
+
+	private static String[] IGNORE_WORDS = { "二", "液","校医院", "东区", "北京", "集团", "国际" };
+	
+	private static String[] START_WORDS = {"原:"};
+	
+	public static void main(String[] args) throws Exception {
+		String usage = "java com.souyibao.pipe.keyword.KeywordGenerator <generated_document_file> <output_file_directory>(optional)";
+		if (args.length < 1) {
+			System.err.println("Usage: " + usage);
+			System.exit(1);
+		}
+		
+		File folder = new File(args[0]);
+		if (!folder.exists()) {
+			System.out
+					.println("Source directory '"
+							+ args[0]
+							+ "' does not exist or is not readable, please check the path");
+			System.exit(1);
+		}
+		
+		File[] sourceFiles = folder.listFiles();		
+
+		String outputfileDir = args[args.length - 1];
+		
+		String keywordFile = genKeywordFile(sourceFiles, outputfileDir);
+		if (keywordFile == null) {
+			LOG.warn("Failed to generate the keyword file");
+			return;
+		}
+	}
+
+	private static String genKeywordFile(File[] sourceFiles, String outputfileDir) {
+		DocumentBuilder builder = null;
+		try {
+			builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			
+			File sourceFile = null;
+			// dest file document
+			Document xmldoc = null;
+			try {
+				xmldoc = DocumentBuilderFactory.newInstance()
+						.newDocumentBuilder().newDocument();
+			} catch (ParserConfigurationException e) {
+				LOG.warn("Can't create one xml document " + e);
+				return null;
+			}
+			
+			Element keywordRootEle = (Element) xmldoc.appendChild(xmldoc
+					.createElement("keywords"));
+			
+			Collection<KeywordanalysisModel> keywordData = new ArrayList<KeywordanalysisModel>();
+			for (int m = 0; m < sourceFiles.length; m++) {
+				sourceFile = sourceFiles[m];
+				org.w3c.dom.Document document = builder.parse(sourceFile);
+				Element rootEle = document.getDocumentElement();
+				String topicId = rootEle.getAttribute("id");
+				Topic topic = TopicsManager.getInstance().getTopicById(topicId);
+					
+				// generate keyword content
+				TopicItem keywordItem = topic.getKeywordItem();
+				NodeList eles = document.getElementsByTagName("data");
+				for (int i = 0, size = eles.getLength(); i < size; i++) {
+					Node node = eles.item(i);	
+					String keywordVal = DOMUtil.getTextElementValue(node,
+							"name");
+					String category = DOMUtil.getTextElementValue(node,
+							"category");
+					String filepath = DOMUtil.getTextElementValue(node,
+						"filepath");
+					String explanation = getExplanation(node);
+
+					String[] words = MedUtil.splitKeyword(keywordVal);
+	
+					boolean started = false;
+					KeywordanalysisModel analysisModel = new KeywordanalysisModel();
+					
+					if (words.length == 1) {
+						analysisModel.setName(words[0]);
+//						DOMUtil.appendTextElement(keywordEle, "name", keywordName);
+					} else if (words.length > 1) {
+						for (int j = 0; j < words.length; j++) {
+							if ((!started) && (!words[j].trim().equals(""))) {
+								started = true;
+								analysisModel.setName(words[j]);
+//								DOMUtil.appendTextElement(keywordEle, "name",
+//										keywordName);
+							} else if (started) {
+								if (!words[j].trim().equals("")) {
+									analysisModel.addAlias(words[j].trim());
+//									DOMUtil.appendTextElement(keywordEle, "alias",
+//											words[j].trim());
+								}
+							}
+						}
+					}
+	
+					analysisModel.setTopicId(topic.getId());
+					analysisModel.setCategory(category);
+//					analysisModel.setFilePath(filepath);
+					analysisModel.setExplanation(explanation);
+					keywordData.add(analysisModel);
+					
+//					DOMUtil.appendTextElement(keywordEle, "topic", topicId);
+				}
+			}
+			
+			optimizeKeyword(keywordData);
+			
+			outputKeyword(keywordRootEle, keywordData);
+			// output the generated keyword xml file
+			String outputKeywordPath = null;
+			if (outputfileDir == null) {
+				outputKeywordPath = sourceFile.getParent() + File.separator
+					+ "keywords.xml";
+			} else {
+				outputKeywordPath = outputfileDir + File.separator
+						+ "keywords.xml";
+			}
+			File outputKeywordFile = new File(outputKeywordPath);
+			try {
+				DOMWriter.print(xmldoc, new PrintWriter(outputKeywordFile,
+						"UTF-8"));
+			} catch (Exception e) {
+				LOG.warn("Failed to create the new document " + e);
+			}
+			System.out.println("Keyword file has been generated : "
+					+ outputKeywordFile.getAbsolutePath());
+
+			return outputKeywordPath;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	private static void optimizeKeyword(Collection<KeywordanalysisModel> keywordData) {
+		// remove duplicate alias
+		Map<String, KeywordanalysisModel> keywordAliasMap = new HashMap<String, KeywordanalysisModel>();
+		for (Iterator<KeywordanalysisModel> iterator = keywordData.iterator(); iterator
+				.hasNext();) {
+			KeywordanalysisModel analysisModel = iterator.next();
+			
+			Collection<String> alias = new ArrayList(analysisModel.getAlias());
+			for (Iterator<String> aliasIte = alias.iterator(); aliasIte.hasNext();){
+				String aliaKeywordName = aliasIte.next();
+				KeywordanalysisModel existingModel = keywordAliasMap.get(aliaKeywordName);
+				if (existingModel == null) {
+					keywordAliasMap.put(aliaKeywordName, analysisModel);					
+				} else {
+					// duplicate alias found, needs to remove it
+					analysisModel.removeAlias(aliaKeywordName);
+					existingModel.removeAlias(aliaKeywordName);
+				}
+			}
+		}
+	}
+
+	private static void outputKeyword(Element keywordRootEle,
+			Collection<KeywordanalysisModel> keywordData) {
+		for (Iterator<KeywordanalysisModel> iterator = keywordData.iterator(); iterator.hasNext();) {
+			KeywordanalysisModel analysisModel = iterator.next();
+			
+			String name = analysisModel.getName();
+			if ((name == null) || ("".equals(name))) {
+				continue;
+			}
+			
+			Element keywordEle = DOMUtil.appendElement(keywordRootEle,
+					"keyword");
+			
+			
+			// alias
+			Collection<String> alias = new ArrayList(analysisModel.getAlias());
+			for (Iterator<String> aliasIte = alias.iterator(); aliasIte.hasNext();) {
+				String alisKeywrodName = aliasIte.next();
+				if ((alisKeywrodName != null) && !("".equals(alisKeywrodName))) {
+					if (isIgnoreKeyword(alisKeywrodName)) {
+						analysisModel.aggregateKeyword();
+						break;
+					} else if (!isRemovedKeyword(alisKeywrodName)){
+						DOMUtil.appendTextElement(keywordEle, "alias",
+								removedUselessWord(alisKeywrodName));
+					}	
+				}
+			}
+			
+			DOMUtil.appendTextElement(keywordEle, "name", removedUselessWord(analysisModel.getName()));
+			// topic
+			DOMUtil.appendTextElement(keywordEle, "topic", analysisModel.getTopicId());
+			// category
+			DOMUtil.appendTextElement(keywordEle, "category", analysisModel.getCategory());
+			// explanation
+			DOMUtil.appendTextElement(keywordEle, "explanation", analysisModel.getExplanation());
+			// id
+			DOMUtil.appendTextElement(keywordEle, "id", "" + FingerPrintUtil.genStringId(removedUselessWord(analysisModel.getName())));
+			
+			
+			// the file path just used for debugging
+			// file path
+//			DOMUtil.appendTextElement(keywordEle, "filepath", analysisModel.getFilePath());
+		}
+	}
+	
+	private static boolean isRemovedKeyword(String keyword){
+		for (int i = 0; i < REMOVED_WORDS.length; i++) {
+			if (REMOVED_WORDS[i].equals(keyword)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private static boolean isIgnoreKeyword(String keyword) {
+		for (int i = 0; i < IGNORE_WORDS.length; i++) {
+			if (IGNORE_WORDS[i].equals(keyword)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private static String removedUselessWord(String data) {
+		for (int i = 0; i < START_WORDS.length; i++) {
+			if (data.startsWith(START_WORDS[i])) {
+				data = data.substring(START_WORDS[i].length());
+			}
+		} 
+		
+		return data;
+	}
+	
+	private static String getExplanation(Node node) {
+		String explanation = null;
+		try {
+			explanation = DOMUtil.getTextElementValue(node, "description");
+		} catch (Exception e) {
+			return "";
+		}
+		
+		return explanation;
+	}
+}

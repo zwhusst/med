@@ -1,0 +1,171 @@
+package com.souyibao.web.servlet;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.httpclient.HostConfiguration;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpVersion;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.GetMethod;
+
+import com.souyibao.search.ctrl.Controller;
+import com.souyibao.shared.model.KeywordWeight;
+import com.souyibao.web.Util.MedWebUtil;
+import com.souyibao.web.model.SearchResult;
+import com.souyibao.web.websearch.WebSearcherManager;
+
+public class MedSearchServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1632733055728957364L;
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		req.setCharacterEncoding("UTF-8");
+		
+		// query String
+		String queryString = req.getParameter("q");
+		if (queryString == null) {
+			queryString = "";
+		}
+		
+		// get the category filter
+		Map<String, String> cateFilterMap = MedWebUtil.getCategoryFilter(req.getParameterMap());		
+		System.out.println("the query string is : : " + queryString);
+
+		Map<String, List<KeywordWeight>> searchResult = Controller
+				.getSearchResult(queryString, cateFilterMap);
+
+		req.setAttribute("topicsAttribute", searchResult);
+
+		// try to get the start page
+		int startNumber = 0;
+		String startParameter = req.getParameter("start");
+		if (startParameter != null) {
+			try {
+				startNumber = Integer.parseInt(startParameter);
+			} catch (Exception e) {
+				startNumber = 0;
+			}
+		}
+
+		// web search
+		// TODO : need to set the right parameters and site type
+		SearchResult result = WebSearcherManager.search(queryString,
+				startNumber, null, null);
+		req.setAttribute("webSearchResult", result);
+
+		// the search result will be forwarded to search.jsp		
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(
+				"/search.jsp");
+		rd.forward(req, resp);
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
+	/**
+	 * Just for a test
+	 * @param req
+	 */
+	public void searchGoogle(HttpServletRequest req, String queryStr) {
+		HttpClient client = new HttpClient();
+		client.getParams().setParameter("http.protocol.version",
+				HttpVersion.HTTP_1_1);
+		client.getParams().setParameter("http.protocol.content-charset",
+				"UTF-8");
+
+		HostConfiguration config = new HostConfiguration();
+		config.setHost("www.google.cn");
+		client.setHostConfiguration(config);
+
+		GetMethod getMethod = new GetMethod("/search");
+
+		NameValuePair v1 = new NameValuePair("q", queryStr);
+		NameValuePair v2 = new NameValuePair("hl", "zh-CN");
+
+		getMethod.setQueryString(new NameValuePair[] { v1, v2 });
+
+		try {
+			client.executeMethod(getMethod);
+			System.out.println("path is : " + getMethod.getPath());
+			String result = getMethod.getResponseBodyAsString();
+			getMethod.releaseConnection();
+
+			req.setAttribute("qresult", result);
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	private static String hostURL = "";
+
+	public static void main(String[] args) {
+		HttpClient client = new HttpClient();
+		client.getParams().setParameter("http.protocol.version",
+				HttpVersion.HTTP_1_1);
+		client.getParams().setParameter("http.protocol.content-charset",
+				"UTF-8");
+
+		HostConfiguration config = new HostConfiguration();
+		config.setHost("www.google.cn");
+		client.setHostConfiguration(config);
+
+		GetMethod getMethod = new GetMethod("/search");
+		String searchStr = "";
+		try {
+			searchStr = URLEncoder.encode("头晕", "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		NameValuePair v1 = new NameValuePair("q", "头晕");
+		NameValuePair v2 = new NameValuePair("hl", "zh-CN");
+
+		getMethod.setQueryString(new NameValuePair[] { v1, v2 });
+
+		try {
+			client.executeMethod(getMethod);
+			System.out.println("path is : " + getMethod.getPath());
+			InputStream inStream = getMethod.getResponseBodyAsStream();
+			byte[] bytes = new byte[inStream.available()];
+			inStream.read(bytes, 0, inStream.available());
+
+			getMethod.releaseConnection();
+
+			System.out.println(new String(bytes));
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

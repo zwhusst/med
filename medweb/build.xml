@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<project name="medweb" default="war">
+
+	<!-- Load all the default properties-->
+	<property file="${basedir}/default.properties" />
+
+	<!-- the normal classpath -->
+	<path id="classpath">
+		<pathelement location="${build.classes}" />
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+        <fileset dir="${shared.lib.dir}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${build.dir}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${shared.jpa.lib.dir}">
+            <include name="*.jar" />
+        </fileset>
+	</path>
+
+	<!-- ====================================================== -->
+	<!-- Stuff needed by all targets                            -->
+	<!-- ====================================================== -->
+	<target name="init">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes}" />
+	</target>
+
+	<!-- ====================================================== -->
+	<!-- Compile the Java files                                 -->
+	<!-- ====================================================== -->
+	<target name="compile-shared" depends="init">
+      <ant antfile="${shared.ant.file}" inheritAll="false" inheritRefs="false" target="jar">
+      	<property name="build.dir" value="${build.dir}"/>
+      </ant>
+	  <!-- copy the shared jar file to current project build dir -->
+<!--		
+	  <copy todir="${build.dir}/">
+	    <fileset dir="${shared.jar.dir}">
+	      <include name="*.jar"/>
+	    </fileset>
+        <fileset dir="${shared.jpa.lib.dir}">
+          <include name="*.jar"/>
+        </fileset>	  	
+      </copy>
+      -->      	
+	  <ant antfile="${shared.ant.file}" inheritAll="false" inheritRefs="false" target="clean">
+	  </ant>
+	</target>
+	
+	<target name="compile-seach" depends="compile-shared">
+	      <ant antfile="${search.ant.file}" inheritAll="false" inheritRefs="false" target="jar">
+	        <property name="build.dir" value="${build.dir}"/>
+	      </ant>
+	      <!-- copy the search jar file to current project build dir -->
+	      <move todir="${build.dir}/">
+	        <fileset dir="${search.jar.dir}">
+	          <include name="*.jar"/>
+	        </fileset>
+	      </move>   
+	      <ant antfile="${search.ant.file}" inheritAll="false" inheritRefs="false" target="clean">
+	      </ant>
+	</target>
+	
+	<target name="compile" depends="compile-seach">
+		<javac encoding="${build.encoding}" srcdir="${src.dir}" 
+			includes="com/souyibao/**/*.java" 
+			destdir="${build.classes}" 
+			debug="${javac.debug}" 
+			optimize="${javac.optimize}" 
+			target="${javac.version}" 
+			source="${javac.version}" 
+			deprecation="${javac.deprecation}">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Make medweb.jar                                                     -->
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<target name="jar" depends="compile">
+         <copy todir="${build.classes}">
+              <fileset dir="${conf.dir}"/>
+         </copy> 
+		<jar jarfile="${build.dir}/${final.name}.jar" basedir="${build.classes}">
+			<manifest>
+			</manifest>		
+		</jar>
+	</target>
+	
+    <!-- ================================================================== -->
+    <!-- Make medsearch.war                                                     -->
+    <!-- ================================================================== -->
+    <!--                                                                    -->
+    <!-- ================================================================== -->
+    <target name="war" depends="jar">
+        <war destfile="${build.dir}/${final.name}.war" 
+            webxml="${web.src.dir}/web.xml">
+            <fileset dir="${web.src.dir}/jsp" />
+            <zipfileset dir="${web.src.dir}/style" prefix="style"/>
+        	<zipfileset dir="${web.src.dir}/js" prefix="js"/>
+        	<zipfileset dir="${web.src.dir}/themes" prefix="themes"/>
+        	<zipfileset dir="${web.src.dir}/image" prefix="image"/>
+        	<classes dir="${shared.resource}"/>
+        	<classes dir="${web.resource}"/>
+        	<!-- shared jars -->
+        	<lib dir="${shared.lib.dir}">
+                <include name="lucene*.jar" />
+                <include name="commons-logging-*.jar" />
+                <include name="commons-httpclient-*.jar" />
+                <include name="commons-codec-*.jar" />
+        		<include name="log4j-*.jar" />
+        		<include name="mysql-connector*.jar" />
+        	</lib>
+        	<lib dir="${shared.jpa.lib.dir}">
+        		<include name="*.jar" />
+            </lib>
+        	<!-- the jar files belong to web project -->
+            <lib dir="${lib.dir}">
+                <!--include name="htmlparser*.jar" /-->
+            	<include name="jstl*.jar" />
+                <include name="standard*.jar" />
+            </lib>
+        	<!-- builded jar files -->
+            <lib dir="${build.dir}">
+                <include name="*.jar" />
+            </lib> 	
+            <webinf dir="${web.src.dir}">
+                <include name="*-taglibs.tld"/>
+            	<include name="log4j.xml"/>
+            </webinf>           
+        </war>
+    </target>	
+	<!-- ================================================================== -->
+	<!-- Clean.  Delete the build files, and their directories              -->
+	<!-- ================================================================== -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+</project>
