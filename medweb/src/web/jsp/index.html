@@ -1,55 +1,109 @@
 ﻿<html>
+
 <head>
+
 <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
+
 <title>天天动</title>
+
 <LINK href="style/medsearch.css" type="text/css" rel="stylesheet" />
+
 <style>
+
 body {
+
 	background-color: #FFFFFF;
+
 	font-family: Lucida Grande, Arial, sans-serif;
+
 	font-size: 9pt;
+
 }
+
 #content {
+
 	background-color: #FFFFFF;
+
 	margin: auto;
+
 	padding-top: 80px;
+
 	width: 45em;
+
 }
+
 input {
+
 	margin-bottom: 0.5em;
+
 	margin-top: 2em;
+
 }
+
 </style>
+
 <script type="text/javascript">
+
 function handleLoad() {
+
   var qb = document.getElementById("query");
+
   qb.focus();
+
 }
+
 </script>
+
 </head>
+
 <body onload="handleLoad()">
+
 <center>
+
 <img src="img/head.jpg"/>
+
 <div id="content">
+
 <img src="img/souyibao_logo.jpg" />
+
 <form name=f action=s method="get">
+
 <table border="0" cellspacing="0" cellpadding="0">
+
 	<tr>
+
 		<td nowrap="nowrap"><INPUT TYPE="hidden" name="hl" value="search">
+
 		<input type="text" size="60" maxlength="1024" id="query" name="q">
+
 		<input type=submit value="健康搜索"><img src="img/logo_cn.gif"/> </td>
+
 	</tr>
+
 </table>
+
 <div class="tip"><span id="tip">
+
 输入您的查询词，天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医药信息，帮你快速获取搜索结果。</span></div>
+
 </div>
+
 </form>
+
 </center>
+
 <center>
+
 <div style="margin:120px 0 0 0" ></div>
+
 <p id=b><a onClick="var starhref=window.location.href;this.style.behavior='url(#default#homepage)'; this.setHomePage(starhref)" href="#">设为主页</a></p>
+
 <p id=b><a href="/medweb/about.html">关于天天动</a><br>
+
 &copy;2009 天天动<a href="/medweb/duty.html">&nbsp;&nbsp;&nbsp;&nbsp;用前必读</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=http://www.miibeian.gov.cn target=_blank>沪ICP备09022690号</a>
+
 </center>
+
 </body>
+
 </html>

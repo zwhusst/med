@@ -101,6 +101,6 @@ function initSearch() {
 			
 		}
 	);
-	
+	$('.head_img').bgiframe();	
 }
 $(document).ready(function() {initSearch();});

@@ -62,7 +62,7 @@
 <c:if test="${(keyword.topic.id == 1) || (keyword.topic.id == 4) }">
 <div class="left-list">
 <h3><c:out value="${keyword.name}" /></h3>
-<p> 门诊科室可选: </br><c:forEach var="category" items="${keyword.categories}">
+<p>就诊科室:点击查名院专家</br><c:forEach var="category" items="${keyword.categories}">
 <span style="white-space:nowrap"><a href="javascript:listTd('${searchResult.topData}', '${keyword.id}', '{category.id}')"><c:out value="${category.name}" /></a></span></c:forEach>
 </p>
 </div></c:if>

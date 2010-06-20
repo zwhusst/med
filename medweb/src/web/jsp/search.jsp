@@ -114,7 +114,7 @@ $.ui.dialog.defaults.bgiframe = true;
     </div>
     <div id="page_content" class="pc cc_tallest">
       <div class="pg_title" >
-        <p><span class="res-title">搜索导航:</span>以下是与&nbsp;<span class="results"><c:out value='${exdata.displaySearchData}' escapeXml="false" /></span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
+        <p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results"><c:out value='${exdata.displaySearchData}' escapeXml="false" /></span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
       </div>
       <div id="TopicResult" style="display: block;"></div>
       <div id="search-tabs">
