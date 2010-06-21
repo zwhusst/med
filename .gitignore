@@ -3,9 +3,6 @@
 **/target
 **/*/target
 **/.hg
-.classpath
-.project
-.settings
 target
 bin
 build
