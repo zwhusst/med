@@ -1,33 +1,36 @@
-ï»¿<%@ page session="false" isELIgnored="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page session="false" isELIgnored="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="emptyData" value="true"/>
 <c:forEach var="d" items="${tDoclist}">
 <c:set var="emptyData" value="false"/>
 <div class="pg-contlist-2">
 <h1>
-<a href="${d.url}" target="_blank" class="h1-a">${d.name}Â åŒ»ç”Ÿ</a>
+
+<div style="height:0px;font-size:0px;"></div>
+
+<a href="${d.url}" target="_blank" class="h1-a">${d.name}?Ò½Éú</a>
 <span class="lev">
 <span class="lev02">${d.grade}</span>/${d.area}
 </span>
 </h1>
-<p>ç‰¹é•¿:<span class="special">${d.traits}</span></p>
+<p>ÌØ³¤:<span class="special">${d.traits}</span></p>
 <p class="profile">${d.profile}</p>
 <p>
 <span style="display:none">
-ç›¸å…³æœç´¢:
-<a href="#">è¯„ä»·</a>
-<a href="#">é—¨è¯Šæ—¶é—´</a>
-<a href="#">åœ°å›¾</a>
-<a href="#">é¢„çº¦æŒ‚å·</a>
-<a href="#">å’¨è¯¢</a>
+Ïà¹ØËÑË÷:
+<a href="#">ÆÀ¼Û</a>
+<a href="#">ÃÅÕïÊ±¼ä</a>
+<a href="#">µØÍ¼</a>
+<a href="#">Ô¤Ô¼¹ÒºÅ</a>
+<a href="#">×ÉÑ¯</a>
 </span>
-<span class="more" style="display:none"><a href="#" class="down">è¯¦ç»†ä»‹ç»>></a><a href="#" class="up">æ”¶å›ç¼©ç•¥<<</a></span>
+<span class="more" style="display:none"><a href="#" class="down">ÏêÏ¸½éÉÜ>></a><a href="#" class="up">ÊÕ»ØËõÂÔ<<</a></span>
 </p>
 </div>
 </c:forEach>
 <c:if test="${emptyData == 'true'}">
 <br/>
-æŠ±æ­‰! æš‚æ—¶æ²¡æœ‰ç›¸å…³ä¿¡æ¯ã€‚
+±§Ç¸! ÔİÊ±Ã»ÓĞÏà¹ØĞÅÏ¢¡£
 <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 </c:if>
