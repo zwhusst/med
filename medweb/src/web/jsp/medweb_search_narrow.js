@@ -3,11 +3,10 @@
   var box_label = 'Health Search';
   var box_width = 80;
   var html = [
-    '<form method="get" action="'+site+'/s" target="_blank">',
+    '<form method="post" action="'+site+'/s" onsubmit="javascirpt:this.service.value=window.location; this.action=\''+site+'/s?hl=search&q=\'+encodeURI(this.qalias.value);return true;">',
     '<div style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000">'+box_label+'</div>',
     '<input type="hidden" name="service" value="external" />',
-    '<input type="hidden" name="hl" value="search" />',
-    '<input style="vertical-align: middle; width: '+box_width+'px" type="text" name="q" maxlength="127" value="" />',
+    '<input style="vertical-align: middle; width: '+box_width+'px" type="text" name="qalias" maxlength="127" value="" />',
     '&nbsp;',
     '<input style="vertical-align: middle; width: 30px" type="submit" value="Go" />',
     '<br>',
