@@ -93,7 +93,7 @@ public class PipelineUtil {
 		IMedDAOConnectionFactory factory = new JPAMedDaoConnectionFactory();
 		IMedDAOConnection con = factory.openConnection();
 
-		String sql = "select id, name, pname, explanation from keyword";
+		String sql = "select id, name, pname, explanation, indexcontent from keyword";
 		// documents, it is used for the medical type keyword
 		List docs = con.executeSQL(sql);
 
@@ -103,15 +103,22 @@ public class PipelineUtil {
 			String name = (String)dataArray[1];
 			String pname = (String)dataArray[2];
 			String explanation = (String)dataArray[3];
+			String indexcontent = (String)dataArray[4];
 
 			org.apache.lucene.document.Document lucDoc = new org.apache.lucene.document.Document();
 
 			if ((pname != null) && (!pname.isEmpty())) {
 				name = pname;
 			}
+			
 			// content
-			lucDoc.add(new Field("content", name + explanation, Field.Store.YES,
-					Field.Index.ANALYZED));
+			if ((indexcontent != null) && (indexcontent.length() > 0)) {
+				lucDoc.add(new Field("content", indexcontent,
+						Field.Store.YES, Field.Index.ANALYZED));				
+			} else {
+				lucDoc.add(new Field("content", name + explanation,
+						Field.Store.YES, Field.Index.ANALYZED));
+			}
 
 			// id
 			lucDoc.add(new Field("id", "" + id, Field.Store.YES,

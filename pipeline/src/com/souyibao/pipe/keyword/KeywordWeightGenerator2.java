@@ -47,7 +47,7 @@ public class KeywordWeightGenerator2 {
 	}
 
 	private static void genKeywordWeight(IMedDAOConnection con, String idxFolder, String outputFolder) throws Exception {
-		String sql = "select id, name, pname, alias from keyword where  topicid != 5";
+		String sql = "select id, name, pname, alias from keyword where  topicid != 5 and topicid != 6";
 		List keywords = con.executeSQL(sql);
 
 		try {
