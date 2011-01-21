@@ -1,0 +1,373 @@
+<html><head>
+
+
+
+<title>天天动 - 感冒</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link type="text/css" rel="stylesheet" href="style/search.css">
+  <link type="text/css" rel="stylesheet" href="style/layout.css">
+  <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="js/search.js"></script>
+  <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+  <script type="text/javascript" src="js/tooltip-1.1.2.js"></script>  
+  <script type="text/javascript" src="js/menu.js"></script>
+  <script type="text/javascript" src="js/med.js"></script>
+
+<script type="text/javascript"> 
+function correctPNG() { 
+    var arVersion = navigator.appVersion.split("MSIE") 
+    var version = parseFloat(arVersion[1]) 
+    if ((version &gt;= 5.5) &amp;&amp; (document.body.filters)) 
+    { 
+       for(var j=0; j&lt;document.images.length; j++) 
+       { 
+          var img = document.images[j] 
+          var imgName = img.src.toUpperCase() 
+          if (imgName.substring(imgName.length-3, imgName.length) == "PNG") 
+          { 
+             var imgID = (img.id) ? "id='" + img.id + "' " : "" 
+             var imgClass = (img.className) ? "class='" + img.className + "' " : "" 
+             var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' " 
+             var imgStyle = "display:inline-block;" + img.style.cssText 
+             if (img.align == "left") imgStyle = "float:left;" + imgStyle 
+             if (img.align == "right") imgStyle = "float:right;" + imgStyle 
+             if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle 
+             var strNewHTML = "&lt;span " + imgID + imgClass + imgTitle 
+             + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";" 
+             + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader" 
+             + "(src=\'" + img.src + "\', sizingMethod='scale');\"&gt;&lt;/span&gt;" 
+             img.outerHTML = strNewHTML 
+             j = j-1 
+          } 
+       } 
+    }     
+} 
+window.attachEvent("onload", correctPNG); 
+</script>
+
+   <link href="image/favicon.ico" rel="shortcut icon">
+
+
+<script src="js/si-clear-children.js" type="text/javascript"></script>
+<link rel="stylesheet" href="themes/base/jquery.ui.all.css" type="text/css">
+<script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+<script src="http://www.google.com/uds/jsapi" type="text/javascript"></script>
+<script src="js/ui/jquery.ui.core.js" type="text/javascript"></script>
+<script src="js/ui/jquery.ui.draggable.js" type="text/javascript"></script>
+<script src="js/ui/jquery.ui.resizable.js" type="text/javascript"></script>
+<script src="js/ui/jquery.ui.dialog.js" type="text/javascript"></script>
+<script src="js/ui/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="js/external/jquery.bgiframe-2.1.1.js" type="text/javascript"></script>
+<style type="text/css">
+form.gsc-search-box {
+	display: none;
+}
+
+#searchcontrol .gsc-control {
+	WIDTH: 400px
+}
+div.gsc-control {
+    width:100%;
+}
+gsc-input {
+	display: none;
+}
+.gsc-control div {
+  font-size:11pt;
+  position:static;
+}
+div.gsc-control {
+	width: 100%;
+}
+</style>
+<script language="JavaScript">
+&lt;!--
+google.load('search', '1.0');
+function reqestGoogleHtml() {
+      var webResultTag=document.getElementById("WebResultTag");
+      
+// Create a search control
+      var searchControl = new google.search.SearchControl();
+      searchControl.setResultSetSize(GSearch.LARGE_RESULTSET);
+
+      // Add in a full set of searchers
+      var websearch, websearch1,search;
+      websearch = new google.search.WebSearch();
+      websearch.setUserDefinedLabel("网页");
+      searchControl.addSearcher(websearch);
+
+      websearch1 = new google.search.WebSearch();
+      websearch1.setQueryAddition("病例 ");
+      websearch1.setUserDefinedLabel("病例");
+      searchControl.addSearcher(websearch1);
+      
+      search = new google.search.ImageSearch();
+      search.setUserDefinedLabel("图片");
+      searchControl.addSearcher(search);
+
+      search = new google.search.NewsSearch();
+      search.setUserDefinedLabel("新闻");
+      searchControl.addSearcher(search);
+
+      search = new google.search.BlogSearch();
+      search.setUserDefinedLabel("博客");
+      searchControl.addSearcher(search);
+
+      var drawOptions = new google.search.DrawOptions();
+      drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
+      // tell the searcher to draw itself and tell it where to attach
+      searchControl.draw(document.getElementById("TopicWebResult"), drawOptions);
+      // execute an inital search
+      searchControl.execute("感冒 肺结核 ");      
+}
+google.setOnLoadCallback(reqestGoogleHtml, true);
+
+function init() {
+  loadResult("TopicResult");
+}
+$.ui.dialog.defaults.bgiframe = true;
+//--&gt;
+</script><script type="text/javascript" src="http://www.google.com/uds/?file=search&amp;v=1.0"></script><link rel="stylesheet" type="text/css" href="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default.css"><script type="text/javascript" src="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default+en.I.js"></script>  
+</head><body onload="init()">  
+<center>
+  <div style="text-align: left;" id="wapper">
+  <div id="masthead">  <p class="top_def">     <a href="#">就医导航</a>     <a href="#">设为首页</a>  </p>  <div class="line"></div>  <div class="head_bg"></div>  <div class="head_img"></div>  <div class="s_frame">
+  <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>  <input type="text" value="感冒" onkeyup="paneSearchKeyupHandler(event)" name="q" class="search_in">  <a onclick="javascript:paneSearch()" title="搜索" href="#" class="search_bt"></a>  <img alt="" src="image/googlelogo.png" class="google">  <div id="panecheckbox" class="panecheckbox">
+	
+	<input type="checkbox" id="8498" name="panekeyword" checked="checked">肺结核
+	
+	</div>  </div> </div>
+  <!-- ex data from request start -->
+  
+  	<input type="hidden" value="感冒" name="ex_q">
+    
+  
+  
+    
+  
+  	<input type="hidden" value="8498" name="ex_k">
+      
+  <!-- ex data from request end -->
+  <div class="c clear_children" id="container">
+    <div class="sc" id="left_col">
+      <div id="left-title"><h5>就医指南</h5></div>
+      <span style="font-size: 14px;">临床科室 &gt;&gt; 名医名院直通车</span>
+      <div id="GuideInfoSection">
+
+<!--only sympton and disease -->
+
+<div class="left-list">
+<h3>感冒</h3>
+<p>就诊科室:点击查名院专家<br>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '2450', '7' )">普内科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '2450', '9' )">呼吸内科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '2450', '2' )">儿科</a></span>
+</p>
+</div>
+
+<!--only sympton and disease -->
+
+<div class="left-list">
+<h3>肺结核</h3>
+<p>就诊科室:点击查名院专家<br>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '8498', '1' )">传染科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '8498', '95' )">老年科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '8498', '9' )">呼吸内科</a></span>
+</p>
+</div>
+
+</div>
+    </div>
+    <div class="pc cc_tallest" id="page_content">
+      <div class="pg_title">
+        <p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results">感冒&nbsp;肺结核&nbsp;</span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
+      </div>
+      <div style="display: block;" id="TopicResult">
+
+<div id="searchframe">
+<div class="searchlist">
+
+
+<table><tbody><tr><td><h4>相关药品</h4></td>
+
+</tr></tbody></table>
+<p id="search-list05">
+   
+   </p><p class="listname">
+   <a title="又名:Myrtol" href="javascript:popDialog('dialog15022')">桃金娘油</a>
+   
+   <a title="又名:VitaminB1" href="javascript:popDialog('dialog17518')">维生素B1</a>
+   
+   <a title="又名:DextromethorphanHydrobromideNasalDrops" href="javascript:popDialog('dialog15171')">氢溴酸右美沙芬滴鼻液</a>
+   
+   <a title="又名:MyrtolStandardizedEntericCoatedSoftCapsules" href="javascript:popDialog('dialog14983')">标准桃金娘油肠溶胶囊（儿童装）</a>
+   
+   <a title="又名:CiprofloxacinHydrochlorideTablets" href="javascript:popDialog('dialog16181')">环丙沙星</a>
+   
+   <a title="又名:Corticotrophin" href="javascript:popDialog('dialog12419')">促皮质素</a>
+   
+   <a title="又名:Streptomycin" href="javascript:popDialog('dialog18780')">链霉素</a></p>
+   <p class="listname">
+   <a title="又名:Sulfadiazine" href="javascript:popDialog('dialog17336')">磺胺嘧啶</a>
+   
+   <a title="又名:MyrtolStandardizedEntericCoatedSoftCapsules" href="javascript:popDialog('dialog14982')">标准桃金娘油肠溶胶囊(成人装)</a>
+   
+   <a title="又名:BCGVaccine-ChengduInstituteofBiologicalProducts" href="javascript:popDialog('dialog16455')">皮内注射用卡介苗</a>
+   
+   <a title="又名:Ofloxacin-Livzon" href="javascript:popDialog('dialog14509')">康泰必妥</a>
+   
+   <a title="又名:Codeine" href="javascript:popDialog('dialog13065')">可待因</a>
+   
+   <a title="又名:Ofloxacin" href="javascript:popDialog('dialog15198')">氧氟沙星</a>
+   
+   <a title="又名:VitaminCforInjection" href="javascript:popDialog('dialog15751')">注射用维生素C</a></p>
+   <p class="listname">
+   <a title="又名:VitaminCInjection" href="javascript:popDialog('dialog17531')">维生素C注射液</a>
+   
+   <a title="又名:Kanameisu" href="javascript:popDialog('dialog12874')">卡那霉素</a>
+   
+   <a title="又名:OldTuberculin" href="javascript:popDialog('dialog17374')">稀释旧结核菌素</a>
+   
+   <a href="javascript:popDialog('dialog17019')">知柏地黄丸</a>
+   
+   <a title="又名:Enoxacinum" href="javascript:popDialog('dialog12407')">依诺沙星</a>
+   
+   <a title="又名:Aminophylline" href="javascript:popDialog('dialog15250')">氨茶碱</a>
+   
+   <a title="又名:Alcohol" href="javascript:popDialog('dialog12115')">乙醇</a></p>
+   <p class="listname">
+   <a href="javascript:popDialog('dialog12787')">十全大补丸</a>
+   
+   <a title="又名:VitaminC" href="javascript:popDialog('dialog17528')">维生素C水针剂</a>
+   
+   <a title="又名:VitaminC" href="javascript:popDialog('dialog17524')">维生素C丸</a>
+   
+   <a title="又名:NicotinicAcid" href="javascript:popDialog('dialog16077')">烟酸</a>
+   
+   <a title="又名:Nitrofurantoin" href="javascript:popDialog('dialog13190')">呋喃妥因</a>
+   
+   <a href="javascript:popDialog('dialog12590')">养荣丸</a>
+   
+   <a href="javascript:popDialog('dialog18911')">阿胶</a></p>
+   <p class="listname">
+   <a title="又名:NatriiBicarbonas" href="javascript:popDialog('dialog17264')">碳酸氢钠</a>
+   
+   <a href="javascript:popDialog('dialog11934')">三七片</a>
+   
+   <a title="又名:CiprofloxacinLactateInjection" href="javascript:popDialog('dialog12154')">乳酸环丙沙星</a>
+   
+   <a href="javascript:popDialog('dialog17435')">紫雪</a>
+   
+   <a title="又名:Levamisole" href="javascript:popDialog('dialog14380')">左旋咪唑</a>
+   
+   <a href="javascript:popDialog('dialog17664')">羟基脲</a>
+   
+   <a title="又名:Phenol" href="javascript:popDialog('dialog18014')">苯酚</a></p>
+   <p class="listname">
+   <a title="又名:CodLiverOil" href="javascript:popDialog('dialog19170')">鱼肝油</a>
+   
+   <a href="javascript:popDialog('dialog13884')">大补阴丸</a>
+   
+   <a href="javascript:popDialog('dialog18426')">连翘败毒丸</a>
+   
+   <a title="又名:Hydrocortisone" href="javascript:popDialog('dialog15158')">氢化可的松</a>
+   
+   <a href="javascript:popDialog('dialog14121')">安宫牛黄丸</a>
+   
+   <a title="又名:IodineTincture" href="javascript:popDialog('dialog17255')">碘酊</a>
+   
+   <a title="又名:TetracyclineandCortisonAcetateEyeOintment" href="javascript:popDialog('dialog13287')">四环素可的松眼膏</a></p>
+   <p class="listname">
+   <a title="又名:ATP" href="javascript:popDialog('dialog11962')">三磷酸腺苷二钠</a>
+   
+   <a title="又名:Glycerol" href="javascript:popDialog('dialog16230')">甘油</a>
+   
+   <a title="又名:PotassiumPermanganate" href="javascript:popDialog('dialog19161')">高锰酸钾</a>
+   
+   <a title="又名:PurifiedProteinDerivativeofTuberculin(TB-PPD)" href="javascript:popDialog('dialog17474')">结核菌素纯蛋白衍化物</a>
+   
+   <a title="又名:LactuloseOralSolution" href="javascript:popDialog('dialog12131')">乳果糖</a>
+   
+   <a href="javascript:popDialog('dialog19174')">鱼腥草素钠片</a>
+   
+   <a title="又名:SodiumAminosalicylate" href="javascript:popDialog('dialog14195')">对氨水杨酸钠</a></p>
+   <p class="listname">
+   <a href="javascript:popDialog('dialog12422')">保和丸</a></p>
+<p></p>
+<!-- keyword pop dialog -->
+<div style="display: none;" loaded="false" title="桃金娘油" kid="15022" id="dialog15022"></div><div style="display: none;" loaded="false" title="维生素B1" kid="17518" id="dialog17518"></div><div style="display: none;" loaded="false" title="氢溴酸右美沙芬滴鼻液" kid="15171" id="dialog15171"></div><div style="display: none;" loaded="false" title="标准桃金娘油肠溶胶囊（儿童装）" kid="14983" id="dialog14983"></div><div style="display: none;" loaded="false" title="环丙沙星" kid="16181" id="dialog16181"></div><div style="display: none;" loaded="false" title="促皮质素" kid="12419" id="dialog12419"></div><div style="display: none;" loaded="false" title="链霉素" kid="18780" id="dialog18780"></div><div style="display: none;" loaded="false" title="磺胺嘧啶" kid="17336" id="dialog17336"></div><div style="display: none;" loaded="false" title="标准桃金娘油肠溶胶囊(成人装)" kid="14982" id="dialog14982"></div><div style="display: none;" loaded="false" title="皮内注射用卡介苗" kid="16455" id="dialog16455"></div><div style="display: none;" loaded="false" title="康泰必妥" kid="14509" id="dialog14509"></div><div style="display: none;" loaded="false" title="可待因" kid="13065" id="dialog13065"></div><div style="display: none;" loaded="false" title="氧氟沙星" kid="15198" id="dialog15198"></div><div style="display: none;" loaded="false" title="注射用维生素C" kid="15751" id="dialog15751"></div><div style="display: none;" loaded="false" title="维生素C注射液" kid="17531" id="dialog17531"></div><div style="display: none;" loaded="false" title="卡那霉素" kid="12874" id="dialog12874"></div><div style="display: none;" loaded="false" title="稀释旧结核菌素" kid="17374" id="dialog17374"></div><div style="display: none;" loaded="false" title="知柏地黄丸" kid="17019" id="dialog17019"></div><div style="display: none;" loaded="false" title="依诺沙星" kid="12407" id="dialog12407"></div><div style="display: none;" loaded="false" title="氨茶碱" kid="15250" id="dialog15250"></div><div style="display: none;" loaded="false" title="乙醇" kid="12115" id="dialog12115"></div><div style="display: none;" loaded="false" title="十全大补丸" kid="12787" id="dialog12787"></div><div style="display: none;" loaded="false" title="维生素C水针剂" kid="17528" id="dialog17528"></div><div style="display: none;" loaded="false" title="维生素C丸" kid="17524" id="dialog17524"></div><div style="display: none;" loaded="false" title="烟酸" kid="16077" id="dialog16077"></div><div style="display: none;" loaded="false" title="呋喃妥因" kid="13190" id="dialog13190"></div><div style="display: none;" loaded="false" title="养荣丸" kid="12590" id="dialog12590"></div><div style="display: none;" loaded="false" title="阿胶" kid="18911" id="dialog18911"></div><div style="display: none;" loaded="false" title="碳酸氢钠" kid="17264" id="dialog17264"></div><div style="display: none;" loaded="false" title="三七片" kid="11934" id="dialog11934"></div><div style="display: none;" loaded="false" title="乳酸环丙沙星" kid="12154" id="dialog12154"></div><div style="display: none;" loaded="false" title="紫雪" kid="17435" id="dialog17435"></div><div style="display: none;" loaded="false" title="左旋咪唑" kid="14380" id="dialog14380"></div><div style="display: none;" loaded="false" title="羟基脲" kid="17664" id="dialog17664"></div><div style="display: none;" loaded="false" title="苯酚" kid="18014" id="dialog18014"></div><div style="display: none;" loaded="false" title="鱼肝油" kid="19170" id="dialog19170"></div><div style="display: none;" loaded="false" title="大补阴丸" kid="13884" id="dialog13884"></div><div style="display: none;" loaded="false" title="连翘败毒丸" kid="18426" id="dialog18426"></div><div style="display: none;" loaded="false" title="氢化可的松" kid="15158" id="dialog15158"></div><div style="display: none;" loaded="false" title="安宫牛黄丸" kid="14121" id="dialog14121"></div><div style="display: none;" loaded="false" title="碘酊" kid="17255" id="dialog17255"></div><div style="display: none;" loaded="false" title="四环素可的松眼膏" kid="13287" id="dialog13287"></div><div style="display: none;" loaded="false" title="三磷酸腺苷二钠" kid="11962" id="dialog11962"></div><div style="display: none;" loaded="false" title="甘油" kid="16230" id="dialog16230"></div><div style="display: none;" loaded="false" title="高锰酸钾" kid="19161" id="dialog19161"></div><div style="display: none;" loaded="false" title="结核菌素纯蛋白衍化物" kid="17474" id="dialog17474"></div><div style="display: none;" loaded="false" title="乳果糖" kid="12131" id="dialog12131"></div><div style="display: none;" loaded="false" title="鱼腥草素钠片" kid="19174" id="dialog19174"></div><div style="display: none;" loaded="false" title="对氨水杨酸钠" kid="14195" id="dialog14195"></div><div style="display: none;" loaded="false" title="保和丸" kid="12422" id="dialog12422"></div>
+<div class="tooltip05"></div>
+
+<div class="searchfoot">
+<span><a href="javascript:gA('TopicResult')" class="comeback01">&lt;&lt;返回</a></span>
+</div>
+<div class="tooltip05"></div>
+</div>
+
+</div>
+
+<!-- curdata from request start -->
+  
+
+  <input type="hidden" value="3" name="tFilter">
+
+
+  <input type="hidden" value="8498" name="k">
+
+
+  <input type="hidden" value="tr" name="hl">
+
+<!-- curdata from request end -->
+
+<!-- 就医指南信息 -->
+<div style="display: none;" id="dummyGuideInfo">
+
+<!--only sympton and disease -->
+
+<div class="left-list">
+<h3>感冒</h3>
+<p>就诊科室:点击查名院专家<br>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '2450', '{category.id}')">普内科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '2450', '{category.id}')">呼吸内科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '2450', '{category.id}')">儿科</a></span>
+</p>
+</div>
+
+<!--only sympton and disease -->
+
+<div class="left-list">
+<h3>肺结核</h3>
+<p>就诊科室:点击查名院专家<br>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '8498', '{category.id}')">传染科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '8498', '{category.id}')">老年科</a></span>
+<span style="white-space: nowrap;"><a href="javascript:listTd('2450|8498', '8498', '{category.id}')">呼吸内科</a></span>
+</p>
+</div>
+
+</div>
+</div>
+      <div id="search-tabs">
+        <div><p class="tabs-title"><span class="res-title">搜索结果:</span>符合<span class="results">&nbsp;感冒&nbsp;肺结核&nbsp;&nbsp;</span>的相关网页</p></div>
+		<table id="WebResultParentTag" class="vsepleft">
+			<tbody><tr><td id="TopicWebResult"><div class="gsc-control"><form class="gsc-search-box" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><input type="text" autocomplete="off" size="10" class=" gsc-input" name="search" title="search"></td><td class="gsc-search-button"><input type="submit" value="Search" class="gsc-search-button" title="search"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="http://www.google.com/uds/css/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form><div class="gsc-tabsArea"><div class=" gsc-tabHeader gsc-tabhActive">网页</div><span class="gs-spacer"> </span><div class=" gsc-tabHeader gsc-tabhInactive">病例</div><span class="gs-spacer"> </span><div class=" gsc-tabHeader gsc-tabhInactive">图片</div><span class="gs-spacer"> </span><div class=" gsc-tabHeader gsc-tabhInactive">新闻</div><span class="gs-spacer"> </span><div class=" gsc-tabHeader gsc-tabhInactive">博客</div><span class="gs-spacer"> </span></div><div class="gsc-resultsbox-visible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell gsc-twiddle-opened"><div class="gsc-twiddle"><div class="gsc-title">网页</div></div><div class="gsc-stats">(8)</div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div class="gsc-results gsc-webResult" style="display: block;"><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://www.yongyao.net/newshtml/9389e378-b737-4df8-b10e-1433e6dbcaa2.htm" target="_blank">别把<b>结核</b>误为<b>感冒</b>咳嗽两周以上需拍胸片|</a></div><div class="gs-snippet">2008年3月24日 <b>...</b> 从前认为<b>肺结核</b>是营养不良而产生的如今这种病已侵袭到学生白领一族尤其是在经常熬夜  加班减肥节食体质下降免疫力差的人群中患病风险更高今天是世界防治 <b>...</b></div><div class="gs-visibleUrl gs-visibleUrl-short">www.yongyao.net</div><div class="gs-visibleUrl gs-visibleUrl-long">www.yongyao.net/newshtml/9389e378-b737-4df8-b10e-1433e6dbcaa2.htm</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-expansionArea"><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://hx.39.net/094/13/838408.html" target="_blank">病例解析：当<b>肺结核</b>遭遇<b>感冒</b>_39健康网_呼吸科</a></div><div class="gs-snippet">2009年4月13日 <b>...</b> 患者前几天<b>感冒</b>后出现低热，但不咳嗽。这种低热与<b>肺结核</b>有关吗?是<b>肺结核</b>又复发了吗，  该如何治疗?怎样预防<b>肺结核</b>的复发？</div><div class="gs-visibleUrl gs-visibleUrl-short">hx.39.net</div><div class="gs-visibleUrl gs-visibleUrl-long">hx.39.net/094/13/838408.html</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://zy.china.com.cn/zyts/zyys/djyangsheng/31890.html" target="_blank">冬季预防<b>肺结核感冒</b>症状要变清_冬季预防<b>肺结核</b>,哪些方面预防<b>肺结核</b> <b>...</b></a></div><div class="gs-snippet">2010年12月25日 <b>...</b> 冬季寒冷，<b>肺结核</b>病的发病率也会有所提高，从中医角度上说，<b>肺结核</b>病对气候变化极为  敏感，夏不耐热，易耗其阴，冬不耐寒，阳难交阴。</div><div class="gs-visibleUrl gs-visibleUrl-short">zy.china.com.cn</div><div class="gs-visibleUrl gs-visibleUrl-long">zy.china.com.cn/zyts/zyys/djyangsheng/31890.html</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://zhidao.baidu.com/question/131295253" target="_blank"><b>感冒</b>咳嗽会不会引起<b>肺结核</b>_百度知道</a></div><div class="gs-snippet">2010年1月5日 <b>...</b> <b>感冒</b>不会引起<b>肺结核</b>。<b>肺结核</b>是需要<b>结核</b>杆菌感染过后才会有的。普通<b>感冒</b>会因为鼻腔内  发炎严重，在咳嗽的时候出现血丝或者少量的血。 <b>...</b></div><div class="gs-visibleUrl gs-visibleUrl-short">zhidao.baidu.com</div><div class="gs-visibleUrl gs-visibleUrl-long">zhidao.baidu.com/question/131295253</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://www.qqyy.com/jibing/huxineike/091022/214de.html" target="_blank">反复<b>感冒</b>咳嗽当防<b>肺结核</b>_<b>肺结核</b>的症状_全球医院网</a></div><div class="gs-snippet"><b>肺结核</b>的临床症状并不典型，尤其是那些轻微局限性感染的，以及曾患结核病经治疗病灶已  钙化的老年人，感染后仅有反复<b>感冒</b>、咳嗽的表现，最易造成漏诊，那么， <b>...</b></div><div class="gs-visibleUrl gs-visibleUrl-short">www.qqyy.com</div><div class="gs-visibleUrl gs-visibleUrl-long">www.qqyy.com/jibing/huxineike/091022/214de.html</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://www.jk51.com/wenda/02135I452010.html" target="_blank"><b>感冒</b>引起的<b>结核</b>性肺部感染与<b>肺结核</b>有无不同_健康无忧网</a></div><div class="gs-snippet">2010年2月13日 <b>...</b> 这个治疗也需要积极服用抗<b>结核</b>药和抗感染药物. <b>感冒</b>是不能够引起<b>结核</b>性肺炎的,那么  出现的肺炎也是因为<b>感冒</b>引起的大叶性的肺炎,而不是<b>结核</b>性的肺炎, <b>...</b></div><div class="gs-visibleUrl gs-visibleUrl-short">www.jk51.com</div><div class="gs-visibleUrl gs-visibleUrl-long">www.jk51.com/wenda/02135I452010.html</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://www.jk3721.com/html/changjianjibing/feijiehe/2010/1209/21103.html" target="_blank"><b>肺结核</b>的症状与<b>感冒</b>的区别-<b>肺结核</b>-健康网www.jk3721.com</a></div><div class="gs-snippet">2010年12月9日 <b>...</b> 健康网<b>肺结核</b>的症状与<b>感冒</b>的区别：<b>肺结核</b>病的典型症状是，低热，乏力，盗汗，食少，  咳嗽，痰多，咯血等，曾患结核病经治疗病灶已钙化的老年人， <b>...</b></div><div class="gs-visibleUrl gs-visibleUrl-short">www.jk3721.com</div><div class="gs-visibleUrl gs-visibleUrl-long">www.jk3721.com/html/changjianjibing/feijiehe/2010/1209/21103.html</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-webResult gsc-result"><div class="gs-webResult gs-result"><div class="gs-title"><a class="gs-title" href="http://www.jiankang5u.com/a/119/152/58997.html" target="_blank">病例解析：当<b>肺结核</b>遭遇<b>感冒</b>_健康无忧网</a></div><div class="gs-snippet">去医院化验、血常规检查正常，X片检查，医生说病灶已钙化硬结，支气管附近有炎症，  <b>感冒</b>后吃过几天抗生素，还输了两天液，未见退烧。患者的低热与<b>肺结核</b>有关吗？ <b>...</b></div><div class="gs-visibleUrl gs-visibleUrl-short">www.jiankang5u.com</div><div class="gs-visibleUrl gs-visibleUrl-long">www.jiankang5u.com/a/119/152/58997.html</div></div><div class="gs-watermark"><a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 1/2011</a></div></div><div class="gsc-cursor-box"><div class="gsc-cursor"><div class="gsc-cursor-page gsc-cursor-current-page">1</div><div class="gsc-cursor-page">2</div><div class="gsc-cursor-page">3</div><div class="gsc-cursor-page">4</div><div class="gsc-cursor-page">5</div><div class="gsc-cursor-page">6</div><div class="gsc-cursor-page">7</div><div class="gsc-cursor-page">8</div></div></div></div></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">病例</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div class="gsc-results gsc-webResult"></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">图片</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div class="gsc-results gsc-imageResult"></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">新闻</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"><span class="gsc-configLabel gsc-twiddle-closed" title="settings">&nbsp;</span></td></tr></tbody></table><div class="gsc-config gsc-newsConfig" style="display: none;"><form class="gsc-config gsc-newsConfig"></form></div><div class="gsc-results gsc-newsResult"></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">博客</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"><span class="gsc-configLabel gsc-twiddle-closed" title="settings">&nbsp;</span></td></tr></tbody></table><div class="gsc-config gsc-blogConfig" style="display: none;"><form class="gsc-config gsc-blogConfig"></form></div><div class="gsc-results gsc-blogResult"></div></div></div></div></td></tr>
+		</tbody></table>
+      </div>
+    </div>
+	<!-- keywords output to search pane -->
+	<div style="display: none;" id="dummyPaneKeyword"></div>    
+  </div>
+    <div id="footer">
+	<p>&copy;2010 <a href="about.html">天天动</a> | 
+	<a href="duty.html">用前必读</a> | 
+	<a href="partner.html">合作伙伴</a>| 
+	<a href="contact.html">联系我们</a>|
+	<a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
+
+  </div>
+  </div></center>  
+  <script language="JavaScript">
+  &lt;!--
+    moveFun(['dummyPaneKeyword','panecheckbox']);
+  //--&gt;
+  </script>  
+ <div style="display: none;"> <div id="base_webResult"> <div data-vars="{longUrl:function() { var i = unescapedUrl.indexOf(visibleUrl); return i &lt; 1 ? visibleUrl : unescapedUrl.substring(i);}}" class="gs-webResult gs-result"> <div data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})" data-attr="0" data-if="Vars.richSnippet"></div> <div class="gs-title"> <a data-body="html(title)" data-attr="{href:unescapedUrl,target:target}" class="gs-title"></a> </div> <div data-body="html(content)" class="gs-snippet"></div> <div data-body="visibleUrl" class="gs-visibleUrl gs-visibleUrl-short"></div> <div data-body="longUrl()" class="gs-visibleUrl gs-visibleUrl-long"></div> <div data-body="render('action',richSnippet,{url:unescapedUrl,target:target})" class="gs-actions" data-if="Vars.richSnippet &amp;&amp; Vars.richSnippet.action"></div> </div> </div> <div id="base_thumbnail"> <div data-vars="{tn:Vars.thumbnail &amp;&amp; thumbnail.src ? thumbnail : {src:Vars.document &amp;&amp; document.thumbnailUrl}}" data-attr="0"> <div class="gs-image-box gs-web-image-box" data-if="tn.src"> <a data-attr="{href:url,target:target}" class="gs-image"> <img data-attr="{src:tn.src, width:tn.width || 100, height: tn.height}" class="gs-image"> </a> </div> </div> </div> <div id="base_action"> <div data-attr="0" data-foreach="Vars.action"> <div data-if="Cur.url &amp;&amp; Cur.label" data-attr="{'class': 'gs-action ' + Cur['class']}"> <a data-body="Cur.label" data-attr="{href:Cur.url,target:target}" class="gs-action"></a> </div> </div> </div> </div> </body></html>

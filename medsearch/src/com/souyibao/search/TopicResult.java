@@ -6,24 +6,27 @@ import java.util.List;
 
 import com.souyibao.search.util.Util;
 import com.souyibao.shared.entity.Topic;
+import com.souyibao.shared.entity.TopicCategory;
 import com.souyibao.shared.viewer.IDataProvider;
 
 public class TopicResult {
 	private Topic topic = null;
-	private String filterId = null;
-	private List<IDataProvider> result = null;
+	private TopicCategory category = null;
+	private List<IDataProvider> data = null;
 	private boolean execeedMaxResult = false;
+	
+	private String ctxUrl = null;
 	
 	public TopicResult(){}
 	public TopicResult(List<IDataProvider> data){
-		this.result = data;
+		this.data = data;
 	}
 	
-	public List<IDataProvider> getResult() {
-		return result;
+	public List<IDataProvider> getData() {
+		return data;
 	}
-	public void setResult(List<IDataProvider> result) {
-		this.result = result;
+	public void setData(List<IDataProvider> data) {
+		this.data = data;
 	}
 	public boolean isExeceedMaxResult() {
 		return execeedMaxResult;
@@ -36,8 +39,18 @@ public class TopicResult {
 		this.topic = topic;
 	}
 	
-	public void setFilterId(String filterId) {
-		this.filterId = filterId;
+	public Topic getTopic() {
+		return this.topic;
+	}
+	
+	public String getCtxUrl() {
+		return ctxUrl;
+	}
+	public void setCtxUrl(String ctxUrl) {
+		this.ctxUrl = ctxUrl;
+	}
+	public void setCategory(TopicCategory category) {
+		this.category = category;
 	}
 
 	public boolean isEnableCategoryFilter(){
@@ -62,10 +75,10 @@ public class TopicResult {
 		
 		// set the selected option;
 		String selectedId = null;
-		if (filterId == null) {
+		if (category == null) {
 			selectedId = all.getId();
 		} else {
-			selectedId = Util.getCategoryFilterId(""+ topic.getId(), filterId);
+			selectedId = Util.getCategoryFilterId(""+ topic.getId(), "" + category.getId());
 		}
 		
 		for (SelectOption option : result) {

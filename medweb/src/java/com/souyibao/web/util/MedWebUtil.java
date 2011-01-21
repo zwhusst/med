@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.souyibao.freemarker.DiagnoseGuide;
+import com.souyibao.freemarker.HospitalViewer;
 import com.souyibao.search.SelectOption;
 import com.souyibao.shared.MedEntityManager;
 import com.souyibao.shared.entity.Area;
@@ -23,9 +25,28 @@ import com.souyibao.shared.viewer.KeywordDataProvider;
 import com.souyibao.web.model.ExSessionData;
 import com.souyibao.web.model.KeywordToDocCount;
 import com.souyibao.web.model.SessionData;
-import com.souyibao.web.viewer.HospitalViewer;
 
 public class MedWebUtil {
+	
+	public static Collection<DiagnoseGuide> extractDiagnoseGuides(
+			Collection<String> topicScopes, Collection<Keyword> keywords) {
+		if (keywords != null) {
+			
+			Collection<DiagnoseGuide> diagnoseGuides = new ArrayList<DiagnoseGuide>();
+			
+			for (Keyword keyword : keywords) {
+				if (topicScopes.contains("" + keyword.getTopic().getId())) {
+					DiagnoseGuide guide = new DiagnoseGuide(keyword);
+
+					diagnoseGuides.add(guide);
+				}
+			}
+			return diagnoseGuides;
+		}
+
+		return null;
+
+	}
 	
 	public static ExSessionData makeExSessionData(HttpServletRequest request) {
 		ExSessionData result = new ExSessionData();

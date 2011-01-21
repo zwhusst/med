@@ -20,7 +20,7 @@
 -->
 <web-app>
 
-	<!-- order is very important here -->
+<!--
 	<servlet>
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.souyibao.web.servlet.MedServlet</servlet-class>
@@ -35,13 +35,50 @@
 		<servlet-name>Search</servlet-name>
 		<url-pattern>/s</url-pattern>
 	</servlet-mapping>
+-->	
+	<servlet>
+		<servlet-name>rs</servlet-name>
+		<servlet-class>com.souyibao.web.servlet.RestletServlet</servlet-class>
+		<init-param>
+		      <param-name>log4j-init-file</param-name>
+			<param-value>WEB-INF/log4j.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>freemarker.default_encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>freemarker.template_update_delay</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>freemarker.output_encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>template_path</param-name>
+			<param-value>templates</param-value>
+		</init-param>
+				
+		<load-on-startup>1</load-on-startup>		
+	</servlet>
+
+	<servlet>
+		<servlet-name>res</servlet-name>
+		<servlet-class>com.souyibao.web.servlet.ResourceServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>rs</servlet-name>
+		<url-pattern>/rs/*</url-pattern>
+	</servlet-mapping>	
+
+	<servlet-mapping>
+		<servlet-name>res</servlet-name>
+		<url-pattern>/res/*</url-pattern>
+	</servlet-mapping>	
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-
-	<taglib>
-		<taglib-uri>http://com.medsearch.org/taglibs/search</taglib-uri>
-		<taglib-location>/WEB-INF/med-taglibs.tld</taglib-location>
-	</taglib>
 </web-app>

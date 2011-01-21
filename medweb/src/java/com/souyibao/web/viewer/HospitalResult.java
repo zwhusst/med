@@ -2,6 +2,8 @@ package com.souyibao.web.viewer;
 
 import java.util.Collection;
 
+import com.souyibao.freemarker.HospitalViewer;
+
 public class HospitalResult {
 	private Collection<HospitalViewer> result = null;
 

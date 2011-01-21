@@ -5,11 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.souyibao.freemarker.HospitalViewer;
 import com.souyibao.web.model.ActionForward;
 import com.souyibao.web.model.ActionForwardMapping;
 import com.souyibao.web.model.IActionHandler;
 import com.souyibao.web.util.MedWebUtil;
-import com.souyibao.web.viewer.HospitalViewer;
 
 public class TopHospitalActionHandler implements IActionHandler {
 

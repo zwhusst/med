@@ -6,7 +6,7 @@ function sHomeInput(event){
 
 function homeSearch() {
   var val = document.getElementById("search-text").value;
-  window.location.href="s?hl=search&q="+val;
+  window.location.href="rs/ss/"+val;
 }
 
 function listTd(tdata, kid, cid) {
@@ -23,13 +23,10 @@ function paneSearchKeyupHandler(event){
 function popDialog(dialogId) {
   var jqDialogId = "#"+dialogId;
   var kId = $(jqDialogId).attr('kid');
-//  var userInput = $('input[name=ex_q]').attr('value');
   if ($(jqDialogId).attr('loaded') == "false") {  
   var req = newXMLHttpRequest();
   req.onreadystatechange = renderHtmlData(req, dialogId, popDialogCallback, jqDialogId);
-//  var url = "s?hl=keye&k="+kId+"&q="+userInput;
-  var url = assembleSessionURL(true, true);
-  url = 's?hl=keye&epId='+ kId + url; 
+  var url = url4KeywordDetails(kId);
   req.open("GET", url , true);
   req.setRequestHeader("Content-Type", "text/html; charset=UTF-8");
   req.send(null);  
@@ -49,8 +46,8 @@ function popDialogCallback(dialogId) {
 }
 
 function paneSearch(){
-  var url = assembleSessionURL(true,true);
-  window.location.href="s?hl=search"+url;
+  var url = assembleSearchURL();
+  window.location.href=url;
 }
 
 function loadTopDataCB() {
@@ -254,6 +251,86 @@ function cc(eleId) {
   req.send(null);
 }
 
+function url4KeywordDetails(detailsKeyId){
+  // topic filter
+  var tFilter=getDocumentNameValue("tFilter",",");
+  // category filter
+  var cFilter=null;
+  // query keywords
+  var queryKeywords=getCheckedKeywordsURL();
+  // query string
+  var queryString=getDocumentNameValue("querystr"," ");
+
+  var url;
+  if ((queryKeywords!=null)&&(queryString!=null)&&(queryString!="")) {
+    url="rs/details"
+  } else if((queryKeywords==null)&&(queryString!=null)&&(queryString!="")) {
+    url="rs/details4s";
+  } else if((queryKeywords!=null)&&(queryString==null || queryString=="")) {
+    url="rs/details4k";
+  }
+  
+  if ((tFilter!=null)&&(tFilter!="-1")) {
+    // current no category filter, just use -1
+    url=url+"/"+tFilter+"/-1";
+  }
+  if((queryString!=null)&&(queryString!="")){
+    url=url+"/"+queryString;
+  }
+   if (queryKeywords!=null) {
+    url=url+"/"+queryKeywords;
+  }
+  url=url+"/"+detailsKeyId;
+  return encodeURI(url);
+}
+
+function assembleSearchURL(){
+  // topic filter
+  var tFilter=getDocumentNameValue("tFilter",",");
+  // category filter
+  var cFilter=null;
+  // query keywords
+  var queryKeywords=getCheckedKeywordsURL();
+  // query string
+  var queryString=getDocumentNameValue("querystr"," ");
+
+  var url;
+  if ((queryKeywords!=null)&&(queryString!=null)&&(queryString!="")) {
+    url="rs/s"
+  } else if((queryKeywords==null)&&(queryString!=null)&&(queryString!="")) {
+    url="rs/ss";
+  } else if((queryKeywords!=null)&&(queryString==null || queryString=="")) {
+    url="rs/sk";
+  }
+
+  if ((tFilter!=null)&&(tFilter!="-1")) {
+    // current no category filter, just use -1
+    url=url+"/"+tFilter+"/-1";
+  }
+  if (queryKeywords!=null) {
+    url=url+"/"+queryKeywords;
+  }
+  if((queryString!=null)&&(queryString!="")){
+    url=url+"/"+queryString;
+  }
+  return encodeURI(url);
+}
+
+function getDocumentNameValue(eleId, sep) {
+  var result=null;
+  var data=document.getElementsByName(eleId);
+  if (data!=null) {
+    for(length=0;length<data.length;length++){
+       if (result==null) {
+         result=data[length].value;
+       }else{
+         result=result+sep+data[length].value;
+       }
+    }
+  }
+  return result;
+}
+
 function assembleSessionURL(includingTFilter,includingCFilter){
   var length,url;
   url="";
@@ -347,23 +424,20 @@ function asseExSessionURL(includingTFilter,includingCFilter){
 }
 
 function getCheckedKeywordsURL(){
-  var url;
+  var url=null;
   var keywords = document.getElementsByName("panekeyword");
   if (keywords !=null) {
     for (var i = 0; i < keywords.length; i++) {
       if (keywords[i].checked){
         if (url==null) {
-          url="k="+keywords[i].id;
+          url=keywords[i].id;
         }else{
-          url=url+"&k="+keywords[i].id;
+          url=url+","+keywords[i].id;
         }
       }    
     }
-    
-    return url;
-  }
-   
-   return null;
+  }  
+  return url;
 }
 
 function renderHtmlData(req, elementId, callback,callbackPara) {

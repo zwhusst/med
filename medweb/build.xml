@@ -117,11 +117,15 @@
     <target name="war" depends="jar">
         <war destfile="${build.dir}/${final.name}.war" 
             webxml="${web.src.dir}/web.xml">
-            <fileset dir="${web.src.dir}/jsp" />
+            <!--fileset dir="${web.src.dir}/jsp" />
             <zipfileset dir="${web.src.dir}/style" prefix="style"/>
         	<zipfileset dir="${web.src.dir}/js" prefix="js"/>
         	<zipfileset dir="${web.src.dir}/themes" prefix="themes"/>
-        	<zipfileset dir="${web.src.dir}/image" prefix="image"/>
+        	<zipfileset dir="${web.src.dir}/image" prefix="image"/-->
+        	<zipfileset dir="${web.src.dir}" >
+        		<exclude name="log4j.xml"/>
+        		<exclude name="web.xml"/>
+        	</zipfileset>	
         	<classes dir="${shared.resource}"/>
         	<classes dir="${web.resource}"/>
         	<!-- shared jars -->
@@ -141,13 +145,14 @@
                 <!--include name="htmlparser*.jar" /-->
             	<include name="jstl*.jar" />
                 <include name="standard*.jar" />
+            	<include name="org.restlet*.jar" />
+            	<include name="freemarker*.jar" />
             </lib>
         	<!-- builded jar files -->
             <lib dir="${build.dir}">
                 <include name="*.jar" />
             </lib> 	
             <webinf dir="${web.src.dir}">
-                <include name="*-taglibs.tld"/>
             	<include name="log4j.xml"/>
             </webinf>           
         </war>

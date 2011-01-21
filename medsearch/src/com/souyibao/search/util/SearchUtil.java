@@ -26,8 +26,7 @@ import com.souyibao.shared.viewer.KeywordDataProvider;
 public class SearchUtil {
 
 	public static List<IDataProvider> filterKWWithCategory(List kws, 
-			String categoryId) {
-		TopicCategory category = MedEntityManager.getInstance().getCategoryById(categoryId);
+			TopicCategory category) {
 		if (category == null) {
 			return kws;
 		}
@@ -72,7 +71,7 @@ public class SearchUtil {
 	public static Set<Keyword> getKeywordByQryString(String qry) {
 		Set<Keyword> result = new HashSet<Keyword>();
 		if (qry != null) {
-			String[] splitWords = qry.split("[( )、,（），]+");
+			String[] splitWords = qry.split("[( )、,（），]+\"");
 			for (int i = 0; i < splitWords.length; i++) {
 				Keyword keyword = MedEntityManager.getInstance()
 						.getKeywordByName(splitWords[i]);
@@ -98,8 +97,7 @@ public class SearchUtil {
 	}
 	
 	public static Collection<KeywordDataProvider> calKeywordWeight(
-			List<KeywordDataProvider> docKeywords, Set<Topic> topicsFilter, 
-			Set<Topic> outAvaliableTopic) {
+			List<KeywordDataProvider> docKeywords, Set<Topic> topicsFilter) {
 		if (docKeywords == null) {
 			return null;
 		}
@@ -107,9 +105,6 @@ public class SearchUtil {
 
 		for (KeywordDataProvider docKeyword : docKeywords) {
 			Topic topic = docKeyword.getKeyword().getTopic();
-			if (outAvaliableTopic != null) {
-				outAvaliableTopic.add(topic);
-			}
 			
 			if (topicsFilter != null) {
 				if (!topicsFilter.contains(topic)) {

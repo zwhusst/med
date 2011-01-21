@@ -41,19 +41,19 @@ public class TopicResultActionHandler implements IActionHandler {
 		// get the topic filter
 		String[] topicFilters = request.getParameterValues("tFilter");
 		
-		// query result
-		SearchResult searchResult = Controller
-				.getSearchResult(queryString, queryKeywordIds, topicFilters, prefCates);
-		
-		request.setAttribute("searchResult", searchResult);
-
-		// session data;
-		SessionData curData = MedWebUtil.makeSessionData(request);
-		request.setAttribute("curData", curData);
-		
-		if ((searchResult.getData() == null) || (searchResult.getData().size() == 1)) {
-			return mapping.findForward("topicFilterResult");			
-		}
+//		// query result
+//		SearchResult searchResult = Controller
+//				.getSearchResult(queryString, queryKeywordIds, topicFilters, prefCates);
+//		
+//		request.setAttribute("searchResult", searchResult);
+//
+//		// session data;
+//		SessionData curData = MedWebUtil.makeSessionData(request);
+//		request.setAttribute("curData", curData);
+//		
+//		if ((searchResult.getData() == null) || (searchResult.getData().size() == 1)) {
+//			return mapping.findForward("topicFilterResult");			
+//		}
 		
 		return mapping.findForward("topicResult");
 	}

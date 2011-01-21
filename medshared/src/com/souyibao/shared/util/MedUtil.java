@@ -144,6 +144,27 @@ public class MedUtil {
 		return temp.toString();
 	}
 
+	public static String joinString(Collection<String> values, String sep) {
+		if ((values == null) || (values.isEmpty())) {
+			return null;
+		}
+		
+		boolean isFirst = true;
+		StringBuffer result = new StringBuffer();
+		for (String val : values) {
+			if (isFirst) {
+				isFirst = false;
+			} else {
+				result.append(sep);
+			}
+
+			result.append(val);
+		}
+		
+		return result.toString();
+	}
+
+	
 	/**
 	 * QJ to BJ
 	 * 

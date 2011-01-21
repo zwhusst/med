@@ -18,6 +18,7 @@ import com.souyibao.search.searcher.MedSearcher;
 import com.souyibao.search.util.SearchUtil;
 import com.souyibao.shared.entity.Keyword;
 import com.souyibao.shared.entity.Topic;
+import com.souyibao.shared.entity.TopicCategory;
 import com.souyibao.shared.viewer.IDataProvider;
 import com.souyibao.shared.viewer.KeywordDataProvider;
 
@@ -25,15 +26,11 @@ public class GeneralSuggester implements ISuggester {
 
 	public static final String[] ALL_MODULES = new String[0];
 
-	public static int MAX_UI_RECORDS_PER_PAGE = 5;
-	
-	public static int MAX_UI_RECORDS_PER_TOPIC = 50;
-	
 	/**
 	 * 
 	 */
 	public SearchResult getPossibleDoc(String queryStr, Set<Keyword> keywords,
-			String[] modules, Set<Topic> topicsFilter, Map<String, String> categoryFilter) {
+			String[] modules, Set<Topic> topicsFilter, Map<Topic, TopicCategory> categoryFilter) {
 		// 1: Query the input data with lucene
 		Map<String, List<Document>> hits= MedSearcher.search(queryStr, topicsFilter, keywords);
 		if ((hits == null) || (hits.size() == 0)) {
@@ -52,11 +49,9 @@ public class GeneralSuggester implements ISuggester {
 			throw new RuntimeException(e);
 		}
 		
-		Set<Topic> avaliableTopics = new HashSet<Topic>();
-		
 		// 3: Calculate the weight by the keyword. (Apply the topic filter).
 		Collection<KeywordDataProvider> calKeywordWeight = SearchUtil
-				.calKeywordWeight(keywordsProvider, topicsFilter, avaliableTopics);
+				.calKeywordWeight(keywordsProvider, topicsFilter);
 //		if (calKeywordWeight.isEmpty()) {			
 //			if ((topicsFilter != null) && (topicsFilter.size() > 0)) {
 //				// if the search result is empty when the topic filter is applied.
@@ -68,16 +63,15 @@ public class GeneralSuggester implements ISuggester {
 //			}
 //		}
 		
-		// 4: Group the keywords by the topic. 
+		SearchResult result = new SearchResult();
+				 
 		Set<Keyword> qKeywords = SearchUtil.getKeywordByQryString(queryStr);
+		result.setKeyworsFromQuery(qKeywords);
+		
+		// 4: Group the keywords by the topic.
 		Map<Topic, List<KeywordDataProvider>> groupedKWs = 
 				SearchUtil.groupKeywordByTopic(calKeywordWeight, qKeywords);
-				
-		SearchResult result = new SearchResult();
-		
-		result.setTopicFilters(topicsFilter);
-		result.setAvaliableTopics(avaliableTopics);
-		
+						
 		// put all the result
 		if (groupedKWs != null) {
 			for (Topic topic : groupedKWs.keySet()) {

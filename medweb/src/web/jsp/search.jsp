@@ -129,7 +129,7 @@ $.ui.dialog.defaults.bgiframe = true;
 	<c:forEach var="keyword" items="${exdata.keywords}">
 	<input type="checkbox" checked="checked" name="panekeyword" id="${keyword.id}"/>${keyword.name}
 	</c:forEach>
-	</div>    
+	</div>
   </div>
     <%@ include file="footer.html" %>
   </div>

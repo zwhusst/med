@@ -2,8 +2,8 @@ package com.souyibao.web.util;
 
 import java.util.List;
 
+import com.souyibao.freemarker.DoctorViewer;
 import com.souyibao.shared.MedEntityManager;
-import com.souyibao.web.viewer.DoctorViewer;
 
 public class QueryUtil {
 	public static List<DoctorViewer> queryDoctorByCategoryID(String id) {

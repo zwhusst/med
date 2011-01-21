@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<component>
+    <documentation>
+    This search includes the query string and keyword
+    </documentation>
+    <restlet
+        name="search"
+        class="com.souyibao.restlet.SearchRestlet"
+        enabled="true"
+        template="search.ftl">
+      <urlPatterns>
+        <urlPattern>/s/{keywordid}/{querystring}</urlPattern>
+        <urlPattern>/s/{categoryid}/{keywordid}/{querystring}</urlPattern>
+        <urlPattern>/s/{topicid}/{categoryid}/{keywordid}/{querystring}</urlPattern>
+      </urlPatterns>
+    </restlet>
+
+    <documentation>
+    This search only includes the query string
+    </documentation>
+    <restlet
+        name="querystringsearch"
+        class="com.souyibao.restlet.SearchRestlet"
+        enabled="true"
+        template="search.ftl">
+      <urlPatterns>
+        <urlPattern>/ss/{querystring}</urlPattern>
+        <urlPattern>/ss/{categoryid}/{querystring}</urlPattern>
+        <urlPattern>/ss/{topicid}/{categoryid}/{querystring}</urlPattern>
+      </urlPatterns>
+    </restlet>
+
+    <documentation>
+    This search only includes keyword
+    </documentation>
+    <restlet
+        name="keywordsearch"
+        class="com.souyibao.restlet.SearchRestlet"
+        enabled="true"
+        template="search.ftl">
+      <urlPatterns>
+        <urlPattern>/sk/{keywordid}</urlPattern>
+        <urlPattern>/sk/{categoryid}/{keywordid}</urlPattern>
+        <urlPattern>/sk/{topicid}/{categoryid}/{keywordid}</urlPattern>
+      </urlPatterns>
+    </restlet>
+
+    <documentation>
+    </documentation>    
+    <restlet
+        name="welcome"
+        class="com.souyibao.restlet.WelcomeRestlet"
+        enabled="true"
+		template="welcome.ftl">
+      <urlPatterns>
+        <urlPattern>/welcome</urlPattern>
+      </urlPatterns>
+    </restlet>
+    
+    <documentation>
+    includes query string and query keyword
+    </documentation>    
+    <restlet
+        name="keywordDetail"
+        class="com.souyibao.restlet.KeywordDetailsRestlet"
+        enabled="true"
+		template="keyworddetails.ftl">
+      <urlPatterns>
+        <urlPattern>/details/{querystring}/{querykeyword}/{keywordid}</urlPattern>
+        <urlPattern>/details/{categoryid}/{querystring}/{querykeyword}/{keywordid}</urlPattern>
+        <urlPattern>/details/{topicid}/{categoryid}/{querystring}/{querykeyword}/{keywordid}</urlPattern>
+      </urlPatterns>
+    </restlet>
+    
+    <documentation>
+    Only includes querykeywrod
+    </documentation>    
+    <restlet
+        name="keywordDetails4QueryKeyword"
+        class="com.souyibao.restlet.KeywordDetailsRestlet"
+        enabled="true"
+		template="keyworddetails.ftl">
+      <urlPatterns>
+        <urlPattern>/details4k/{querykeyword}/{keywordid}</urlPattern>
+        <urlPattern>/details4k/{categoryid}/{querykeyword}/{keywordid}</urlPattern>
+        <urlPattern>/details4k/{topicid}/{categoryid}/{querykeyword}/{keywordid}</urlPattern>
+      </urlPatterns>
+    </restlet>
+    
+    <documentation>
+    Only includes query string
+    </documentation>    
+    <restlet
+        name="keywordDetails4QueryString"
+        class="com.souyibao.restlet.KeywordDetailsRestlet"
+        enabled="true"
+		template="keyworddetails.ftl">
+      <urlPatterns>
+        <urlPattern>/details4s/{querystring}/{keywordid}</urlPattern>
+        <urlPattern>/details4s/{categoryid}/{querystring}/{keywordid}</urlPattern>
+        <urlPattern>/details4s/{topicid}/{categoryid}/{querystring}/{keywordid}</urlPattern>
+      </urlPatterns>
+    </restlet>
+    
+    <documentation>
+	guide info
+    </documentation>    
+    <restlet
+        name="guideinfo"
+        class="com.souyibao.restlet.GuideInfoRestlet"
+        enabled="true"
+		template="guideinfo.ftl">
+      <urlPatterns>
+        <urlPattern>/guide/{guidetype}/{querykeywords}/{curentkeyword}/{currentcategory}</urlPattern>
+        <urlPattern>/guide/{area}/{guidetype}/{querykeywords}/{curentkeyword}/{currentcategory}</urlPattern>
+      </urlPatterns>
+    </restlet>    
+</component>
