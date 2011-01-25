@@ -150,7 +150,7 @@ $.ui.dialog.defaults.bgiframe = true;
       <div id="GuideInfoSection">
 <div class="left-list">
 <#if searchData.diagnoseGuides??>
-<#assign diagnoseIds="${searchData.keywordIds4Diagnose}">
+<#assign diagnoseIds=searchData.keywordIds4Diagnose!"">
 <#list searchData.diagnoseGuides as guide>
 <h3>${guide.keyword.name}</h3>
 <p>就诊科室:点击查名院专家<br>

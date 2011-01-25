@@ -22,7 +22,8 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 	public void handle(Request request, Response response) {
 		String keywordid = (String)request.getAttributes().get("keywordid");
 		String querykeyword = (String)request.getAttributes().get("querykeyword");
-		String querystring = (String)request.getAttributes().get("querystring");
+//		String querystring = (String)request.getAttributes().get("querystring");
+		String querystring = request.getResourceRef().getQueryAsForm().getFirstValue("qs", null);
 		String categoryid = (String)request.getAttributes().get("categoryid");
 		String topicid = (String)request.getAttributes().get("topicid");
 		

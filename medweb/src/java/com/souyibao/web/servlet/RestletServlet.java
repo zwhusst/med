@@ -96,6 +96,8 @@ public class RestletServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");		
+
 		// set the base href attribute
 		String baseHref = req.getHeader("Host");
 
@@ -109,7 +111,7 @@ public class RestletServlet extends HttpServlet {
 		}
 		baseHref = req.getScheme() + "://" + baseHref;		
 		req.setAttribute("baseHref", baseHref);
-		
+
 		adapter.service(req, res);
 	}
 	

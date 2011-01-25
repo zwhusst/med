@@ -31,7 +31,8 @@ public class SearchRestlet extends BaseRestlet {
 		String topicid = (String)request.getAttributes().get("topicid");
 		String categoryid = (String)request.getAttributes().get("categoryid");
 		String keywordid = (String)request.getAttributes().get("keywordid");
-		String querystring = (String)request.getAttributes().get("querystring");
+//		String querystring = (String)request.getAttributes().get("querystring");
+		String querystring = request.getResourceRef().getQueryAsForm().getFirstValue("qs", null);
 		
 		// query String
 		String[] queryKeywordIds = null;
@@ -149,7 +150,7 @@ public class SearchRestlet extends BaseRestlet {
 		if (userQuery != null) {
 			try {
 				String encodedString = URLEncoder.encode(userQuery, "UTF-8");
-				result.append("/").append(encodedString);
+				result.append("/").append(encodedString).append("?qs=").append(encodedString);
 			} catch (UnsupportedEncodingException e) {
 				result.append("/").append(userQuery);			
 			}
