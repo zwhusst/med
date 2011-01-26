@@ -9,19 +9,19 @@ function homeSearch() {
   window.location.href="rs/ss/"+val+"?qs="+encodeURI(val);
 }
 
-function paneSearchKeyupHandler(event){
+function paneSearchKeyupHandler(basehref,event){
   if(event.keyCode==13){
-    paneSearch();
+    paneSearch(basehref);
   }
 }
 
-function popDialog(dialogId) {
+function popDialog(basehref,dialogId) {
   var jqDialogId = "#"+dialogId;
   var kId = $(jqDialogId).attr('kid');
   if ($(jqDialogId).attr('loaded') == "false") {  
   var req = newXMLHttpRequest();
   req.onreadystatechange = renderHtmlData(req, dialogId, popDialogCallback, jqDialogId);
-  var url = url4KeywordDetails(kId);
+  var url = url4KeywordDetails(basehref,kId);
   req.open("GET", url , true);
   req.setRequestHeader("Content-Type", "text/html; charset=UTF-8");
   req.send(null);  
@@ -40,8 +40,8 @@ function popDialogCallback(dialogId) {
   $(dialogId).attr('loaded','true');
 }
 
-function paneSearch(){
-  var url = assembleSearchURL();
+function paneSearch(basehref){
+  var url = assembleSearchURL(basehref);
   window.location.href=url;
 }
 
@@ -84,7 +84,7 @@ function moveFun(para){
   }
 }
 
-function url4KeywordDetails(detailsKeyId){
+function url4KeywordDetails(basehref,detailsKeyId){
   // topic filter
   var tFilter=getDocumentNameValue("tFilter",",");
   // category filter
@@ -117,10 +117,10 @@ function url4KeywordDetails(detailsKeyId){
   if((queryString!=null)&&(queryString!="")){
     url=url+"?qs="+encodeURI(queryString);
   }
-  return url;
+  return basehref+url;
 }
 
-function assembleSearchURL(){
+function assembleSearchURL(basehref){
   // topic filter
   var tFilter=getDocumentNameValue("tFilter",",");
   // category filter
@@ -149,18 +149,18 @@ function assembleSearchURL(){
   if((queryString!=null)&&(queryString!="")){
     url=url+"/"+encodeURI(queryString)+"?qs="+encodeURI(queryString);
   }
-  return url;
+  return basehref+url;
 }
 
 function getDocumentNameValue(eleId, sep) {
   var result=null;
   var data=document.getElementsByName(eleId);
   if (data!=null) {
-    for(length=0;length<data.length;length++){
+    for(i=0;i<data.length;i++){
        if (result==null) {
-         result=data[length].value;
+         result=data[i].value;
        }else{
-         result=result+sep+data[length].value;
+         result=result+sep+data[i].value;
        }
     }
   }

@@ -39,7 +39,7 @@ function correctPNG() {
        } 
     }     
 } 
-window.attachEvent("onload", correctPNG); 
+window.attachEvent("onload", correctPNG);
 </script>
 
    <link href="image/favicon.ico" rel="shortcut icon">
@@ -133,8 +133,8 @@ $.ui.dialog.defaults.bgiframe = true;
   </p>
   <div class="line"></div><div class="head_bg"></div>  <div class="head_img"></div>  <div class="s_frame">
   <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
-  <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler(event)" name="querystr" class="search_in">
-  <span onclick="javascript:paneSearch()" title="搜索" class="search_bt"></span>
+  <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
+  <span onclick="javascript:paneSearch('${baseHref}')" title="搜索" class="search_bt"></span>
   <img alt="" src="image/googlelogo.png" class="google">  
   <div id="panecheckbox" class="panecheckbox">
   <#if searchData.paneKeywords??>
@@ -155,7 +155,7 @@ $.ui.dialog.defaults.bgiframe = true;
 <h3>${guide.keyword.name}</h3>
 <p>就诊科室:点击查名院专家<br>
 <#list guide.categories as category>
-<span style="white-space: nowrap;"><a href="rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
+<span style="white-space: nowrap;"><a href="${baseHref}rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
 </#list>
 </p>
 </#list>
@@ -178,16 +178,16 @@ $.ui.dialog.defaults.bgiframe = true;
 <p id="search-list05">
 <#list topicData.data as data>
     <#if data_index % 7 == 0><p class="listname"></#if>
-	<a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('dialog${data.id}')">${data.name}</a>
+	<a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('${baseHref}','dialog${data.id}')">${data.name}</a>
 	<#if data_index % 7 == 6></p></#if>
 </#list>
 <#if searchData.singleTopicResult>
 <!--back to multi topic page-->
-  <span><a href="${topicData.ctxUrl}"><<返回</a></span>
+  <span><a href="${baseHref}${topicData.ctxUrl}"><<返回</a></span>
 <#else>
 <!--go to one specific topic page-->
   <#if topicData.execeedMaxResult>
-    <span><a href="${topicData.ctxUrl}">更多...</a></span>
+    <span><a href="${baseHref}${topicData.ctxUrl}">更多...</a></span>
   </#if>
 </#if>  
 <div class="tooltip05"></div>

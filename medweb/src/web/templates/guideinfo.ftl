@@ -80,7 +80,7 @@ window.attachEvent("onload", correctPNG);
     }
     url=url+"/"+guideType;
     url=url+"/"+allIds+"/"+curKeywordId+"/"+curCategoryId;
-    window.location.href=url;
+    window.location.href="${baseHref}"+url;
   }
 //-->
 </script> 
@@ -89,8 +89,8 @@ window.attachEvent("onload", correctPNG);
 <div id="masthead">  <p class="top_def"><a href="#">就医导航</a>     <a href="#">设为首页</a>  </p>  <div class="line"></div>  <div class="head_bg"></div>
 <div class="head_img"></div>  <div class="s_frame">
   <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
-  <input type="text" value="" onkeyup="paneSearchKeyupHandler(event)" name="querystr" class="search_in">
-  <a onclick="javascript:paneSearch()" title="搜索" href="#" class="search_bt"></a>  
+  <input type="text" value="" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
+  <a onclick="javascript:paneSearch('${baseHref}')" title="搜索" href="#" class="search_bt"></a>  
   <img alt="" src="image/googlelogo.png" class="google">  
   <div id="panecheckbox" class="panecheckbox"></div>  </div> </div>
 <input type="hidden" value="${guideinfo.guideType!"hospital"}" id="guideType" name="guideType">
