@@ -196,26 +196,7 @@ public class SearchDataModel {
 		}
 	}
 
-	// TODO: need to redefine.
-	private String topData = null;
-	public String getTopData() {
-		if (topData != null) {
-			return topData;
-		}
-
-		StringBuffer result = new StringBuffer();
-		if (this.queryKeywords != null) {
-			for (Keyword keyword : this.queryKeywords) {
-				if (result.length() == 0) {
-					result.append(keyword.getId());
-				} else {
-					result.append("|" + keyword.getId());
-				}
-			}
-		}
-		topData = result.toString();
-
-		return topData;
+	public boolean isEmptyTopicResult() {
+		return ((this.topicSearchData == null) || (this.topicSearchData.isEmpty()));
 	}
-
 }

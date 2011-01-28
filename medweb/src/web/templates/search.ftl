@@ -170,8 +170,8 @@ $.ui.dialog.defaults.bgiframe = true;
       </div>
       <div style="display: block;" id="TopicResult">
 <div id="searchframe">
+<#if (searchData.topicSearchData)?? && !searchData.emptyTopicResult>
 <div class="searchlist">
-<#if searchData.topicSearchData??>
 <#list searchData.topicSearchData as topicData>
 <table><tbody><tr><td><h4>${topicData.topic.name}</h4></td>
 </tr></tbody></table>
@@ -196,8 +196,11 @@ $.ui.dialog.defaults.bgiframe = true;
 	<div style="display: none;" loaded="false" title="${data.name}" kid="${data.id}" id="dialog${data.id}"></div>
 </#list>
 </#list>
-</#if>
 </div>
+<#else>
+<br/>
+<span class="res-title">抱歉! 搜索导航暂无与之密切关联的健康信息。</span>
+</#if>
 </div>
 <input type="hidden" name="tFilter" value="${searchData.converageTopic}"/>
 <!-- 就医指南信息 -->
