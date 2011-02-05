@@ -175,7 +175,6 @@ $.ui.dialog.defaults.bgiframe = true;
 <#list searchData.topicSearchData as topicData>
 <table><tbody><tr><td><h4>${topicData.topic.name}</h4></td>
 </tr></tbody></table>
-<p id="search-list05">
 <#list topicData.data as data>
     <#if data_index % 7 == 0><p class="listname"></#if>
 	<a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('${baseHref}','dialog${data.id}')">${data.name}</a>
@@ -191,7 +190,6 @@ $.ui.dialog.defaults.bgiframe = true;
   </#if>
 </#if>  
 <div class="tooltip05"></div>
-</p>
 <#list topicData.data as data>
 	<div style="display: none;" loaded="false" title="${data.name}" kid="${data.id}" id="dialog${data.id}"></div>
 </#list>
