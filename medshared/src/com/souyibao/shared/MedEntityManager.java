@@ -335,9 +335,7 @@ public class MedEntityManager {
 	 * @return
 	 */
 	public TopicCategory getPrefCateByTopic(Topic topic) {
-		TopicCategory result = m_topicToPrefCate.get(topic);
-				
-		return (result == null)? getRootCategory() : result;
+		return m_topicToPrefCate.get(topic);
 	}
 	
 	public Collection<TopicCategory> getAllPrefCates() {

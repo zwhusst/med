@@ -36,7 +36,7 @@ public class RestletDescriptorService {
 	}
 	
 	private void loadData() {
-		URL resourceURL = ActionHandlerManager.class.getClassLoader().getResource(
+		URL resourceURL = RestletDescriptorService.class.getClassLoader().getResource(
 				"rest-contrib.xml");
 		
 		Document doc = null;

@@ -47,11 +47,13 @@ public class SearchRestlet extends BaseRestlet {
 		}
 		
 		// category filters
-		Map<String, String> prefCatetories = null;
+		String[] cateFilters = null;
 		if (categoryid != null) {
-			String[] cateFilters = categoryid.split(",");
-			prefCatetories = MedWebUtil.supplementPrefCategory(cateFilters);
+			cateFilters = categoryid.split(",");
 		}
+		
+		Map<Topic, TopicCategory> prefCatetories = null;
+		prefCatetories = MedWebUtil.supplementPrefCategory(cateFilters);
 		
 		// decoder the query string
 		if (querystring != null) {
@@ -76,7 +78,7 @@ public class SearchRestlet extends BaseRestlet {
 	}
 	
 	private SearchDataModel search(String querystring, String[] keywordIds,
-			String[] topicIds, Map<String, String> categoryFilters) {
+			String[] topicIds, Map<Topic, TopicCategory> categoryFilters) {
 		// for the input parameter
 		Set<Keyword> keywords = MedEntityManager.getInstance().getKeysWithIds(
 				keywordIds);
@@ -84,24 +86,8 @@ public class SearchRestlet extends BaseRestlet {
 		Set<Topic> topicFilters = MedEntityManager.getInstance()
 				.getTopicsWithIds(topicIds);
 
-		Map<Topic, TopicCategory> refinedCategoryFilters = new HashMap<Topic, TopicCategory>();
-		if (categoryFilters != null) {
-			for (String topicId : categoryFilters.keySet()) {
-				Topic topic = MedEntityManager.getInstance().getTopicById(
-						topicId);
-				if (topic == null)
-					continue;
-
-				String categoryId = categoryFilters.get(topicId);
-				TopicCategory category = MedEntityManager.getInstance()
-						.getCategoryById(categoryId);
-
-				refinedCategoryFilters.put(topic, category);
-			}
-		}
-
 		SearchResult searchResult =  Controller.getSearchResult(querystring, keywords, topicFilters,
-				refinedCategoryFilters);
+				categoryFilters);
 		
 		SearchDataModel dataModel = new SearchDataModel(searchResult);
 		dataModel.setUserQuery(querystring);

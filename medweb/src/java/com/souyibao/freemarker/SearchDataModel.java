@@ -2,6 +2,8 @@ package com.souyibao.freemarker;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.souyibao.restlet.SearchRestlet;
@@ -11,7 +13,6 @@ import com.souyibao.shared.MedEntityManager;
 import com.souyibao.shared.MedProperties;
 import com.souyibao.shared.entity.Keyword;
 import com.souyibao.shared.util.MedUtil;
-import com.souyibao.shared.viewer.IDataProvider;
 import com.souyibao.web.util.MedWebUtil;
 
 public class SearchDataModel {
@@ -132,7 +133,7 @@ public class SearchDataModel {
 	}
 
 	public Collection<TopicResult> getTopicSearchData() {
-		Collection<TopicResult> result = new ArrayList<TopicResult>();
+		List<TopicResult> result = new ArrayList<TopicResult>();
 
 		if (this.topicSearchData != null) {
 			List<String> showedTopicIds = MedProperties.getInstance()
@@ -144,9 +145,11 @@ public class SearchDataModel {
 				}
 			}
 		}
+		
+		Collections.sort(result, new TopicComparator());
 		return result;
 	}
-	
+		
 	public String getConverageTopic(){
 		if (topicSearchData == null) {
 			return FLAG_COVER_ALL_TOPIC;
@@ -198,5 +201,13 @@ public class SearchDataModel {
 
 	public boolean isEmptyTopicResult() {
 		return ((this.topicSearchData == null) || (this.topicSearchData.isEmpty()));
+	}
+	
+	private static class TopicComparator implements Comparator<TopicResult>{
+
+		@Override
+		public int compare(TopicResult o1, TopicResult o2) {
+			return (o1.getTopic().getSequence() - o2.getTopic().getSequence());			
+		}
 	}
 }

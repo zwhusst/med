@@ -47,75 +47,7 @@ public class MedWebUtil {
 		return null;
 
 	}
-	
-	public static ExSessionData makeExSessionData(HttpServletRequest request) {
-		ExSessionData result = new ExSessionData();
-		String[] values = null;
-		
-		// check the query string		
-		values = request.getParameterValues(WebConstants.PARA_QUERY_STRING);
-		if ((values != null) && (values.length > 0)) {
-			result.setQueryStrings(Arrays.asList(values));
-		}
-		
-		// for the dinput paramter
-		values = request.getParameterValues(WebConstants.PARA_DEPRECATE_USER_INPUT);
-		if ((values != null) && (values.length > 0)) {
-			result.setDInputParas(Arrays.asList(values));
-		}
-		
-		// check for the category filter
-		values = request.getParameterValues(WebConstants.PARA_CATA_FILTER);
-		if ((values != null) && (values.length > 0)) {
-			result.setCFilters(Arrays.asList(values));
-		}
-		
-		// topic filter
-		values = request.getParameterValues(WebConstants.PARA_TOPIC_FILTER);
-		if ((values != null) && (values.length > 0)) {
-			result.setTFilters(Arrays.asList(values));
-		}
-		
-		// keyword parameter
-		values = request.getParameterValues(WebConstants.PARA_KEYWORD);
-		if ((values != null) && (values.length > 0)) {
-			result.setKeywordParas(Arrays.asList(values));			
-		}
-		
-		return result;
-	}
-	
-	public static SessionData makeSessionData(HttpServletRequest request) {
-		SessionData result = new SessionData();
-		String[] values = null;
 
-		// check for the category filter
-		values = request.getParameterValues(WebConstants.PARA_CATA_FILTER);
-		if ((values != null) && (values.length > 0)) {
-			result.setCFilters(Arrays.asList(values));
-		}
-
-		// topic filter
-		values = request.getParameterValues(WebConstants.PARA_TOPIC_FILTER);
-		if ((values != null) && (values.length > 0)) {
-			result.setTFilters(Arrays.asList(values));
-		}
-
-		// keyword parameter
-		values = request.getParameterValues(WebConstants.PARA_KEYWORD);
-		if ((values != null) && (values.length > 0)) {
-			result.setKeywords(Arrays.asList(values));
-		}
-
-		// handler
-		values = request.getParameterValues(WebConstants.PARA_HANDLER);
-		if ((values != null) && (values.length > 0)) {
-			result.setHandlers(Arrays.asList(values));
-		}
-
-		return result;
-	}
-	
 	public static Collection<TopicCategory> getDistinctNameCate(Keyword keyword) {
 		Collection<TopicCategory> categories = keyword.getCategories();
 		
@@ -222,49 +154,6 @@ public class MedWebUtil {
 
 		return result;
 	}
-
-	/**
-	 * check if the query type is one valid query type
-	 * @param queryType
-	 * @return
-	 */
-	public static boolean isValidQType(String queryType) {
-		if (WebConstants.UNDEFINED_TYPE.equals(queryType)
-				|| WebConstants.KEYWORD_ID_TYPE.equals(queryType)
-				|| WebConstants.DOCUMENT_ID_TYPE.equals(queryType)) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 *  check if the explanation type is one valid explanation type
-	 * @param queryType
-	 * @return
-	 */
-	public static boolean isValidEType(String eType) {
-		if (WebConstants.DOCUMENT_ID_TYPE.equals(eType)
-				|| WebConstants.KEYWORD_ID_TYPE.equals(eType)) {
-			return true;
-		}
-
-		return false;
-	}
-	
-	/**
-	 *  check if the admin type is one valid explanation type
-	 * @param queryType
-	 * @return
-	 */
-	public static boolean isValidAdminType(String eType) {
-		if (WebConstants.DOCUMENT_ID_TYPE.equals(eType)
-				|| WebConstants.KEYWORD_ID_TYPE.equals(eType)) {
-			return true;
-		}
-
-		return false;
-	}	
 	
 	/**
 	 * format the topic category to like "4-3345344"
@@ -285,13 +174,13 @@ public class MedWebUtil {
 	 * @param categoryFilterVal
 	 * @return
 	 */
-	private static Map<String, String> parseCategoryFilterVal(
+	private static Map<Topic, TopicCategory> parseCategoryFilterVal(
 			String[] categoryFilterVal) {
 		if ((categoryFilterVal == null) || (categoryFilterVal.length == 0)) {
 			return null;
 		}
 		
-		Map<String, String> result = new HashMap<String, String>();
+		Map<Topic, TopicCategory> result = new HashMap<Topic, TopicCategory>();
 		for (int i = 0; i < categoryFilterVal.length; i++) {
 			int idx = categoryFilterVal[i].indexOf('-');
 			if (idx > 0) {
@@ -307,11 +196,8 @@ public class MedWebUtil {
 				}
 				
 				// if it isn't one root category, 
-				// the category's topic and parameter topic should be the same
-				if (category.getId() == MedEntityManager.ROOT_CATEGORY_ID) {
-					result.put("" + topic.getId(), "" + category.getId());	
-				} else if (category.belongToTopic(topic)) {
-					result.put("" + topic.getId(), "" + category.getId());
+				if (category.belongToTopic(topic)) {
+					result.put(topic, category);
 				} 			
 			}	
 		}
@@ -344,16 +230,18 @@ public class MedWebUtil {
 	 * 
 	 * @param prefCategoryMap
 	 */
-	public static Map<String, String> supplementPrefCategory(
+	public static Map<Topic, TopicCategory> supplementPrefCategory(
 			String[] categoryFilters) {	
-		Map<String, String> result = parseCategoryFilterVal(categoryFilters);
-		result = (result == null) ? new HashMap<String, String>() : result;		
+		Map<Topic, TopicCategory> result = parseCategoryFilterVal(categoryFilters);
+		result = (result == null) ? new HashMap<Topic, TopicCategory>() : result;		
 		Collection<Topic> allTopic = MedEntityManager.getInstance().getAllTopics();
 		
 		for (Topic topic : allTopic) {
-			if (result.get("" + topic.getId()) == null) {
-				TopicCategory prefCategory = MedEntityManager.getInstance().getPrefCateByTopic(topic);				
-				result.put("" +topic.getId(), "" + prefCategory.getId());
+			if (result.get(topic) == null) {
+				TopicCategory prefCategory = MedEntityManager.getInstance().getPrefCateByTopic(topic);
+				if (prefCategory != null) {
+					result.put(topic, prefCategory);
+				}
 			}
 		}
 		
