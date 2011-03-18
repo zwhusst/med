@@ -8,9 +8,7 @@ import java.util.Set;
 
 import org.restlet.Request;
 import org.restlet.Response;
-import org.restlet.data.CharacterSet;
 import org.restlet.data.MediaType;
-import org.restlet.representation.StringRepresentation;
 
 import com.souyibao.freemarker.DoctorViewer;
 import com.souyibao.freemarker.GuideInfoDataModel;
@@ -18,6 +16,8 @@ import com.souyibao.freemarker.HospitalViewer;
 import com.souyibao.shared.MedEntityManager;
 import com.souyibao.shared.entity.Area;
 import com.souyibao.shared.entity.Keyword;
+import com.souyibao.web.model.RepresentationMeta;
+import com.souyibao.web.model.SimpleStringRepresentation;
 import com.souyibao.web.util.MedWebUtil;
 import com.souyibao.web.util.QueryUtil;
 
@@ -25,9 +25,9 @@ public class GuideInfoRestlet extends BaseRestlet {
 	
 	public static String HOSPITAL_GUIDE_TYPE = "hospital";
 	public static String DOCTOR_GUIDE_TYPE = "doctor";
-	
+
 	@Override
-	public void handle(Request request, Response response) {
+	public SimpleStringRepresentation processRequest(Request request, Response response) {
 		String area = (String) request.getAttributes().get("area");
 		String guidetype = (String) request.getAttributes().get("guidetype");
 		String querykeywords = (String) request.getAttributes().get("querykeywords");
@@ -50,12 +50,11 @@ public class GuideInfoRestlet extends BaseRestlet {
 		
 		String outValue = this.processData(request, data);
 		
+		RepresentationMeta meta = new RepresentationMeta(MediaType.TEXT_HTML.getName(), "UTF-8");
 		// output
-		StringRepresentation output = new StringRepresentation(outValue,
-				MediaType.TEXT_HTML, null, new CharacterSet("UTF-8"));
-		response.setEntity(output);	
+		return new SimpleStringRepresentation(meta, outValue);
 	}
-	
+
 	private GuideInfoDataModel processInput(String areaId, String guideType,
 			String[] queryKeywordIds, String keywordId, String categoryId) {
 		//  query for the doctor

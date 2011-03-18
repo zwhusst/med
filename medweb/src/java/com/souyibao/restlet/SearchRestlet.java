@@ -10,9 +10,7 @@ import java.util.Set;
 
 import org.restlet.Request;
 import org.restlet.Response;
-import org.restlet.data.CharacterSet;
 import org.restlet.data.MediaType;
-import org.restlet.representation.StringRepresentation;
 
 import com.souyibao.freemarker.SearchDataModel;
 import com.souyibao.search.SearchResult;
@@ -22,12 +20,14 @@ import com.souyibao.shared.entity.Keyword;
 import com.souyibao.shared.entity.Topic;
 import com.souyibao.shared.entity.TopicCategory;
 import com.souyibao.shared.util.MedUtil;
+import com.souyibao.web.model.RepresentationMeta;
+import com.souyibao.web.model.SimpleStringRepresentation;
 import com.souyibao.web.util.MedWebUtil;
 
 public class SearchRestlet extends BaseRestlet {
 
 	@Override
-	public void handle(Request request, Response response) {
+	public SimpleStringRepresentation processRequest(Request request, Response response) {
 		String topicid = (String)request.getAttributes().get("topicid");
 		String categoryid = (String)request.getAttributes().get("categoryid");
 		String keywordid = (String)request.getAttributes().get("keywordid");
@@ -71,10 +71,9 @@ public class SearchRestlet extends BaseRestlet {
 		data.put("searchData", dataModel);
 		String outValue = this.processData(request, data);
 		
+		RepresentationMeta meta = new RepresentationMeta(MediaType.TEXT_HTML.getName(), "UTF-8");
 		// output
-		StringRepresentation output = new StringRepresentation(outValue,
-				MediaType.TEXT_HTML, null, new CharacterSet("UTF-8"));
-		response.setEntity(output);		
+		return new SimpleStringRepresentation(meta, outValue);
 	}
 	
 	private SearchDataModel search(String querystring, String[] keywordIds,

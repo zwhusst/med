@@ -11,15 +11,19 @@ import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.data.CharacterSet;
 import org.restlet.data.MediaType;
+import org.restlet.representation.Representation;
 import org.restlet.representation.StringRepresentation;
 
 import com.souyibao.freemarker.KeywordDetailsDataModel;
 import com.souyibao.shared.MedEntityManager;
 import com.souyibao.shared.entity.Keyword;
+import com.souyibao.web.model.RepresentationMeta;
+import com.souyibao.web.model.SimpleStringRepresentation;
 
 public class KeywordDetailsRestlet extends BaseRestlet {
+	
 	@Override
-	public void handle(Request request, Response response) {
+	public SimpleStringRepresentation processRequest(Request request, Response response) {
 		String keywordid = (String)request.getAttributes().get("keywordid");
 		String querykeyword = (String)request.getAttributes().get("querykeyword");
 //		String querystring = (String)request.getAttributes().get("querystring");
@@ -28,7 +32,7 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 		String topicid = (String)request.getAttributes().get("topicid");
 		
 		if (keywordid == null) {
-			return;
+			return null;
 		}
 		
 		String[] querykeywordids = null;
@@ -38,7 +42,7 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 		
 		Keyword keyword = MedEntityManager.getInstance().getKeywordById(keywordid);
 		if (keyword == null) {
-			return;
+			return null;
 		}
 		
 		if ((querystring != null) && (querystring.length() > 0)) {
@@ -55,10 +59,9 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 		data.put("detailsData", dataModel);
 		String outValue = this.processData(request, data);
 
+		RepresentationMeta meta = new RepresentationMeta(MediaType.TEXT_HTML.getName(), "UTF-8");
 		// output
-		StringRepresentation output = new StringRepresentation(outValue,
-				MediaType.TEXT_HTML, null, new CharacterSet("UTF-8"));
-		response.setEntity(output);	
+		return new SimpleStringRepresentation(meta, outValue);
 	}
 	
 	private KeywordDetailsDataModel handleInput(Keyword keyword,

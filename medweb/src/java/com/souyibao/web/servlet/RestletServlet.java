@@ -1,5 +1,6 @@
 package com.souyibao.web.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -13,12 +14,15 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.restlet.ext.servlet.ServletAdapter;
 import org.restlet.routing.Router;
 
+import com.souyibao.cache.CacheManagerFactory;
 import com.souyibao.freemarker.ConfigurationContext;
 import com.souyibao.restlet.BaseRestlet;
 import com.souyibao.web.RestletDescriptorService;
 import com.souyibao.web.model.RestletDescriptor;
 
 public class RestletServlet extends HttpServlet {
+
+	private static final long serialVersionUID = -1600029726410534903L;
 
 	private static Logger logger = Logger.getLogger(RestletServlet.class);
 
@@ -35,7 +39,18 @@ public class RestletServlet extends HttpServlet {
 		String doctorPath = this.getServletContext().getRealPath("doctoridx");
 		System.getProperties().setProperty("doctor_module_idx", doctorPath);
 		
-		// 2: configuration for log4j
+		// 2: for the cached folder
+		String cachePath = this.getServletContext().getRealPath("cache");
+		File cacheFolder = new File(cachePath);
+		if ((cacheFolder.exists()) && (!cacheFolder.isDirectory())) {
+			logger.info("cache folder is: " + cacheFolder.getAbsolutePath());
+		} else {
+			cacheFolder.mkdir();
+		}
+		
+		System.getProperties().setProperty("web_cache_folder", cachePath);
+		
+		// 3: configuration for log4j
 		// set the file path for the log
 		String logPath = this.getServletContext().getRealPath("logs");
 		System.getProperties().setProperty("log4j_path", logPath);
@@ -46,7 +61,7 @@ public class RestletServlet extends HttpServlet {
 	    	DOMConfigurator.configure(prefix+file);
 	    }
 	    
-		// 3: init for freemarker configuration
+		// 4: init for freemarker configuration
 		ConfigurationContext cfgContext = ConfigurationContext.getInstance();
 		
         Enumeration initNames = getServletConfig().getInitParameterNames();
@@ -66,7 +81,7 @@ public class RestletServlet extends HttpServlet {
         String templatePath = getServletConfig().getInitParameter("template_path");
         cfgContext.setServletContextForTemplateLoading(getServletContext(), templatePath);
         
-		// 4: init the rest url router
+		// 5: init the rest url router
 		this.adapter = new ServletAdapter(getServletContext());
 
 		// init the router
@@ -114,5 +129,13 @@ public class RestletServlet extends HttpServlet {
 
 		adapter.service(req, res);
 	}
+
+	@Override
+	public void destroy() {
+		super.destroy();
+		
+		CacheManagerFactory.destoryAllCacheManagers();
+	}
+	
 	
 }
