@@ -1,4 +1,4 @@
-﻿  /* CSS layout */
+  /* CSS layout */
 body {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -76,6 +76,7 @@ ul,li,select,option
 	left:0;
 	top:0;
 	z-index:3;
+	background:url('../image/headbg.png');
 	background-position:center bottom;
 	width:1004px;
 	height:100px;
@@ -83,7 +84,7 @@ ul,li,select,option
 	_background-image: none; /* IE6 */
 
 }
-/*ªª◊Û…œΩ«Õº∆¨ø™ º*/
+/*换左上角图片开始*/
 #masthead .head_img
 {
 	position:absolute;

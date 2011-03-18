@@ -1,4 +1,4 @@
-﻿  /* CSS layout */
+  /* CSS layout */
 body {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -86,7 +86,7 @@ top:0;
 width:100%;
 z-index:3;
 }
-* #masthead .head_bg{ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="image/headbg.png")}
+
 /*换左上角图片开始*/
 #masthead .head_img
 {
