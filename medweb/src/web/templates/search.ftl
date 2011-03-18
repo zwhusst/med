@@ -118,7 +118,7 @@ function reqestGoogleHtml() {
       searchControl.execute("${searchData.webQuery}");      
 }
 google.setOnLoadCallback(reqestGoogleHtml, true);
-$.ui.dialog.defaults.bgiframe = true;
+//$.ui.dialog.defaults.bgiframe = true;
 //-->
 </script><script type="text/javascript" src="http://www.google.com/uds/?file=search&amp;v=1.0">
 </script><link rel="stylesheet" type="text/css" href="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default.css">
