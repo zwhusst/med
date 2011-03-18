@@ -7,7 +7,7 @@ a
 {
 	color:#0458CB;
 	text-decoration:none;
-	font-size:14px;tact
+	font-size:14px;
 }
 a:hover,a:active
 {
@@ -86,7 +86,7 @@ top:0;
 width:100%;
 z-index:3;
 }
-
+* #masthead .head_bg{ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="image/headbg.png")}
 /*换左上角图片开始*/
 #masthead .head_img
 {
@@ -278,7 +278,7 @@ z-index:3;
 	height:25px;
 	font-weight:bold;
 	text-decoration:none;
-	font-size:14px;
+	font-size:12px;
 	margin:0 2px 0 0;
 }
 .tactive
@@ -291,7 +291,7 @@ z-index:3;
 	height:25px;
 	font-weight:bold;
 	text-decoration:none;
-	font-size:14px;
+	font-size:12px;
 	text-align:center;
 	margin:0 2px 0 0;
 }

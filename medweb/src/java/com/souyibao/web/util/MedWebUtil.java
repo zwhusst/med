@@ -1,30 +1,21 @@
 package com.souyibao.web.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.souyibao.freemarker.DiagnoseGuide;
 import com.souyibao.freemarker.HospitalViewer;
 import com.souyibao.search.SelectOption;
 import com.souyibao.shared.MedEntityManager;
 import com.souyibao.shared.entity.Area;
-import com.souyibao.shared.entity.Hospital;
 import com.souyibao.shared.entity.Keyword;
 import com.souyibao.shared.entity.TopHospital;
 import com.souyibao.shared.entity.Topic;
 import com.souyibao.shared.entity.TopicCategory;
-import com.souyibao.shared.util.MedUtil;
-import com.souyibao.shared.viewer.KeywordDataProvider;
-import com.souyibao.web.model.ExSessionData;
-import com.souyibao.web.model.KeywordToDocCount;
-import com.souyibao.web.model.SessionData;
 
 public class MedWebUtil {
 	
@@ -105,54 +96,6 @@ public class MedWebUtil {
 		}
 		
 		return result.toString();
-	}
-	
-	public static String getKeywordText(Keyword keyword) {
-		Collection<String> aliases = keyword.getAliasCollection();
-		if ((aliases == null) || (aliases.isEmpty())) {
-			return keyword.getName();
-		}
-
-		boolean started = true;
-		StringBuffer data = new StringBuffer();
-		data.append(keyword.getName()).append("(");
-		for (Iterator<String> iterator = aliases.iterator(); iterator.hasNext();) {
-			if (started) {
-				data.append(iterator.next());
-				started = false;
-			} else if (!started) {
-				data.append("," + iterator.next());
-			}
-		}
-		data.append(")");
-
-		return data.toString();
-	}
-	
-	public static String getKeywordExplanation(Keyword keyword) {
-		return MedEntityManager.getInstance().getKeywordExplanation(keyword);
-	}
-
-	public static List<KeywordToDocCount> adapterKeywordWeightToCount(
-			org.apache.lucene.document.Document doc,
-			List<KeywordDataProvider> keywordWeights) {
-		List<KeywordToDocCount> result = new ArrayList<KeywordToDocCount>();
-
-		for (Iterator<KeywordDataProvider> iterator = keywordWeights.iterator(); iterator
-				.hasNext();) {
-			KeywordDataProvider keywordWeight = iterator.next();
-			Keyword keyword = keywordWeight.getKeyword();
-
-			int count = MedUtil.calKeywordMatchcount(doc, keyword);
-
-			KeywordToDocCount keywordCount = new KeywordToDocCount();
-			keywordCount.setKeyword(keyword);
-			keywordCount.setCount(count);
-
-			result.add(keywordCount);
-		}
-
-		return result;
 	}
 	
 	/**

@@ -3,8 +3,6 @@ package com.souyibao.web.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.restlet.Restlet;
-
 import com.souyibao.restlet.BaseRestlet;
 
 public class RestletDescriptor {
