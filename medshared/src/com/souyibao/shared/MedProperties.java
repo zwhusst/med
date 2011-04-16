@@ -20,7 +20,7 @@ public class MedProperties {
 
 	private final String GUIDE_INFO_TOPIC_IDS = "guide.info.topic.ids";
 	private final String SHOWED_SEARCH_TOPIC_IDS = "showed.search.topic.ids";
-
+	
 	// default value
 	public static int DEF_MAX_RECORD_NUM_4_ALL = 6;
 	public static int DEF_MAX_RECRD_NUM_PER_TOPIC = 50;
@@ -99,6 +99,15 @@ public class MedProperties {
 		}
 		
 		return _instance;
+	}
+	
+	public int getValueAsInt(String key) {
+		Object obj = this.properties.get(key);
+		if (obj == null) {
+			return 0;
+		}
+		
+		return Integer.parseInt(obj.toString());
 	}
 	
 	

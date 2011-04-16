@@ -55,9 +55,13 @@ public abstract class BaseRestlet extends Restlet {
 		if (output == null) {
 			// didn't find the data from cache
 			output = processRequest(request, response);
-			
-			// cache it
-			cacheManager.cacheData(source, output);
+
+			if ((queryStr!= null) && (queryStr.contains("cache=0"))) {
+				// no cache
+			} else {
+				// cache it
+				cacheManager.cacheData(source, output);
+			}
 		}
 		
 		// output

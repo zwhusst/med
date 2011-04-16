@@ -9,10 +9,7 @@ import java.util.Map;
 
 import org.restlet.Request;
 import org.restlet.Response;
-import org.restlet.data.CharacterSet;
 import org.restlet.data.MediaType;
-import org.restlet.representation.Representation;
-import org.restlet.representation.StringRepresentation;
 
 import com.souyibao.freemarker.KeywordDetailsDataModel;
 import com.souyibao.shared.MedEntityManager;

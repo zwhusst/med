@@ -1,15 +1,13 @@
 package com.souyibao.shared.analysis;
 
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.Token;
-import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.Tokenizer;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
 public class MedAnalyzer extends Analyzer {
 
@@ -32,21 +30,21 @@ public class MedAnalyzer extends Analyzer {
 	
 	
 	public static void main(String[] args) throws Exception {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
-			System.out.print("Text: ");
-			String line = in.readLine();
-			MedAnalyzer analyzer = new MedAnalyzer();
-			TokenStream tStream = analyzer.tokenStream("contents",
-					new StringReader(line));
+		MedAnalyzer analyzer = new MedAnalyzer();
+		TokenStream tStream = analyzer.tokenStream("contents",
+				new StringReader("海归及配偶子女可在contents创业地落户 "));
 
-			Token token;
-			System.out.print("Tokens: ");
-			while ((token = tStream.next()) != null) {
-				System.out.print(token.termText());
-				System.out.print(" ");
-			}
-			System.out.println();
+		output(tStream);
+	}
+	
+	private static void output(TokenStream ts) throws Exception {
+		CharTermAttribute termAtt = (CharTermAttribute) ts
+				.getAttribute(CharTermAttribute.class);
+
+		while (ts.incrementToken()) {
+			System.out.print(termAtt.toString() + " -- ");
 		}
+		
+		System.out.println();
 	}
 }

@@ -5,6 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/medshared"/>
 	<classpathentry kind="lib" path="/medshared/lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="/medshared/lib/commons-logging-api-1.0.4.jar"/>
-	<classpathentry kind="lib" path="/medshared/lib/lucene-core-2.4.1.jar"/>
+	<classpathentry kind="lib" path="/medshared/lib/lucene-core-3.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -14,6 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 public class ResourceServlet  extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9126110894710757129L;
+
 	private static Logger logger = Logger.getLogger(ResourceServlet.class);
 	
     protected static final int BUFFER_SIZE = 1024 * 10;

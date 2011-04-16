@@ -44,10 +44,6 @@ public class DocToKeywordManager {
 		String data = null;
 		try {
 			while((data = inStream.readUTF()) != null) {
-				if (data == null) {
-					continue;					
-				}
-				
 				int i = data.indexOf("\0");
 				String docId = data.substring(0, i).trim();				
 				KeywordDataProvider doc2Key = parstDataLine(data);
@@ -77,8 +73,6 @@ public class DocToKeywordManager {
 	public List<KeywordDataProvider> getDocKeywords(String docId) {
 		return doc2Keywords.get(docId);
 	}
-
-	
 
 //	Format is : {docId}\0{keywordId}\0{weight}
 	private KeywordDataProvider parstDataLine(String line) {

@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="/medshared/lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="/medshared/lib/commons-logging-api-1.0.4.jar"/>
 	<classpathentry kind="lib" path="/medshared/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="/medshared/lib/lucene-core-2.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/org.restlet.ext.servlet_2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/org.restlet_2.0.4.jar" sourcepath="/Volumes/EXCHANGE/backup/restlet/restlet-jee-2.0.4/src/org.restlet"/>
 	<classpathentry kind="lib" path="lib/freemarker_2.3.16.jar"/>

@@ -46,21 +46,21 @@ public class SearchUtil {
 		return result;
 	}
 	
-	public static List<KeywordDataProvider> retriveKeywordDataProvider(List<Document> docHits)
+	public static List<KeywordDataProvider> retriveKeywordDataProvider(
+			Map<String, Float> scoreDocValues)
 			throws CorruptIndexException, IOException {
-		if (docHits == null) {
-			return null;
-		}
-
 		List<KeywordDataProvider> keywordProviders = new ArrayList<KeywordDataProvider>();
 
 		DocToKeywordManager doc2KeywordManager = DocToKeywordManager.getInstance();
-		for (Document doc : docHits) {
-			String docId = doc.get("id");
-			
+		for (String docId : scoreDocValues.keySet()) {
 			List<KeywordDataProvider> keywords = doc2KeywordManager.getDocKeywords(docId);
 
 			if (keywords != null) {
+				float baseWeight = scoreDocValues.get(docId);
+				for (KeywordDataProvider provider : keywords) {
+					provider.updateTotalWeight(baseWeight);
+				}
+				
 				keywordProviders.addAll(keywords);
 			}
 		}
@@ -112,15 +112,14 @@ public class SearchUtil {
 				}
 			}
 			
-			KeywordDataProvider weight = keywordMap.get(docKeyword.getKeyword());
+			KeywordDataProvider grpWeight = keywordMap.get(docKeyword.getKeyword());
 			
-			if (weight == null) {				
-				weight = new KeywordDataProvider();
-				weight.setKeyword(docKeyword.getKeyword());
-				keywordMap.put(docKeyword.getKeyword(), weight);
-			} 
-
-			weight.addWeight(docKeyword.getWeight());
+			if (grpWeight == null) {				
+				grpWeight = docKeyword.newObj();
+				keywordMap.put(docKeyword.getKeyword(), grpWeight);
+			} else {
+				grpWeight.addWeight(docKeyword.getTotalWeight());
+			}
 		}
 
 		return keywordMap.values();
@@ -177,11 +176,11 @@ public class SearchUtil {
 				return 1;
 			}
 
-			if (o1.getWeight() > o2.getWeight()) {
+			if (o1.getTotalWeight() > o2.getTotalWeight()) {
 				return -1;
 			}
 
-			if (o1.getWeight() < o2.getWeight()) {
+			if (o1.getTotalWeight() < o2.getTotalWeight()) {
 				return 1;
 			}
 

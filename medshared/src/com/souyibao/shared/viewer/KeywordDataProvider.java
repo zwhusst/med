@@ -10,9 +10,10 @@ public class KeywordDataProvider implements IDataProvider{
 	private Keyword keyword = null;
 	private String alias = null;
 	
+	// this weight comes from file: doc2keyword
 	private float weight = (float) 0.0;
-
-//	private boolean isNotice = false;
+	
+	private float totalWeight = (float)0.0;
 
 	public KeywordDataProvider() {
 	}
@@ -40,18 +41,16 @@ public class KeywordDataProvider implements IDataProvider{
 	}
 	
 	public void addWeight(float addedWeight) {
-		weight += addedWeight;
+		totalWeight += addedWeight;
 	}
 	
+	public void updateTotalWeight(float baseWeight) {
+		this.totalWeight = baseWeight * this.weight; 
+	}
 	
-
-//	public boolean isNotice() {
-//		return isNotice;
-//	}
-//
-//	public void setNotice(boolean isNotice) {
-//		this.isNotice = isNotice;
-//	}
+	public float getTotalWeight() {
+		return this.totalWeight;
+	}
 
 	public String toString() {
 		return " keywordid: " + this.keyword + " weight: " + this.weight;
@@ -85,5 +84,19 @@ public class KeywordDataProvider implements IDataProvider{
 		
 		return false;
 	}
+
+	/**
+	 * shallow clone
+	 */	
+	public KeywordDataProvider newObj(){
+		KeywordDataProvider newObj = new KeywordDataProvider();
+		newObj.keyword = this.keyword;
+		newObj.alias = this.alias;
+		newObj.totalWeight = this.totalWeight;
+		newObj.weight = this.weight;
+		
+		return newObj;
+	}
+	
 }
 

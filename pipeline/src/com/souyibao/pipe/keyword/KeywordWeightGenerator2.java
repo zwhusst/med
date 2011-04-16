@@ -13,9 +13,9 @@ import java.util.Set;
 
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-import com.souyibao.shared.MedEntityManager;
 import com.souyibao.shared.analysis.MedAnalyzer;
 import com.souyibao.shared.dao.IMedDAOConnection;
 import com.souyibao.shared.dao.JPAMedDaoConnectionFactory;
@@ -52,8 +52,8 @@ public class KeywordWeightGenerator2 {
 
 		try {
 			Set<String> keywordPartsSet = getKeyportParts(keywords);
-			IndexReader idxReader = IndexReader.open(FSDirectory
-					.getDirectory(idxFolder));
+			Directory indexDir = FSDirectory.open(new File(idxFolder));
+			IndexReader idxReader = IndexReader.open(indexDir);
 
 			int numDocs = idxReader.numDocs();
 			

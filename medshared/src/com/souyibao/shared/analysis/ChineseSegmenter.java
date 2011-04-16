@@ -89,9 +89,7 @@ public class ChineseSegmenter {
 	private static ChineseSegmenter segmenter = null;
 	private ChineseSegmenter() {
 		try {
-			String path = getClass().getName().replace('.', '/');
-			int idx = path.lastIndexOf('/');
-			path = /*path.substring(0, idx + 1) +*/ "zh-cn.txt";
+			String path = "zh-cn.txt";
 			InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
 			loadDictionary(stream);
 		} catch (IOException e) {

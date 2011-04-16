@@ -1,6 +1,13 @@
 package com.souyibao.pipe.idx;
 
+import java.io.File;
+
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.IndexWriterConfig.OpenMode;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
 
 import com.souyibao.shared.analysis.MedAnalyzer;
 import com.souyibao.shared.util.PipelineUtil;
@@ -14,11 +21,14 @@ public class IdxGenerator {
 			System.exit(1);
 		}
 
+		String filePath = args[args.length - 1];
 		try {
-			IndexWriter writer = new IndexWriter(args[args.length - 1],
-					new MedAnalyzer(), true);
+			Directory indexDir = FSDirectory.open(new File(
+					filePath));
+			IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_31, new MedAnalyzer());
+			config.setOpenMode(OpenMode.CREATE);
 			
-//			PipelineUtil.indexDocs(writer);
+			IndexWriter writer = new IndexWriter(indexDir, config);
 			PipelineUtil.indexKeywords(writer);
 		} catch (Exception e) {
 			System.out.println(" caught a " + e.getClass()

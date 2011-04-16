@@ -3,15 +3,12 @@ package com.souyibao.web.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import com.souyibao.freemarker.DiagnoseGuide;
 import com.souyibao.freemarker.HospitalViewer;
-import com.souyibao.search.SelectOption;
 import com.souyibao.shared.MedEntityManager;
-import com.souyibao.shared.entity.Area;
 import com.souyibao.shared.entity.Keyword;
 import com.souyibao.shared.entity.TopHospital;
 import com.souyibao.shared.entity.Topic;
@@ -39,19 +36,6 @@ public class MedWebUtil {
 
 	}
 
-	public static Collection<TopicCategory> getDistinctNameCate(Keyword keyword) {
-		Collection<TopicCategory> categories = keyword.getCategories();
-		
-		Map<String, TopicCategory> result = new HashMap<String, TopicCategory>();
-		for (TopicCategory category : categories){
-			if (result.get(category.getName()) == null) {
-				result.put(category.getName(), category);
-			}
-		}
-		
-		return result.values();
-	}
-
 	
 	public static List<HospitalViewer> getFilterHospital(String categoryId, String areaId) {
 		List<TopHospital> topHospitals = MedEntityManager.getInstance()
@@ -70,45 +54,6 @@ public class MedWebUtil {
 		}
 		
 		return result;
-	}
-	
-	public static String getKeywrodBrief(Keyword keyword) {
-		Collection<TopicCategory> categories = keyword.getCategories();
-		
-		if ((categories == null) || (categories.isEmpty())) {
-			return "";
-		} 
-		
-		StringBuffer categoryInfo = new StringBuffer();		
-		for (TopicCategory category : categories) {
-			if (categoryInfo.length() == 0) {
-				categoryInfo.append(category.getName());
-			} else {
-				categoryInfo.append(",");
-				categoryInfo.append(category.getName());
-			}
-		}
-		
-		StringBuffer result = new StringBuffer();
-		if (categoryInfo.length() > 0) {
-			String categoryPrefix = keyword.getTopic().getBriefprefix();
-			result.append(categoryPrefix).append(categoryInfo.toString());
-		}
-		
-		return result.toString();
-	}
-	
-	/**
-	 * format the topic category to like "4-3345344"
-	 * @param category
-	 * @return
-	 */
-	public static SelectOption formatCategoryFilterVal(Topic topic, TopicCategory category) {
-		return new SelectOption(topic.getId() + "-" + category.getId(), category.getName());
-	}
-	
-	public static SelectOption formatCategoryFilterVal(Topic topic, Area area) {
-		return new SelectOption(topic.getId() + "-" + area.getId(), area.getName());
 	}
 	
 	/**
@@ -148,26 +93,6 @@ public class MedWebUtil {
 		return result;
 	}
 
-	
-	public static Collection<SelectOption> getTopicCategoryTree(Topic topic) {
-		Collection<SelectOption> result = new ArrayList<SelectOption>();
-		
-		Collection<TopicCategory> topicCategories = MedEntityManager.getInstance()
-				.getTopCateByTopic(topic);
-		Collection<TopicCategory> children = null;
-		
-		for (Iterator<TopicCategory> iterator = topicCategories.iterator(); iterator
-				.hasNext();) {
-			TopicCategory cagory = iterator.next();
-			if (cagory.isEnabled()) {
-				SelectOption option = MedWebUtil.formatCategoryFilterVal(topic, cagory);
-				
-			}			
-		}
-		
-		return result;
-	}
-	
 	/**
 	 * Supplement preference category to the category filter
 	 * 

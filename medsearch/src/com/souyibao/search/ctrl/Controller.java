@@ -24,12 +24,22 @@ public class Controller {
 	 */
 	public static SearchResult getSearchResult(String queryStr,
 			Set<Keyword> keywords, Set<Topic> topicFilters,
-			Map<Topic, TopicCategory> categoryFilters) {
+			Map<Topic, TopicCategory> categoryFilters)  {
 
 		// find the search result
-		ISuggester suggester = new GeneralSuggester();
-		SearchResult result = suggester.getPossibleDoc(queryStr, keywords,
-				GeneralSuggester.ALL_MODULES, topicFilters, categoryFilters);
+		GeneralSuggester suggester = new GeneralSuggester();
+		SearchResult result = null;
+		try {
+			result = suggester.getPossibleDoc(queryStr, keywords,
+					topicFilters, categoryFilters);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		if (result == null) {
+			return null;
+		}
+		
 
 		int maxDisplayNum = 0;
 		if ((topicFilters == null)|| (topicFilters.size() == 0)) {

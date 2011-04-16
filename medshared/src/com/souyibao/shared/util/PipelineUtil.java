@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
 
-import com.souyibao.shared.analysis.MedAnalyzer;
 import com.souyibao.shared.dao.IMedDAOConnection;
 import com.souyibao.shared.dao.IMedDAOConnectionFactory;
 import com.souyibao.shared.dao.JPAMedDaoConnectionFactory;
@@ -29,7 +28,7 @@ public class PipelineUtil {
 			
 			List<Doctor> doctors = con.loadDoctorsByArea(area.getId());
 			String idxPath = folder.getAbsolutePath() + File.separator + area.getId();
-			IndexWriter writer = new IndexWriter(idxPath, new MedAnalyzer(), true);
+			IndexWriter writer = null; //new IndexWriter(idxPath, new MedAnalyzer(), true);
 			
 			for (Doctor doc : doctors) {
 				long id = doc.getId();

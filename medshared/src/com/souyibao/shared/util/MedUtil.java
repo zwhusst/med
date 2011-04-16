@@ -15,22 +15,6 @@ import com.souyibao.shared.entity.Topic;
 
 public class MedUtil {
 	
-	public static void sortTopics(List<Topic> ts) {
-		if (ts == null) {
-			return;
-		}
-
-		Collections.sort(ts, new Comparator<Topic>() {
-			@Override
-			public int compare(Topic o1, Topic o2) {
-				if (o1.getSequence() > o2.getSequence()) {
-					return 1;
-				}
-				return -1;
-			}
-		});
-	}
-	
 	public static String getKeywordAliasText(Keyword keyword) {
 		Collection<String> aliases = keyword.getAliasCollection();
 		if ((aliases == null) || (aliases.isEmpty())) {

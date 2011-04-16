@@ -1,17 +1,19 @@
 package com.souyibao.shared.analysis;
 
-import java.io.FileInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
 public class ChineseTokenStream extends Tokenizer {
+	private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
 	// already segmented tokens
 	List<Token> tokenBuffer = new ArrayList<Token>();
 	int nextToken = 0;
@@ -45,7 +47,6 @@ public class ChineseTokenStream extends Tokenizer {
 		super.reset(input);
 	}
 
-	@Override
 	public Token next() throws IOException {
 		// first try to see whether we have previous segmented tokens
 		if (nextToken < tokenBuffer.size()) {
@@ -123,14 +124,29 @@ public class ChineseTokenStream extends Tokenizer {
 		characterBuffer.setLength(0);
 		chineseInBuffer = false;
 	}
+
+	@Override
+	public boolean incrementToken() throws IOException {
+		Token t = this.next();
+		if (t == null) {
+			return false;
+		}
+		termAtt.setEmpty();
+		termAtt.append(t.toString());
+		return true;
+	}
+
 	
 	// testing main method
 	public static void main(String[] args) throws Exception {
-		Reader r = new InputStreamReader(new FileInputStream("c:\\temp.txt"), "UTF8");
-		ChineseTokenStream stream = new ChineseTokenStream(r);
-		Token t;
-		while ( (t = stream.next()) != null) {
-			System.out.println(t.termText());
-		}
+		BufferedReader in = new BufferedReader(new StringReader("多个一线城市房价出现松动引发网友关注 "));
+		ChineseTokenStream stream = new ChineseTokenStream(in);
+		Token t = stream.next();
+		while (t != null) {			
+			System.out.print(t.toString() + " - ");
+			
+			t = stream.next();
+		}	
 	}
+
 }
