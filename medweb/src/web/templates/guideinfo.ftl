@@ -48,12 +48,17 @@ window.attachEvent("onload", correctPNG);
 </head><body>
 <script language="JavaScript">
 <!--
+  var hospitalArea;
+  var doctorArea = "0";
   function showHospital() {  
     document.getElementById('guideType').value = "hospital";
     // visible the top hospital content
     document.getElementById("tab-1").style.display="block";
     document.getElementById("tab-2").style.display="none";
-    $("#areasInTop").removeAttr("disabled");
+    $("#areaOptions").removeAttr("disabled");
+    if (hospitalArea != null) {
+      $("#areaOptions").attr('value',hospitalArea);
+    }
     $("#t1").removeClass('tnormal').addClass('tactive');
     $("#t2").removeClass('tactive').addClass('tnormal');
   }
@@ -63,7 +68,9 @@ window.attachEvent("onload", correctPNG);
     // visible the top doctor content
     document.getElementById("tab-1").style.display="none";
     document.getElementById("tab-2").style.display="block";
-    $("#areasInTop").attr('disabled','disabled');
+    $("#areaOptions").attr('disabled','disabled');    
+    hospitalArea = $("#areaOptions").attr('value');
+    $("#areaOptions").attr('value',doctorArea);
     $("#t1").removeClass('tactive').addClass('tnormal');
     $("#t2").removeClass('tnormal').addClass('tactive');      
   }
