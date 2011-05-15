@@ -137,6 +137,8 @@ function assembleSearchURL(basehref){
     url="rs/ss";
   } else if((queryKeywords!=null)&&(queryString==null || queryString=="")) {
     url="rs/sk";
+  } else{
+	url="rs/ss/";
   }
 
   if ((tFilter!=null)&&(tFilter!="-1")) {

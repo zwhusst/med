@@ -17,6 +17,7 @@ import com.souyibao.web.util.MedWebUtil;
 
 public class SearchDataModel {
 	public static final String FLAG_COVER_ALL_TOPIC = "-1";
+	public static SearchDataModel DUMMY_DATA_MODEL = new SearchDataModel();
 	
 	private String userQuery = null;
 

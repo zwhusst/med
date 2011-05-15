@@ -11,12 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.restlet.Request;
+import org.restlet.Response;
 import org.restlet.ext.servlet.ServletAdapter;
+import org.restlet.routing.Route;
 import org.restlet.routing.Router;
 
 import com.souyibao.cache.CacheManagerFactory;
 import com.souyibao.freemarker.ConfigurationContext;
 import com.souyibao.restlet.BaseRestlet;
+import com.souyibao.restlet.EmptySearchRestlet;
 import com.souyibao.web.RestletDescriptorService;
 import com.souyibao.web.model.RestletDescriptor;
 
@@ -105,7 +109,12 @@ public class RestletServlet extends HttpServlet {
 				restletRouter.attach(urlPattern, restletToAdd);
 			}
 		}
-
+		
+		restletRouter.setDefaultRoute(new Route(new EmptySearchRestlet()) {
+			public float score(Request request, Response response) {
+				return 1.0f;
+			}
+		});
 		adapter.setNext(restletRouter);		
 	}
 
