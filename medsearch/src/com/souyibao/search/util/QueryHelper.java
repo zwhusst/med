@@ -62,6 +62,10 @@ public class QueryHelper {
 	
 	private static Query creatQuery(Analyzer analyzer, String fieldName,
 			String queryText, int slop) {
+		if ((queryText == null) || (queryText.length() == 0)) {
+			return null;
+		}
+		
 		List<String> tokenString = tokenString(analyzer, queryText);
 		if (tokenString == null) {
 			return null;

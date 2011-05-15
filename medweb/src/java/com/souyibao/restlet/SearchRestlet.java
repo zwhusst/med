@@ -88,7 +88,13 @@ public class SearchRestlet extends BaseRestlet {
 		SearchResult searchResult =  Controller.getSearchResult(querystring, keywords, topicFilters,
 				categoryFilters);
 		
-		SearchDataModel dataModel = new SearchDataModel(searchResult);
+		SearchDataModel dataModel;
+		if (searchResult == null) {
+			dataModel = new SearchDataModel();
+		} else {
+			dataModel = new SearchDataModel(searchResult);
+		}
+
 		dataModel.setUserQuery(querystring);
 		dataModel.setQueryKeywords(keywords);
 		

@@ -24,6 +24,8 @@ public class SearchDataModel {
 	private Collection<Keyword> keywordFromQueryString = null;
 	private Collection<Keyword> queryKeywords = null;
 
+	public SearchDataModel() {}
+	
 	public SearchDataModel(SearchResult result) {
 		this.topicSearchData = result.getTopicResults().values();
 		this.keywordFromQueryString = result.getKeyworsFromQuery();		
