@@ -176,9 +176,7 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
 <table><tbody><tr><td><h4>${topicData.topic.name}</h4></td>
 </tr></tbody></table>
 <#list topicData.data as data>
-    <#if data_index % 7 == 0><p class="listname"></#if>
 	<a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('${baseHref}','dialog${data.id}')">${data.name}</a>
-	<#if data_index % 7 == 6></p></#if>
 </#list>
 <#if searchData.singleTopicResult>
 <!--back to multi topic page-->

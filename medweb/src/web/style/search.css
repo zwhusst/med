@@ -12,6 +12,12 @@ a:hover,a:active
 {
 	text-decoration:underline
 }
+.searchlist a
+{
+	line-height:27px;
+	padding:5px;
+	white-space: nowrap;
+}
 img{
 	border:0;
 }
