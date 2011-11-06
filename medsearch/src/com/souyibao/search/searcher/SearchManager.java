@@ -1,12 +1,14 @@
-/**
- * Copyright (C) 1999-2010, Intalio Inc.
- *
- * The program(s) herein may be used and/or copied only with
- * the written permission of Intalio Inc. or in accordance with
- * the terms and conditions stipulated in the agreement/contract
- * under which the program(s) have been supplied.
- */
-package com.souyibao.search.searcher;
+/** 
+* Copyright (c) 2011-2013  上海宜豪健康信息咨询有限公司 版权所有 
+* Shanghai eHealth Technology Company. All rights reserved. 
+
+* This software is the confidential and proprietary 
+* information of Shanghai eHealth Technology Company. 
+* ("Confidential Information"). You shall not disclose 
+* such Confidential Information and shall use it only 
+* in accordance with the terms of the contract agreement 
+* you entered into with Shanghai eHealth Technology Company. 
+*/package com.souyibao.search.searcher;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -81,8 +83,6 @@ public class SearchManager {
 
 		Query contentQuery = QueryHelper.createMedQuery(analyzer,
 				CONTENT_FIELD, queryText, keywords);
-
-//		DocIdsCollector collector = new DocIdsCollector();
 
 		TopDocs topDocs = searcher.search(contentQuery, null, _topDocNum);
 
