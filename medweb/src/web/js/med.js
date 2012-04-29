@@ -76,7 +76,7 @@ function moveFun(para){
   var sId = para[i];
   var tId = para[i+ 1];
   var srcEle = document.getElementById(sId);
-  var targetEle = document.getElementById(tId);  
+  var targetEle = document.getElementById(tId);
   if ((srcEle != null) && (targetEle != null)) {
     targetEle.innerHTML = srcEle.innerHTML;
   	  srcEle.innerHTML="";
@@ -93,6 +93,7 @@ function url4KeywordDetails(basehref,detailsKeyId){
   var queryKeywords=getCheckedKeywordsURL();
   // query string
   var queryString=getDocumentNameValue("querystr"," ");
+  var outersite=document.getElementById("outersite");
 
   var url;
   if ((queryKeywords!=null)&&(queryString!=null)&&(queryString!="")) {
@@ -114,8 +115,14 @@ function url4KeywordDetails(basehref,detailsKeyId){
     url=url+"/"+queryKeywords;
   }
   url=url+"/"+detailsKeyId;
+  questionMark = false;
   if((queryString!=null)&&(queryString!="")){
     url=url+"?qs="+encodeURI(queryString);
+    questionMark=true;
+  }
+  if (outersite != null) {
+    outersitePara = encodeURI("outersite="+outersite.value);
+  	url = questionMark? url+"&"+outersitePara : url+"?"+outersitePara; 
   }
   return basehref+url;
 }
@@ -129,7 +136,9 @@ function assembleSearchURL(basehref){
   var queryKeywords=getCheckedKeywordsURL();
   // query string
   var queryString=getDocumentNameValue("querystr"," ");
-
+  // outer site
+  var outersite=document.getElementById("outersite");
+  
   var url;
   if ((queryKeywords!=null)&&(queryString!=null)&&(queryString!="")) {
     url="rs/s"
@@ -148,8 +157,14 @@ function assembleSearchURL(basehref){
   if (queryKeywords!=null) {
     url=url+"/"+queryKeywords;
   }
+  questionMark = false;
   if((queryString!=null)&&(queryString!="")){
     url=url+"/"+encodeURI(queryString)+"?qs="+encodeURI(queryString);
+    questionMark = true;
+  }
+  if (outersite != null) {
+    outersitePara = encodeURI("outersite="+outersite.value);
+  	url = questionMark? url+"&"+outersitePara : url+"?"+outersitePara; 
   }
   return basehref+url;
 }
