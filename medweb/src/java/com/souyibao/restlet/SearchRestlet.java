@@ -42,6 +42,7 @@ public class SearchRestlet extends BaseRestlet {
 		String topicid = (String)request.getAttributes().get("topicid");
 		String categoryid = (String)request.getAttributes().get("categoryid");
 		String keywordid = (String)request.getAttributes().get("keywordid");
+		String outersite = request.getResourceRef().getQueryAsForm().getFirstValue("outersite", null);
 //		String querystring = (String)request.getAttributes().get("querystring");
 		String querystring = request.getResourceRef().getQueryAsForm().getFirstValue("qs", null);
 		
@@ -76,7 +77,7 @@ public class SearchRestlet extends BaseRestlet {
 		
 		// query data model
 		SearchDataModel dataModel = search(querystring, queryKeywordIds,
-				topicFilters, prefCatetories);
+				topicFilters, prefCatetories, outersite);		
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("searchData", dataModel);
@@ -88,7 +89,7 @@ public class SearchRestlet extends BaseRestlet {
 	}
 	
 	private SearchDataModel search(String querystring, String[] keywordIds,
-			String[] topicIds, Map<Topic, TopicCategory> categoryFilters) {
+			String[] topicIds, Map<Topic, TopicCategory> categoryFilters, String outersite) {
 		// for the input parameter
 		Set<Keyword> keywords = MedEntityManager.getInstance().getKeysWithIds(
 				keywordIds);
@@ -105,7 +106,8 @@ public class SearchRestlet extends BaseRestlet {
 		} else {
 			dataModel = new SearchDataModel(searchResult);
 		}
-
+		
+		dataModel.setOuterSite(outersite);
 		dataModel.setUserQuery(querystring);
 		dataModel.setQueryKeywords(keywords);
 		
@@ -116,7 +118,7 @@ public class SearchRestlet extends BaseRestlet {
 
 	
 	public static String getQueryURL(String topicid, String categoryid,
-			Collection<String> keywordids, String userQuery) {
+			Collection<String> keywordids, String userQuery, String outerSite) {
 		String keywordString = null;
 		if (keywordids != null) {
 			keywordString = MedUtil.joinString(keywordids, ",");
@@ -149,12 +151,24 @@ public class SearchRestlet extends BaseRestlet {
 		if (keywordString != null) {
 			result.append("/").append(keywordString);
 		}
+		boolean questionMark = false;
 		if (userQuery != null) {
 			try {
 				String encodedString = URLEncoder.encode(userQuery, "UTF-8");
 				result.append("/").append(encodedString).append("?qs=").append(encodedString);
+				questionMark = true;
 			} catch (UnsupportedEncodingException e) {
 				result.append("/").append(userQuery);			
+			}
+		}
+		
+		if (outerSite != null) {
+			try {
+				String encodedString = URLEncoder.encode(outerSite, "UTF-8");
+				if (questionMark) result.append("&"); 
+				else result.append("?");				
+				result.append("outersite=").append(encodedString);
+			} catch (UnsupportedEncodingException e) {
 			}
 		}
 		

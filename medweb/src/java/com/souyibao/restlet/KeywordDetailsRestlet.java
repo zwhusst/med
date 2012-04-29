@@ -38,6 +38,7 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 		String querystring = request.getResourceRef().getQueryAsForm().getFirstValue("qs", null);
 		String categoryid = (String)request.getAttributes().get("categoryid");
 		String topicid = (String)request.getAttributes().get("topicid");
+		String outersite = request.getResourceRef().getQueryAsForm().getFirstValue("outersite", null);
 		
 		if (keywordid == null) {
 			return null;
@@ -61,7 +62,7 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 		}
 		
 		KeywordDetailsDataModel dataModel = handleInput(keyword,
-				querykeywordids, querystring, categoryid, topicid);
+				querykeywordids, querystring, categoryid, topicid, outersite);
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("detailsData", dataModel);
@@ -74,10 +75,11 @@ public class KeywordDetailsRestlet extends BaseRestlet {
 	
 	private KeywordDetailsDataModel handleInput(Keyword keyword,
 			String[] querykeywordids, String querystring, String categoryid,
-			String topicid) {
+			String topicid, String outersite) {
 		// keyword for the explanation
 		KeywordDetailsDataModel dataModel = new KeywordDetailsDataModel();
 		dataModel.setKeyword(keyword);
+		dataModel.setOuterSite(outersite);
 		
 		// query keywords;
 		Collection<Keyword> queryKeywords = new ArrayList<Keyword>();

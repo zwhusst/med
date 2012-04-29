@@ -31,6 +31,7 @@ public class SearchDataModel {
 	public static SearchDataModel DUMMY_DATA_MODEL = new SearchDataModel();
 	
 	private String userQuery = null;
+	private String outerSite = null;
 
 	private Collection<TopicResult> topicSearchData = null;
 	private Collection<Keyword> keywordFromQueryString = null;
@@ -200,14 +201,14 @@ public class SearchDataModel {
 			// single topic result page
 			// need the url to back to mutil topics search page
 			for (TopicResult topicResult: topicSearchData) {
-				String url = SearchRestlet.getQueryURL(null, null, keywordIds, userQuery);
+				String url = SearchRestlet.getQueryURL(null, null, keywordIds, userQuery, outerSite);
 				topicResult.setCtxUrl(url);
 			}
 		} else {
 			// mutil topics result page
 			// need the url to see more search result for one specific topic
 			for (TopicResult topicResult: topicSearchData) {
-				String url = SearchRestlet.getQueryURL("" + topicResult.getTopic().getId(), "-1", keywordIds, userQuery);
+				String url = SearchRestlet.getQueryURL("" + topicResult.getTopic().getId(), "-1", keywordIds, userQuery, outerSite);
 				topicResult.setCtxUrl(url);
 			}
 		}
@@ -217,6 +218,16 @@ public class SearchDataModel {
 		return ((this.topicSearchData == null) || (this.topicSearchData.isEmpty()));
 	}
 	
+	public String getOuterSite() {
+		return outerSite;
+	}
+
+	public void setOuterSite(String outerSite) {
+		this.outerSite = outerSite;
+	}
+
+
+
 	private static class TopicComparator implements Comparator<TopicResult>{
 
 		@Override

@@ -24,7 +24,9 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.restlet.Request;
 import org.restlet.Response;
+import org.restlet.engine.http.HttpRequest;
 import org.restlet.ext.servlet.ServletAdapter;
+import org.restlet.ext.servlet.internal.ServletCall;
 import org.restlet.routing.Route;
 import org.restlet.routing.Router;
 
@@ -97,7 +99,23 @@ public class RestletServlet extends HttpServlet {
         cfgContext.setServletContextForTemplateLoading(getServletContext(), templatePath);
         
 		// 5: init the rest url router
-		this.adapter = new ServletAdapter(getServletContext());
+		this.adapter = new ServletAdapter(getServletContext()) {
+			public HttpRequest toRequest(ServletCall servletCall) {
+				HttpRequest request =  super.toRequest(servletCall);
+				HttpServletRequest httpRequst = servletCall.getRequest();
+				
+				// reset the query string because POST data isn't included in the query by default.
+				request.getResourceRef().setQuery(null);
+				Enumeration names = httpRequst.getParameterNames();
+				while(names.hasMoreElements()) {
+					String name = (String)names.nextElement();
+					String value = httpRequst.getParameter(name);
+					request.getResourceRef().addQueryParameter(name, value);
+				}
+				
+				return request;
+			}
+		};
 
 		// init the router
 		Router restletRouter = new Router();
@@ -141,9 +159,10 @@ public class RestletServlet extends HttpServlet {
 				baseHref = baseHref + req.getContextPath() + "/";	
 			} else {
 				baseHref = baseHref + "/"+ req.getContextPath() + "/";
-			}
-			
+			}			
 		}
+		
+		
 		baseHref = req.getScheme() + "://" + baseHref;		
 		req.setAttribute("baseHref", baseHref);
 

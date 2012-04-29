@@ -25,6 +25,7 @@ public class KeywordDetailsDataModel {
 	private String topicid = null;
 	private String categoryid = null;
 	private String explanation = null;
+	private String outerSite = null;
 	
 	public Keyword getKeyword() {
 		return keyword;
@@ -63,6 +64,12 @@ public class KeywordDetailsDataModel {
 		this.explanation = explanation;
 	}
 	
+	public String getOuterSite() {
+		return outerSite;
+	}
+	public void setOuterSite(String outerSite) {
+		this.outerSite = outerSite;
+	}
 	public String getKeywordAlias() {		
 		String alias = MedUtil.joinString(this.keyword.getAliasCollection(), ",");
 		if (alias == null) {
@@ -85,7 +92,7 @@ public class KeywordDetailsDataModel {
 		}
 		keywordids.add(""+keyword.getId());
 		
-		return SearchRestlet.getQueryURL(topicid, categoryid, keywordids, userQuery);
+		return SearchRestlet.getQueryURL(topicid, categoryid, keywordids, userQuery, outerSite);
 	}	
 	
 	/** 
@@ -96,6 +103,6 @@ public class KeywordDetailsDataModel {
 		Collection<String> keywordids = new ArrayList<String>();
 		keywordids.add(""+keyword.getId());
 
-		return SearchRestlet.getQueryURL(topicid, categoryid, keywordids, null);
+		return SearchRestlet.getQueryURL(topicid, categoryid, keywordids, null, outerSite);
 	}
 }
