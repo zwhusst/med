@@ -147,7 +147,6 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
   </#if>
   </div>  </div> </div>
   <div class="c clear_children" id="container">
-  <#if !searchData.outerSite??>
     <div class="sc" id="left_col">
       <div id="left-title"><h5>就医指南</h5></div>
       <span style="font-size: 14px;">临床科室 &gt;&gt; 名医名院直通车</span>
@@ -157,9 +156,17 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
 			<#assign diagnoseIds=searchData.keywordIds4Diagnose!"">
 			<#list searchData.diagnoseGuides as guide>
 			<h3>${guide.keyword.name}</h3>
-			<p>就诊科室:点击查名院专家<br>
+			<#if !searchData.outerSite??>
+				<p>就诊科室:点击查名院专家<br>
+			<#else>
+				<p>就诊科室:<br>
+			</#if>
 			<#list guide.categories as category>
-			<span style="white-space: nowrap;"><a href="${baseHref}rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
+				<#if !searchData.outerSite??>
+					<span style="white-space: nowrap;"><a href="${baseHref}rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
+				<#else>
+					<span style="white-space: nowrap;">${category.name}</span>
+				</#if>
 			</#list>
 			</p>
 			</#list>
@@ -167,7 +174,6 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
 		</div>
 	 </div>
     </div>
-  </#if> 
     <div class="pc cc_tallest" id="page_content">
       <div class="pg_title">
         <p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results">${searchData.webQuery!""}&nbsp;</span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
