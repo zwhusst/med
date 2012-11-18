@@ -60,21 +60,60 @@ window.attachEvent("onload", correctPNG);
   <img id="main-img" src="image/logo.png" alt="天天动" />
   </center>
 <div id="main">
-        <table style="position:absolute;top:11.3em;margin-left:300px;"><tr><td><input id="search-text" name="q"  type="text" onkeyup="sHomeInput(event)"/></td>
-        <td style="background: url('image/inputbt.png');background-repeat:no-repeat;width: 102px; height: 37px;"  onclick="javascript:homeSearch()"></td>
-        <td><img id="google" src="image/googlelogo.png" alt="" /></td></tr>
-	</table>
-        <p id="search-des">输入您的健康查询词，ww天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
-	
-  </div>
+<table style="position:absolute;top:11.3em;margin-left:300px;">
+  <tr>
+    <td><input id="search-text" name="q"  type="text" onkeyup="sHomeInput(event)"/></td>
+    <td style="background: url('image/inputbt.png');background-repeat:no-repeat;width: 102px; height: 37px;"  onclick="javascript:homeSearch()"></td>
+    <td><img id="google" src="image/googlelogo.png" alt="" /></td>
+  </tr>
+</table>
+<p id="search-des">输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
+<table style="position:absolute;top:17.3em;margin-left:300px;width:385px;padding-right: 10px;">
+  <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
+  <tr>
+    <td><a class="site-name" href="http://seeeye.org">上海市第一人民医院眼科</a></td>
+    <td><a class="site-name" href="http://www.kidheart.com.cn">复旦大学附属儿科医院新血管中心</a></td>
+    <td><a class="site-name" href="http://www.obgyn.renji.com">上海交通大学医学院附属仁济医院妇产科</a></td>
+  </tr>
+  <tr>
+    <td><a class="site-name" href="http://www.pumch.cn">北京协和医院</a></td>
+    <td><a class="site-name" href="http://www.cd120.com">四川大学华西医院</a></td>
+    <td><a class="site-name" href="http://www.301hospital.com.cn">中国人民解放军总医院</a></td>
+  </tr>
+  <tr>
+    <td><a class="site-name" href="http://www.rjh.com.cn/pages/index.shtml">上海交通大学医学院附属瑞金医院</a></td>
+    <td><a class="site-name" href="http://xjwww.fmmu.edu.cn">第四军医大学西京医院</a></td>
+    <td><a class="site-name" href="http://www.huashan.org.cn">复旦大学附属华山医院</a></td>
+  </tr>
+  <tr>
+    <td><a class="site-name" href="http://www.bddyyy.com.cn">北京大学第一医院</a></td>
+    <td><a class="site-name" href="http://www.zs-hospital.sh.cn">复旦大学附属中山医院</a></td>
+    <td><a class="site-name" href="http://www.gzsums.net">中山大学附属第一医院</a></td>
+  </tr>
+  <tr>
+    <td><a class="site-name" href="http://www.pkuph.cn/mass">北京大学人民医院</a></td>
+    <td><a class="site-name" href="http://www.tjh.com.cn">华中科技大学同济医学院附属同济医院</a></td>
+    <td><a class="site-name" href="http://www.fuwaihospital.org/Hospitals/Main">中国医学科学院阜外心血管病医院</a></td>
+  </tr>
+  <tr>
+    <td><a class="site-name" href="http://www.chhospital.com.cn">第二军医大学长海医院</a></td>
+    <td><a class="site-name" href="http://www.9hospital.com">上海交通大学医学院附属第九人民医院</a></td>
+    <td><a class="site-name" href="http://www.shca.org.cn">复旦大学附属肿瘤医院</a></td>
+  </tr>
+  <tr>
+    <td><a class="site-name" href="http://www.shsmu.edu.cn">上海交通大学医学院附属第六人民医院</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</div>
+<br><br>
    <div id="footer">
-
 	<p>&copy;2011 <a href="about.html">天天动</a> | 
 	<a href="duty.html">用前必读</a> | 
 	<a href="partner.html">合作伙伴</a>| 
 	<a href="contact.html">联系我们</a>|
 	<a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备09022690号</a></p>
-
 </div>
 </body>
 
