@@ -76,3 +76,23 @@ IMG {
 #footer P {
 	TEXT-ALIGN: center; FONT: 12px 宋体, Arial, Helvetica, sans-serif
 }
+.fav-hd {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #666;
+}
+.site-name {
+  display: inline;
+  overflow: hidden;
+  float: left;
+  padding: 0px 10px 0 0px;
+  font-size: 14px;
+  height: 28px;
+  line-height: 18px;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
