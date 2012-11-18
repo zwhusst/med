@@ -64,7 +64,7 @@ window.attachEvent("onload", correctPNG);
         <td style="background: url('image/inputbt.png');background-repeat:no-repeat;width: 102px; height: 37px;"  onclick="javascript:homeSearch()"></td>
         <td><img id="google" src="image/googlelogo.png" alt="" /></td></tr>
 	</table>
-        <p id="search-des">输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
+        <p id="search-des">输入您的健康查询词，ww天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
 	
   </div>
    <div id="footer">
