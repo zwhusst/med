@@ -14,37 +14,36 @@
 function correctPNG() { 
     var arVersion = navigator.appVersion.split("MSIE") 
     var version = parseFloat(arVersion[1]) 
-    if ((version &gt;= 5.5) &amp;&amp; (document.body.filters)) 
+    if ((version <= 5.5) && (document.body.filters)) 
     { 
-       for(var j=0; j&lt;document.images.length; j++) 
-       { 
-          var img = document.images[j] 
-          var imgName = img.src.toUpperCase() 
-          if (imgName.substring(imgName.length-3, imgName.length) == "PNG") 
-          { 
-             var imgID = (img.id) ? "id='" + img.id + "' " : "" 
-             var imgClass = (img.className) ? "class='" + img.className + "' " : "" 
-             var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' " 
-             var imgStyle = "display:inline-block;" + img.style.cssText 
-             if (img.align == "left") imgStyle = "float:left;" + imgStyle 
-             if (img.align == "right") imgStyle = "float:right;" + imgStyle 
-             if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle 
-             var strNewHTML = "&lt;span " + imgID + imgClass + imgTitle 
-             + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";" 
-             + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader" 
-             + "(src=\'" + img.src + "\', sizingMethod='scale');\"&gt;&lt;/span&gt;" 
-             img.outerHTML = strNewHTML 
-             j = j-1 
-          } 
-       } 
+   for(var j=0; j < document.images.length; j++) 
+   { 
+      var img = document.images[j] 
+      var imgName = img.src.toUpperCase() 
+      if (imgName.substring(imgName.length-3, imgName.length) == "PNG") 
+      { 
+     var imgID = (img.id) ? "id='" + img.id + "' " : "" 
+     var imgClass = (img.className) ? "class='" + img.className + "' " : "" 
+     var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' " 
+     var imgStyle = "display:inline-block;" + img.style.cssText 
+     if (img.align == "left") imgStyle = "float:left;" + imgStyle 
+     if (img.align == "right") imgStyle = "float:right;" + imgStyle 
+     if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle 
+     var strNewHTML = "&lt;span " + imgID + imgClass + imgTitle 
+     + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";" 
+     + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader" 
+     + "(src=\'" + img.src + "\', sizingMethod='scale');\"&gt;&lt;/span&gt;" 
+     img.outerHTML = strNewHTML 
+     j = j-1 
+      } 
+   } 
     }     
-} 
-window.attachEvent("onload", correctPNG);
+}
+try{
+  window.attachEvent("onload", correctPNG);
+}catch(err) {}
 </script>
-
-   <link href="image/favicon.ico" rel="shortcut icon">
-
-
+<link href="image/favicon.ico" rel="shortcut icon">
 <script src="js/si-clear-children.js" type="text/javascript"></script>
 <link rel="stylesheet" href="themes/base/jquery.ui.all.css" type="text/css">
 <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
@@ -55,78 +54,92 @@ window.attachEvent("onload", correctPNG);
 <script src="js/ui/jquery.ui.dialog.js" type="text/javascript"></script>
 <script src="js/ui/jquery.ui.widget.js" type="text/javascript"></script>
 <script src="js/external/jquery.bgiframe-2.1.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://www.google.com/uds/?file=search&amp;v=1.0"></script>
+<link rel="stylesheet" type="text/css" href="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default.css">
+<script type="text/javascript" src="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default+en.I.js"></script>
 <style type="text/css">
 form.gsc-search-box {
-	display: none;
+  display: none;
 }
 
 #searchcontrol .gsc-control {
-	WIDTH: 400px
+  WIDTH: 400px
 }
 div.gsc-control {
-    width:100%;
+  width:100%;
 }
 gsc-input {
-	display: none;
+  display: none;
+}
+.gsc-result-info-container {
+  display: none;
 }
 .gsc-control div {
   font-size:11pt;
   position:static;
 }
 div.gsc-control {
-	width: 100%;
+  width: 100%;
 }
 </style>
-<script language="JavaScript">
-<!--
-google.load('search', '1.0');
+<script type="text/javascript"> 
 function reqestGoogleHtml() {
-      var webResultTag=document.getElementById("WebResultTag");
-      
+  var webResultTag=document.getElementById("WebResultTag");
+  
 // Create a search control
-      var searchControl = new google.search.SearchControl();
-      searchControl.setResultSetSize(GSearch.LARGE_RESULTSET);
+  var searchControl = new google.search.SearchControl();
+  searchControl.setResultSetSize(GSearch.LARGE_RESULTSET);
 
-      // Add in a full set of searchers
-      var websearch, websearch1,search;
-      websearch = new google.search.WebSearch();
-      websearch.setUserDefinedLabel("网页");
-      <#if searchData.outerSite??>
-	  	websearch.setSiteRestriction("${searchData.outerSite}");
-	  </#if>
-      searchControl.addSearcher(websearch);
+  // Add in a full set of searchers
+  var websearch, websearch1,search;
+  websearch = new google.search.WebSearch();
+  websearch.setUserDefinedLabel("网页");
+  <#if searchData.outerSite??>
+    websearch.setSiteRestriction("${searchData.outerSite}");
+  </#if>
+  searchControl.addSearcher(websearch);
 
-      websearch1 = new google.search.WebSearch();
-      websearch1.setQueryAddition("病例 ");
-      websearch1.setUserDefinedLabel("病例");
-      searchControl.addSearcher(websearch1);
-      
-      search = new google.search.ImageSearch();
-      search.setUserDefinedLabel("图片");
-      searchControl.addSearcher(search);
+  websearch1 = new google.search.WebSearch();
+  websearch1.setQueryAddition("病例 ");
+  websearch1.setUserDefinedLabel("病例");
+  searchControl.addSearcher(websearch1);
+  
+  search = new google.search.ImageSearch();
+  search.setUserDefinedLabel("图片");
+  searchControl.addSearcher(search);
 
-      search = new google.search.NewsSearch();
-      search.setUserDefinedLabel("新闻");
-      searchControl.addSearcher(search);
+  search = new google.search.NewsSearch();
+  search.setUserDefinedLabel("新闻");
+  searchControl.addSearcher(search);
 
-      search = new google.search.BlogSearch();
-      search.setUserDefinedLabel("博客");
-      searchControl.addSearcher(search);
+  search = new google.search.BlogSearch();
+  search.setUserDefinedLabel("博客");
+  searchControl.addSearcher(search);
 
-      var drawOptions = new google.search.DrawOptions();
-      drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
-      // tell the searcher to draw itself and tell it where to attach
-      searchControl.draw(document.getElementById("TopicWebResult"), drawOptions);
-      // execute an inital search
-      searchControl.execute("${searchData.webQuery}");      
+  var drawOptions = new google.search.DrawOptions();
+  drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
+  // tell the searcher to draw itself and tell it where to attach
+  searchControl.draw(document.getElementById("TopicWebResult"), drawOptions);
+  // execute an inital search
+  searchControl.execute("${searchData.webQuery}");
 }
-google.setOnLoadCallback(reqestGoogleHtml, true);
+</script>
+</head><body>
+<script language="JavaScript">
+$(document).ready(function() {
+  try{
+    initSearch();
+  }catch(err) {}
+  try{
+	SI.ClearChildren.initialize();
+  }catch(err) {}
+  try{
+    google.load('search', '1.0');
+    google.setOnLoadCallback(reqestGoogleHtml, true);
+  }catch(err) {}    
 //$.ui.dialog.defaults.bgiframe = true;
-//-->
-</script><script type="text/javascript" src="http://www.google.com/uds/?file=search&amp;v=1.0">
-</script><link rel="stylesheet" type="text/css" href="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default.css">
-<script type="text/javascript" src="http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default+en.I.js"></script>  
-</head><body>  
+});
+</script>
 <center>
   <div style="text-align: left;" id="wapper">
   <div id="masthead">
@@ -148,9 +161,9 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
   </div>  </div> </div>
   <div class="c clear_children" id="container">
     <div class="sc" id="left_col">
-      <div id="left-title"><h5>就医指南</h5></div>
-      <span style="font-size: 14px;">临床科室 &gt;&gt; 名医名院直通车</span>
-      <div id="GuideInfoSection">
+  <div id="left-title"><h5>就医指南</h5></div>
+  <span style="font-size: 14px;">临床科室 &gt;&gt; 名医名院直通车</span>
+  <div id="GuideInfoSection">
 		<div class="left-list">
 		<#if searchData.diagnoseGuides??>
 			<#assign diagnoseIds=searchData.keywordIds4Diagnose!"">
@@ -175,10 +188,10 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
 	 </div>
     </div>
     <div class="pc cc_tallest" id="page_content">
-      <div class="pg_title">
-        <p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results">${searchData.webQuery!""}&nbsp;</span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
-      </div>
-      <div style="display: block;" id="TopicResult">
+  <div class="pg_title">
+    <p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results">${searchData.webQuery!""}&nbsp;</span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
+  </div>
+  <div style="display: block;" id="TopicResult">
 <div id="searchframe">
 <#if (searchData.topicSearchData)?? && !searchData.emptyTopicResult>
 <div class="searchlist">
@@ -220,7 +233,7 @@ google.setOnLoadCallback(reqestGoogleHtml, true);
   <tbody><tr><td id="TopicWebResult"></td></tr>
   </tbody>
 </table>
-      </div>
+  </div>
     </div>
   </div>
     <div id="footer">
