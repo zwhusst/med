@@ -84,6 +84,3 @@ SI.ClearChildren =
 		};
 	}
 };
-
-// Just do it.
-SI.ClearChildren.initialize();
