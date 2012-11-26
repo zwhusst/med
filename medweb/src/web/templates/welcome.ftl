@@ -68,7 +68,7 @@ window.attachEvent("onload", correctPNG);
   </tr>
 </table>
 <p id="search-des">输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
-<table style="position:absolute;top:17.3em;margin-left:300px;width:385px;padding-right: 10px;">
+<table style="position:absolute;top:17.3em;margin-left:300px;padding-right: 10px;">
   <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
   <tr>
     <td><a class="site-name" href="http://seeeye.org">上海市第一人民医院眼科</a></td>
