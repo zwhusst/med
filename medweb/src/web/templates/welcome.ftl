@@ -43,11 +43,6 @@ window.attachEvent("onload", correctPNG);
   <!--<div id="title-bg" ><img src="image/image04.png" alt=""/></div>--->
 
   <div id="header">
-      <ul>
-        <li>
-			<!-- <a href="#">&nbsp;&nbsp;&nbsp;就医导航</a>--->
-        </li>
-      </ul>
     <h5>生命在于运动-健康生活天天动</h5>
     <p>
 
@@ -55,7 +50,6 @@ window.attachEvent("onload", correctPNG);
     <a href="#">设为首页</a>
     </p>
   </div>
-
   <center>
   <img id="main-img" src="image/logo.png" alt="天天动" />
   </center>
@@ -68,7 +62,7 @@ window.attachEvent("onload", correctPNG);
   </tr>
 </table>
 <p id="search-des">输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
-<table style="position:absolute;top:17.3em;margin-left:300px;padding-right: 10px;">
+<table style="position:absolute;top:17.3em;margin-left:190px;padding-right: 10px;">
   <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
   <tr>
     <td><a class="site-name" href="http://seeeye.org">上海市第一人民医院眼科</a></td>

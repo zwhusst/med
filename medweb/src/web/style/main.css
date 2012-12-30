@@ -2,7 +2,7 @@
 	TEXT-ALIGN: center; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(../image/mainbg.png) #ecf7dc repeat-x; PADDING-TOP: 0px
 }
 A {
-	COLOR: #0458cb; TEXT-DECORATION: none
+	COLOR:#333; TEXT-DECORATION: none
 }
 A:hover {
 	TEXT-DECORATION: underline
@@ -65,7 +65,7 @@ IMG {
 	POSITION: absolute; MARGIN-LEFT: 300px; TOP: 14.3em
 }
 #search-des {
-	POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px -192px; PADDING-LEFT: 0px; WIDTH: 32em; PADDING-RIGHT: 0px; FONT: 12px 宋体, Arial, Helvetica, sans-serif; COLOR: #999999; TOP: 19em; PADDING-TOP: 0px; LEFT: 50%
+	POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px -200px; PADDING-LEFT: 0px; WIDTH: 32em; PADDING-RIGHT: 0px; FONT: 12px 宋体, Arial, Helvetica, sans-serif; COLOR: #999999; TOP: 19em; PADDING-TOP: 0px; LEFT: 50%
 }
 #google {
 	WIDTH: 52px; HEIGHT: 20px
