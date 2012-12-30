@@ -52,17 +52,17 @@ window.attachEvent("onload", correctPNG);
   </div>
   <center>
   <img id="main-img" src="image/logo.png" alt="天天动" />
-  </center>
+  
 <div id="main">
-<table style="position:absolute;top:11.3em;margin-left:300px;">
+<table style="position: relative;top:11em;margin-left: 80px;">
   <tr>
-    <td><input id="search-text" name="q"  type="text" onkeyup="sHomeInput(event)"/></td>
+    <td><input id="search-text" name="q" type="text" onkeyup="sHomeInput(event)"/></td>
     <td style="background: url('image/inputbt.png');background-repeat:no-repeat;width: 102px; height: 37px;"  onclick="javascript:homeSearch()"></td>
     <td><img id="google" src="image/googlelogo.png" alt="" /></td>
   </tr>
 </table>
 <p id="search-des">输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状，疾病，医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
-<table style="position:absolute;top:17.3em;margin-left:190px;padding-right: 10px;">
+<table id="site-table" style="position:relative;top:11em;border-collapse:collapse;">
   <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
   <tr>
     <td><a class="site-name" href="http://seeeye.org">上海市第一人民医院眼科</a></td>
@@ -100,10 +100,11 @@ window.attachEvent("onload", correctPNG);
     <td></td>
   </tr>
 </table>
+</center>
 </div>
 <br><br>
    <div id="footer">
-	<p>&copy;2011 <a href="about.html">天天动</a> | 
+	<p>&copy;2013 <a href="about.html">天天动</a> | 
 	<a href="duty.html">用前必读</a> | 
 	<a href="partner.html">合作伙伴</a>| 
 	<a href="contact.html">联系我们</a>|
