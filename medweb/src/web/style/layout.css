@@ -418,17 +418,9 @@ z-index:3;
 	background-repeat:no-repeat;
 
 }
-/*页脚*/
-#footer {
-	width:1004px;
-	text-align:center;
-}
+
 #footer p
 {
-	background:url('../image/footline.png');
-	background-position:center top;
-	background-repeat:no-repeat;
-	margin:2em 0;
-	padding:2em 0;
-	font:12px 宋体, Arial, Helvetica, sans-serif;	
+	font:12px 宋体, Arial, Helvetica, sans-serif;
+	text-align:center;
 }

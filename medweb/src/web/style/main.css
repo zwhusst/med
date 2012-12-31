@@ -142,13 +142,15 @@ IMG {
   PADDING-BOTTOM: 0px;
   MARGIN: 0px 0px 0px -200px;
   PADDING-LEFT: 0px;
-  WIDTH: 32em;
+  WIDTH: 33em;
   PADDING-RIGHT: 0px;
   FONT: 12px 宋体, Arial, Helvetica, sans-serif;
   COLOR: #999999;
   TOP: 15em;
   PADDING-TOP: 0px;
-  LEFT: 58px;
+  LEFT: 64px;
+  line-height:18px;
+  text-align:left;
 }
 #google {
   WIDTH: 52px;
@@ -162,7 +164,6 @@ IMG {
   FONT: 12px 宋体, Arial, Helvetica, sans-serif;
 }
 .fav-hd {
-  float: left;
   height: 40px;
   line-height: 40px;
   font-size: 14px;
@@ -184,6 +185,29 @@ IMG {
 }
 #site-table td {
   padding: 5px 0px 0px 10px;
-  border-width: 1px; border-style: dotted;
-  border-color: #AAA;
+  border-style:dotted;  
+  border-color:#AAA;
+}
+#site-table .left-cell {
+border-top-width: 1px; border-left-width: 1px; border-bottom-width: 0px; border-right-width: 0px;  
+}
+#site-table .right-cell {
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-bottom-width: 0px;
+  border-right-width: 1px;  
+}
+#site-table .full {
+  border-style:dotted;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;  
+}
+#site-table .right-corner {
+  border-style:dotted;
+  border-top-width: 1px;
+  border-left-width: 0px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;  
 }

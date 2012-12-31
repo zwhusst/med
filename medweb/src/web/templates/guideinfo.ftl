@@ -221,12 +221,13 @@ ${hospitalCategory.name}&nbsp;&nbsp;
   </#if>
 //-->
 </script>
+</div></div>
   <div id="footer">
+  <hr style="width: 80%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">    
   <p>&copy;2013 <a href="about.html">天天动</a> | 
   <a href="duty.html">用前必读</a> | 
   <a href="partner.html">合作伙伴</a>| 
   <a href="contact.html">联系我们</a>|
   <a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
-
-  <center>
-</center></div></div></div></center></body></html>
+  </div>
+</center></body></html>
