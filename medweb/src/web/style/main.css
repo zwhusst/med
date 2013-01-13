@@ -106,7 +106,7 @@ IMG {
 }
 #main {
   POSITION: relative;
-  HEIGHT: 520px;
+  HEIGHT: 570px;
 }
 #main-img {
   POSITION: absolute;
@@ -136,6 +136,21 @@ IMG {
   POSITION: absolute;
   MARGIN-LEFT: 300px;
   TOP: 14.3em;
+}
+#search-des {
+  POSITION: relative;
+  PADDING-BOTTOM: 0px;
+  MARGIN: 0px 0px 0px -200px;
+  PADDING-LEFT: 0px;
+  WIDTH: 33em;
+  PADDING-RIGHT: 0px;
+  FONT: 12px 宋体, Arial, Helvetica, sans-serif;
+  COLOR: #999999;
+  TOP: 15em;
+  PADDING-TOP: 0px;
+  LEFT: 64px;
+  line-height:18px;
+  text-align:left;
 }
 #google {
   WIDTH: 52px;

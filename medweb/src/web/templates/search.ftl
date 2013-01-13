@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <base href="${baseHref}" />
   <link href="image/favicon.ico" rel="shortcut icon">
-  <link type="text/css" rel="stylesheet" href="style/search.css"/>
+  <link type="text/css" rel="stylesheet" href="style/search.css"/>  
   <link type="text/css" rel="stylesheet" href="style/layout.css"/>
   <link rel="stylesheet" href="themes/base/jquery.ui.all.css" type="text/css"/>
   <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
@@ -197,23 +197,24 @@ $(document).ready(function() {
 </div>
 <div id="search-tabs">
 <div><p class="tabs-title"><span class="res-title">搜索结果:</span>符合<span class="results">&nbsp;${searchData.webQuery}&nbsp;&nbsp;</span>的相关网页</p></div>
+
 <table id="WebResultParentTag" class="vsepleft">
   <tbody><tr><td id="TopicWebResult"></td></tr>
-  </tbody>
-</table>
-    </div>
-  </div>
-  </div>
-  </div></center>
- <div style="display: none;"> <div id="base_webResult"> <div data-vars="{longUrl:function() { var i = unescapedUrl.indexOf(visibleUrl); return i &lt; 1 ? visibleUrl : unescapedUrl.substring(i);}}" class="gs-webResult gs-result"> <div data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})" data-attr="0" data-if="Vars.richSnippet"></div> <div class="gs-title"> <a data-body="html(title)" data-attr="{href:unescapedUrl,target:target}" class="gs-title"></a> </div> <div data-body="html(content)" class="gs-snippet"></div> <div data-body="visibleUrl" class="gs-visibleUrl gs-visibleUrl-short"></div> <div data-body="longUrl()" class="gs-visibleUrl gs-visibleUrl-long"></div> <div data-body="render('action',richSnippet,{url:unescapedUrl,target:target})" class="gs-actions" data-if="Vars.richSnippet &amp;&amp; Vars.richSnippet.action"></div> </div> </div> <div id="base_thumbnail"> <div data-vars="{tn:Vars.thumbnail &amp;&amp; thumbnail.src ? thumbnail : {src:Vars.document &amp;&amp; document.thumbnailUrl}}" data-attr="0"> <div class="gs-image-box gs-web-image-box" data-if="tn.src"> <a data-attr="{href:url,target:target}" class="gs-image"> <img data-attr="{src:tn.src, width:tn.width || 100, height: tn.height}" class="gs-image"> </a> </div> </div> </div> <div id="base_action"> <div data-attr="0" data-foreach="Vars.action"> <div data-if="Cur.url &amp;&amp; Cur.label" data-attr="{'class': 'gs-action ' + Cur['class']}"> <a data-body="Cur.label" data-attr="{href:Cur.url,target:target}" class="gs-action"></a> </div> </div> </div> </div>
-<center>
-  <div id="footer">
-  <hr style="width: 80%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
+  <tr><td>
+<div id="footer">
+  <hr style="width:100%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
   <p>&copy;2013 <a href="about.html">天天动</a> | 
   <a href="duty.html">用前必读</a> | 
   <a href="partner.html">合作伙伴</a>| 
   <a href="contact.html">联系我们</a>|
   <a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
+</div>  
+  </td></tr>  
+  </tbody>
+</table>
+
+    </div>
   </div>
-</center>  
+  </div>
+  </div></center>
 </body></html>

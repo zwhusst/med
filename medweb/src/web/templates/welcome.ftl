@@ -64,6 +64,7 @@ window.attachEvent("onload", correctPNG);
   <p >输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状、<br>疾病、医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
   </td></tr>
 </table>
+<br><br><br>
 <table id="site-table" style="position:relative;top:11em; border-collapse:collapse;" border="0">
   <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
   <tr>
