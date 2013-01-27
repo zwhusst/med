@@ -120,7 +120,7 @@ $(document).ready(function() {
   <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
   <span onclick="javascript:paneSearch('${baseHref}')" title="搜索" class="search_bt"></span>
   <img alt="" src="image/googlelogo.png" class="google">  
-  <div id="panecheckbox" class="panecheckbox">
+  <div id="panecheckbox" class="panecheckbox" style='left: 320px; position: absolute;top: 75px;'>
   <#if searchData.paneKeywords??>
   <#list searchData.paneKeywords as paneKeyword>
   <input type="checkbox" id="${paneKeyword.keyword.id?c}" name="panekeyword" checked="checked">${paneKeyword.keyword.name}

@@ -122,10 +122,12 @@ z-index:3;
 	background-position:center top;
 	border:0;
 	width:309px;
-	height:27px;
+	line-height:27px;
+	height:30px;
 	position:absolute;
 	top:40px;
 	left:320px;
+	vertical-align: middle;
 }
 #masthead .search_bt
 {
