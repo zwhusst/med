@@ -68,8 +68,8 @@ window.attachEvent("onload", correctPNG);
 <table id="site-table" style="position:relative;top:11em; border-collapse:collapse;" border="0">
   <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
   <tr>
-    <td class="left-cell"><a class="site-name" href="http://seeeye.ttdong.com.cn" target="_blank">上海市第一人民医院眼科</a></td>
-    <td class="left-cell"><a class="site-name" href="http://www.kidheart.com.cn" target="_blank">复旦大学附属儿科医院新血管中心</a></td>
+    <td class="left-cell"><a class="site-name" href="http://seeeye.firsthospital.cn" target="_blank">上海市第一人民医院眼科</a></td>
+    <td class="left-cell"><a class="site-name" href="http://www.kidheart.com.cn" target="_blank">复旦大学附属儿科医院心血管中心</a></td>
     <td class="right-cell"><a class="site-name" href="http://www.obgyn.renji.com" target="_blank">上海交通大学医学院附属仁济医院妇产科</a></td>
   </tr>
   <tr>
@@ -103,7 +103,7 @@ window.attachEvent("onload", correctPNG);
 </table>
 </center>
 </div>
-<br><br>
+<br><br><br>
    <div id="footer">
 	<p>&copy;2013 <a href="about.html">天天动</a> | 
 	<a href="duty.html">用前必读</a> | 
