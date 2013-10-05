@@ -66,7 +66,7 @@ window.attachEvent("onload", correctPNG);
 </table>
 <br><br><br>
 <table id="site-table" style="position:relative;top:11em; border-collapse:collapse;" border="0">
-  <caption style="text-align:left;" class="fav-hd">实用健康网址</caption>
+  <caption style="text-align:left;" class="fav-hd">实用健康网址 (全国最佳专科和医院, 复旦大学医院管理研究所合作发布)</caption>
   <tr>
     <td class="left-cell"><a class="site-name" href="http://seeeye.firsthospital.cn" target="_blank">上海市第一人民医院眼科</a></td>
     <td class="left-cell"><a class="site-name" href="http://www.kidheart.com.cn" target="_blank">复旦大学附属儿科医院心血管中心</a></td>

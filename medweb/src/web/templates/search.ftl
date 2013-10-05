@@ -21,9 +21,9 @@
   <script src="js/ui/jquery.ui.dialog.js" type="text/javascript"></script>
   <script src="js/ui/jquery.ui.widget.js" type="text/javascript"></script>
   <script src="js/external/jquery.bgiframe-2.1.1.js" type="text/javascript"></script>
-  <script src="js/google/jsapi.js" type="text/javascript"></script><!--http://www.google.com/uds/jsapi-->
-  <script type="text/javascript" src="js/google/uds.js?file=search&amp;v=1.0"></script><!--http://www.google.com/uds/?file=search&amp;v=1.0-->
-  <link rel="stylesheet" type="text/css" href="style/google/default.css"><!--http://www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default.css-->
+  <script src="js/google/jsapi.js" type="text/javascript"></script><!--http:// www.google.com/uds/jsapi-->
+  <script type="text/javascript" src="js/google/uds.js?file=search&amp;v=1.0"></script><!--http:// www.google.com/uds/?file=search&amp;v=1.0-->
+  <link rel="stylesheet" type="text/css" href="style/google/default.css"><!--http:// www.google.com/uds/api/search/1.0/dc3de76e47ee565996b49228b275fafb/default.css-->
 <style type="text/css">
 form.gsc-search-box {
   display: none;
@@ -93,7 +93,7 @@ function reqestGoogleHtml() {
   searchControl.execute("${searchData.webQuery}");    
 }
 google.setOnLoadCallback(reqestGoogleHtml, true);
-//-->
+// -->
 </script>
 </head>
 <body>
@@ -110,111 +110,132 @@ $(document).ready(function() {
 </script>  
 <center>
   <div style="text-align: left;" id="wapper">
-  <div id="masthead">
-  <p class="top_def">
-  <a href="#">就医导航</a>
-  <a href="#">设为首页</a>
-  </p>
-  <div class="line"></div><div class="head_bg"></div>  <div class="head_img"></div>  <div class="s_frame">
-  <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
-  <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
-  <span onclick="javascript:paneSearch('${baseHref}')" title="搜索" class="search_bt"></span>
-  <img alt="" src="image/googlelogo.png" class="google">  
-  <div id="panecheckbox" class="panecheckbox" style='left: 320px; position: absolute;top: 75px;'>
-  <#if searchData.paneKeywords??>
-  <#list searchData.paneKeywords as paneKeyword>
-  <input type="checkbox" id="${paneKeyword.keyword.id?c}" name="panekeyword" checked="checked">${paneKeyword.keyword.name}
-  </#list>
-  </#if>
-  </div>  </div> </div>
-  <div class="c clear_children" id="container">
-  <div class="sc" id="left_col">
-    <div id="left-title"><h5>就医指南</h5></div>
-    <span style="font-size: 14px;">临床科室 &gt;&gt; 名医名院直通车</span>
-    <div id="GuideInfoSection">
-  <div class="left-list">
-  <#if searchData.diagnoseGuides??>
-    <#assign diagnoseIds=searchData.keywordIds4Diagnose!"">
-    <#list searchData.diagnoseGuides as guide>
-    <h3>${guide.keyword.name}</h3>
-    <#if !searchData.outerSite??>
-    <p>就诊科室:点击查名院专家<br>
-    <#else>
-    <p>就诊科室:<br>
-    </#if>
-    <#list guide.categories as category>
-    <#if !searchData.outerSite??>
-      <span style="white-space: nowrap;"><a href="${baseHref}rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
-    <#else>
-      <span style="white-space: nowrap;">${category.name}</span>
-    </#if>
-    </#list>
+    <div id="masthead">
+    <p class="top_def">
+      <a href="#">就医导航</a>
+      <a href="#">设为首页</a>
     </p>
-    </#list>
-  </#if>
-  </div>
-   </div>
-  </div>
-  <div class="pc cc_tallest" id="page_content">
-    <div class="pg_title">
-    <p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results">${searchData.webQuery!""}&nbsp;</span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。 </p>
+    <div class="line"></div>
+    <div class="head_bg"></div>
+    <div class="head_img"></div>
+    <div class="s_frame">
+      <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
+      <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
+      <span onclick="javascript:paneSearch('${baseHref}')" title="搜索" class="search_bt"></span>
+      <img alt="" src="image/googlelogo.png" class="google">  
+      <div id="panecheckbox" class="panecheckbox" style='left: 320px; position: absolute;top: 75px;'>
+        <#if searchData.paneKeywords??>
+        <#list searchData.paneKeywords as paneKeyword>
+        <input type="checkbox" id="${paneKeyword.keyword.id?c}" name="panekeyword" checked="checked">${paneKeyword.keyword.name}
+        </#list>
+        </#if>
+      </div>
     </div>
-    <div style="display: block;" id="TopicResult">
-<div id="searchframe">
-<#if (searchData.topicSearchData)?? && !searchData.emptyTopicResult>
-<div class="searchlist">
-<#list searchData.topicSearchData as topicData>
-<table><tbody><tr><td><h4>${topicData.topic.name}</h4></td>
-</tr></tbody></table>
-<#list topicData.data as data>
-  <a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('${baseHref}','dialog${data.id}')">${data.name}</a>
-</#list>
-<#if searchData.singleTopicResult>
-<!--back to multi topic page-->
-  <span><a href="${baseHref}${topicData.ctxUrl}"><<返回</a></span>
-<#else>
-<!--go to one specific topic page-->
-  <#if topicData.execeedMaxResult>
-  <span><a href="${baseHref}${topicData.ctxUrl}">更多...</a></span>
+    </div>
+
+    <div class="c clear_children" id="container">
+
+<div class="sc" id="left_col">
+  <div id="left-title"><h5>就医指南</h5></div>
+  <span style="font-size: 14px;">临床科室 &gt;&gt; 名医名院直通车</span>
+  <div id="GuideInfoSection">
+    <div class="left-list">
+      <#if searchData.diagnoseGuides??>
+      <#assign diagnoseIds=searchData.keywordIds4Diagnose!"">
+      <#list searchData.diagnoseGuides as guide>
+      <h3>${guide.keyword.name}</h3>
+      <#if !searchData.outerSite??>
+      <p>就诊科室:点击查名院专家<br>
+      <#else>
+      <p>就诊科室:<br>
+      </#if>
+      <#list guide.categories as category>
+      <#if !searchData.outerSite??>
+        <span style="white-space: nowrap;"><a href="${baseHref}rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
+      <#else>
+        <span style="white-space: nowrap;">${category.name}</span>
+      </#if>
+      </#list>
+      </p>
+      </#list>
+      </#if>
+    </div>
+  </div>
+</div>
+
+<div class="pc cc_tallest" id="page_content">
+  <div class="pg_title"><p><span class="res-title">健康搜索导航:</span>以下是与&nbsp;<span class="results">${searchData.webQuery!""}&nbsp;</span>&nbsp;密切关联的医药信息，点击重组你的搜索条件。</p></div>
+  <div style="display: block;" id="TopicResult">
+    <div id="searchframe">
+    <#if (searchData.topicSearchData)?? && !searchData.emptyTopicResult>
+      <div class="searchlist">
+      <#list searchData.topicSearchData as topicData>
+        <table><tbody><tr><td><h4>${topicData.topic.name}</h4></td></tr></tbody></table>
+        <#list topicData.data as data>
+          <a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('${baseHref}','dialog${data.id}')">${data.name}</a>
+        </#list>
+
+        <#if searchData.singleTopicResult>
+        <!--back to multi topic page-->
+          <span><a href="${baseHref}${topicData.ctxUrl}"><<返回</a></span>
+        <#else>
+        <!--go to one specific topic page-->
+          <#if topicData.execeedMaxResult>
+          <span><a href="${baseHref}${topicData.ctxUrl}">更多...</a></span>
+          </#if>
+        </#if>  
+        <div class="tooltip05"></div>
+
+        <#list topicData.data as data>
+        <div style="display: none;" loaded="false" title="${data.name}" kid="${data.id}" id="dialog${data.id}"></div>
+        </#list>
+
+    </#list>
+      </div>
+    <#else>
+      <br/>
+      <span class="res-title">抱歉! 搜索导航暂无与之密切关联的健康信息。</span>
+    </#if>
+  </div>
+
+  <input type="hidden" name="tFilter" value="${searchData.converageTopic}"/>
+  <#if searchData.outerSite??>
+  <input type="hidden" name="outersite" id="outersite" value="${searchData.outerSite}"/>
   </#if>
-</#if>  
-<div class="tooltip05"></div>
-<#list topicData.data as data>
-  <div style="display: none;" loaded="false" title="${data.name}" kid="${data.id}" id="dialog${data.id}"></div>
-</#list>
-</#list>
-</div>
-<#else>
-<br/>
-<span class="res-title">抱歉! 搜索导航暂无与之密切关联的健康信息。</span>
-</#if>
-</div>
-<input type="hidden" name="tFilter" value="${searchData.converageTopic}"/>
-<#if searchData.outerSite??>
-<input type="hidden" name="outersite" id="outersite" value="${searchData.outerSite}"/>
-</#if>
 <!-- 就医指南信息 -->
 </div>
+
 <div id="search-tabs">
-<div><p class="tabs-title"><span class="res-title">搜索结果:</span>符合<span class="results">&nbsp;${searchData.webQuery}&nbsp;&nbsp;</span>的相关网页</p></div>
+  <div><p class="tabs-title"><span class="res-title">搜索结果:</span>符合<span class="results">&nbsp;${searchData.webQuery}&nbsp;&nbsp;</span>的相关网页</p></div>
 
-<table id="WebResultParentTag" class="vsepleft">
-  <tbody><tr><td id="TopicWebResult"></td></tr>
-  <tr><td>
-<div id="footer">
-  <hr style="width:100%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
-  <p>&copy;2013 <a href="about.html">天天动</a> | 
-  <a href="duty.html">用前必读</a> | 
-  <a href="partner.html">合作伙伴</a>| 
-  <a href="contact.html">联系我们</a>|
-  <a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
-</div>  
-  </td></tr>  
-  </tbody>
-</table>
+  <table id="WebResultParentTag" class="vsepleft">
+    <tbody><tr><td id="TopicWebResult"></td></tr>
+    <tr><td>
+      <div id="footer">
+        <hr style="width:100%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
+        <p>&copy;2013 <a href="about.html">天天动</a> | 
+        <a href="duty.html">用前必读</a> | 
+        <a href="partner.html">合作伙伴</a>| 
+        <a href="contact.html">联系我们</a>|
+        <a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
+      </div>  
+    </td></tr>  
+    </tbody>
+  </table>
+ </div>
+</div>
 
-    </div>
-  </div>
-  </div>
-  </div></center>
+<div class="search_right" style="position:absolute">
+  <dt class="title">快乐健康每一天!</dt>
+  <dt class="pic"><img src="image/sepic.jpg"></dt>
+  <dt class="advword">您的健康，我的使命</dt>
+  <dt class="searchli"><a href="http://seeeye.firsthospital.cn/" target="_blank">第一人民医院眼科</a></dt>
+  <dt class="searchli"><a href="http://www.kidheart.com.cn/" target="_blank">儿科医院心血管中心</a></dt>
+  <dt class="searchli"><a href="http://www.obgyn.renji.com/" target="_blank">仁济医院妇产科</a></dt>
+  <dt class="title" style="font-size: 14px;">---全国最佳权威专科---</dt>
+</div>
+
+</div>
+</div>
+</center>
 </body></html>
