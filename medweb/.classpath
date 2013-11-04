@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="server-medweb"/>
 	<classpathentry kind="src" path="resource"/>
 	<classpathentry kind="src" path="conf"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -17,5 +18,7 @@
 	<classpathentry kind="lib" path="lib/org.restlet_2.0.4.jar" sourcepath="/source/restlet/restlet-jee-2.0.4/src/org.restlet"/>
 	<classpathentry kind="lib" path="lib/freemarker_2.3.16.jar"/>
 	<classpathentry kind="lib" path="lib/org.restlet.ext.freemarker_2.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/activation-1.1-rev-1.jar"/>
+	<classpathentry kind="lib" path="lib/mail-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

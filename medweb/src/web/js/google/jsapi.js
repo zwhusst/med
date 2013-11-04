@@ -1,5 +1,3 @@
-console.log("1111111111111-------");
-
 if(!window['googleLT_']){window['googleLT_']=(new Date()).getTime();}if (!window['google']) {
 window['google'] = {};
 }

@@ -147,6 +147,8 @@
                 <include name="standard*.jar" />
             	<include name="org.restlet*.jar" />
             	<include name="freemarker*.jar" />
+            	<include name="activation*.jar" />
+            	<include name="mail*.jar" />
             </lib>
         	<!-- builded jar files -->
             <lib dir="${build.dir}">

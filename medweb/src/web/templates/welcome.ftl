@@ -1,6 +1,9 @@
 <html><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link type="text/css" rel="stylesheet" href="style/main.css" />
+<link rel="stylesheet" href="themes/base/jquery.ui.all.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
 <script src="js/med.js" type="text/javascript"></script>
 
 <script type="text/javascript"> 
@@ -61,12 +64,13 @@ window.attachEvent("onload", correctPNG);
     <td><img id="google" src="image/googlelogo.png" alt="" /></td>
   </tr>
   <tr><td colspan="2" style="FONT: 12px 宋体, Arial, Helvetica, sans-serif;COLOR: #999999;line-height: 19px;">
-  <p >输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状、<br>疾病、医院和专家等医疗健康信息，使您快速获取满意的搜索结果。</p>
+  <p >输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状、<br>疾病、医院和专家等医疗健康信息，使您快速获取满意的搜索结果和专业的就医导航服务。</p>
+  <span><a href="#" onclick='javascript:showModalDialog("consultant.html", "consulting_dialog", {"width":710,"height": 380,"dialogClass":"consulting_dialog", "resizable": false, "title":"寻求帮助"})' style="color:#0D96FB">寻求更多帮助....</a></span>
   </td></tr>
 </table>
 <br><br><br>
 <table id="site-table" style="position:relative;top:11em; border-collapse:collapse;" border="0">
-  <caption style="text-align:left;" class="fav-hd">实用健康网址 (全国最佳专科和医院, 复旦大学医院管理研究所合作发布)</caption>
+  <caption style="text-align:left;" class="fav-hd">实用健康网址 <span style="font-size: 13px;">(全国知名权威专科和医院, 复旦大学医院管理研究所合作发布)</span></caption>
   <tr>
     <td class="left-cell"><a class="site-name" href="http://seeeye.firsthospital.cn" target="_blank">上海市第一人民医院眼科</a></td>
     <td class="left-cell"><a class="site-name" href="http://www.kidheart.com.cn" target="_blank">复旦大学附属儿科医院心血管中心</a></td>
@@ -105,12 +109,13 @@ window.attachEvent("onload", correctPNG);
 </div>
 <br><br><br>
    <div id="footer">
-	<p>&copy;2013 <a href="about.html">天天动</a> | 
-	<a href="duty.html">用前必读</a> | 
-	<a href="partner.html">合作伙伴</a>| 
-	<a href="contact.html">联系我们</a>|
-	<a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备09022690号</a></p>
+  <p>&copy;2013 宜豪健康科技<a href="about.html">天天动</a> | 
+  <a href="duty.html">用前必读</a> | 
+  <a href="partner.html">合作伙伴</a>| 
+  <a href="contact.html">联系我们</a>|
+  <a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备09022690号</a></p>
 </div>
+<div id="consulting_dialog"></div>
 </body>
 
 </html>

@@ -213,7 +213,7 @@ $(document).ready(function() {
     <tr><td>
       <div id="footer">
         <hr style="width:100%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
-        <p>&copy;2013 <a href="about.html">天天动</a> | 
+        <p>&copy;2013 宜豪健康科技<a href="about.html">天天动</a> | 
         <a href="duty.html">用前必读</a> | 
         <a href="partner.html">合作伙伴</a>| 
         <a href="contact.html">联系我们</a>|
@@ -232,10 +232,17 @@ $(document).ready(function() {
   <dt class="searchli"><a href="http://seeeye.firsthospital.cn/" target="_blank">第一人民医院眼科</a></dt>
   <dt class="searchli"><a href="http://www.kidheart.com.cn/" target="_blank">儿科医院心血管中心</a></dt>
   <dt class="searchli"><a href="http://www.obgyn.renji.com/" target="_blank">仁济医院妇产科</a></dt>
-  <dt class="title" style="font-size: 14px;">---全国最佳权威专科---</dt>
+  <dt class="title" style="font-size: 13px;font-weight: normal;padding-top: 0px;text-align: center;">---全国知名权威专科---</dt>
+</div>
+<div style="position:absolute;right: 0px;top: 320px;text-align: left;background-color: #0D96FB;width: 165px;padding: 3px 3px 30px 3px;">
+  <div style="line-height: 40px;text-align: center;color: white;"><a style="color: white;" onclick='javascript:showModalDialog("consultant.html", "consulting_dialog", {"width":710,"height": 380,"dialogClass":"consulting_dialog", "resizable": false, "title":"寻求帮助"})'>寻求更多帮助</a></div>
+  <div style="font-size: 12px;color: white;padding: 5px;">您有任何困难和建议，<br>尽请告诉我们，<br>愿我们专业的个性化健康咨询服务能更好的服务您！</div>
+  <div style="text-align: center;"><img src='image/ttd_wechat.jpg' style="width: 140px;padding-top:10px"/></div>
+  <div style="text-align: center;color: white;font-size: 13px;padding-top: 5px;">手机扫描加关注<br>第一时间获得健康帮助<br><br>公众帐号：健康咨询-天天动<br>微信号：ttdong_com_cn</div>
 </div>
 
 </div>
 </div>
 </center>
+<div id="consulting_dialog"></div>
 </body></html>

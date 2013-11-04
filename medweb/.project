@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>server-medweb</name>
+			<type>2</type>
+			<location>/softwares/apache-tomcat-7.0.34/webapps/medweb</location>
+		</link>
+	</linkedResources>
 </projectDescription>

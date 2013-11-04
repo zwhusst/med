@@ -35,6 +35,7 @@
         <class>com.souyibao.shared.entity.Hospital</class>
         <class>com.souyibao.shared.entity.TopHospital</class>
         <class>com.souyibao.shared.entity.TopDoctor</class>
+        <class>com.souyibao.shared.entity.Consulting</class>
         <properties />
     </persistence-unit>
 </persistence>

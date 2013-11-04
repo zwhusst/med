@@ -29,8 +29,56 @@ function popDialog(basehref,dialogId) {
   $(jqDialogId).dialog({ width: 500,height: 430 });
   }
 }
+function showModalDialog(url,dialogId, options) {
+  var jqDialogId = "#"+dialogId;
+  if ($(jqDialogId).attr('loaded') !== "true") {  
+    var req = newXMLHttpRequest();
+    req.onreadystatechange = renderHtmlData(req, dialogId, function(){
+      $(jqDialogId).dialog($.extend({ width: 500,height: 430 }, options));	 
+      $(jqDialogId).bind('dialogclose', function(event, ui) {
+    	if ($(this).dialog('isOpen')) {
+      	  $(this).dialog('destroy');
+      	}
+      });
+      $(jqDialogId).attr('loaded','true');
+    });
+    req.open("GET", url , true);
+    req.setRequestHeader("Content-Type", "text/html; charset=UTF-8");
+    req.send(null);  
+  } else {
+	$(jqDialogId).dialog($.extend({ width: 500,height: 430 }, options));
+  }
+}
 
-function popDialogCallback(dialogId) {
+function showMessage(msg) {
+	// get the message container
+	var mycontainerId = (msg.container_id == null)? "message" : msg.container_id;
+	var msgContainer = $("#" + mycontainerId);
+	
+	if (msgContainer == null) {
+	  // insert one message container before the anchor object
+	  msgContainerHtml = "<div id='>" + mycontainerId + "'</div>";
+	  if (msg.parent_id == null) {
+		  $(msgContainerHtml).prependTo("body"); // default to body if no anchor object
+	  } else {
+		  $(msgContainerHtml).prependTo("#" + msg.parent_id);
+	  }
+	  
+	  msgContainer = $("#" + mycontainerId);
+	}
+	
+	// show the message
+	msgContainer.html(msg.message);
+	
+	// add the class for it
+	if (msg.status == "error") {
+		msgContainer.removeClass("info").addClass("error");
+	} else {
+		msgContainer.removeClass("error").addClass("info");
+	}
+}
+
+function popDialogCallback(dialogId, options) {
 	$(dialogId).dialog({ width: 500,height: 430 });	 
 	$(dialogId).bind('dialogclose', function(event, ui) {
 	  if ($(this).dialog('isOpen')) {
