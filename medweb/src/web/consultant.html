@@ -4,25 +4,32 @@
 <body>
 <style>
 .consulting_dialog .ui-dialog-titlebar{
-  background:#d9efb7
+  background:#3099c6;
+}
+.ui-dialog .ui-dialog-content{
+  padding:0px;
+  overflow: hidden;
 }
 </style>
-<img src='image/consultant_head.png' style="height: 160;width: 714px;position: absolute;left: 0px;top: 36px;"/>
-<form id="consulting_form" action="jsp/save_consulting.jsp" method="post"  style="width: 100%;top: 205px;position: absolute;">
+<div style="text-align: center;"><img src='image/consultant_head.png' style="height: 160;width: 714px;"/></div>
+<form id="consulting_form" action="jsp/save_consulting.jsp" method="post" style="text-align:left">
 <div id="messageContainer"></div>
-<table>
+<table style="font-size:13px;">
 <tr>
   <td style="width:350px">
-    <div style="color:#a4d190;font-weight:bold;">寻求更多帮助</div>
+    <div style="color:#3099c6;font-weight:bold;">寻求更多帮助</div>
     <div><input type='text' id='user_id' name='user_id' placeholder='邮箱/手机' style="box-shadow: none;width: 250px;"/></div>
-    <div style="padding-top: 5px;"><textarea id='content' name='content' rows="3" cols="45" placeholder="你有任何困难建议，都请告诉我们.....                              如：找专家就诊，陪诊，就诊旅途安排和配药等....."></textarea></div>
-    <div style="padding-top: 5px;color: #888;">愿我们专业的个性化健康咨询服务能够更好的帮助您！</div>
-    <div style="padding-top: 5px;"><button type="button" id="create_consulting_button">提交</button></div>
+    <div style="padding-top: 5px;"><textarea id='content' name='content' rows="4" cols="45" placeholder="你有任何困难建议，都请告诉我们.....                              如：找专家就诊，陪诊，就诊旅途安排和配药等....."></textarea></div>
+    <div style="padding-top: 5px;">愿我们专业的个性化健康咨询服务能够更好的帮助您！</div>
+    <br>
+    <div style="padding-top: 5px;">
+    <a href="javascript:void(0)" id="create_consulting_button" style="background: #3099c6;color: #fff;border-radius: 3px;padding: 6px 26px;">提交</a>
+    </div>
   </td>
   <td>
     <img src='image/ttd_wechat.jpg' style="width: 140px;"/>
-    <span style="position: absolute;">官方微信二维码<br>手机扫描加关注<br>第一时间获得健康帮助<br><br>您的健康，我的使命！</span>
-    <div>公众帐号：健康咨询-天天动<br>微信号：ttdong_com_cn</div>
+    <span style="position: absolute;padding-top: 8px;">官方微信二维码<br>手机扫描加关注<br>第一时间获得健康帮助<br><br>您的健康，我的使命！</span>
+    <div>&nbsp;&nbsp;公众帐号：健康咨询-天天动<br>&nbsp;&nbsp;微信号：ttdong_com_cn</div>
   </td>
 </tr>
 </table>

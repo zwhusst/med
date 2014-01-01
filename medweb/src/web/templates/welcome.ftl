@@ -64,8 +64,8 @@ window.attachEvent("onload", correctPNG);
     <td><img id="google" src="image/googlelogo.png" alt="" /></td>
   </tr>
   <tr><td colspan="2" style="FONT: 12px 宋体, Arial, Helvetica, sans-serif;COLOR: #999999;line-height: 19px;">
-  <p >输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状、<br>疾病、医院和专家等医疗健康信息，使您快速获取满意的搜索结果和专业的就医导航服务。</p>
-  <span><a href="#" onclick='javascript:showModalDialog("consultant.html", "consulting_dialog", {"width":710,"height": 380,"dialogClass":"consulting_dialog", "resizable": false, "title":"寻求帮助"})' style="color:#0D96FB">寻求更多帮助....</a></span>
+  <p style="margin-bottom: 0px;">输入您的健康查询词，天天动将智能分析您的需求并提供紧密关联的症状、<br>疾病、医院和专家等医疗健康信息，使您快速获取满意的搜索结果和专业的就医导航服务。</p>
+  <span><a href="#" onclick='javascript:showModalDialog("consultant.html", "consulting_dialog", {"width":714,"height": 410,"dialogClass":"consulting_dialog", "resizable": false, "title":"寻求帮助"})' style="color:#0D96FB">寻求更多帮助....</a></span>
   </td></tr>
 </table>
 <br><br><br>
@@ -109,7 +109,7 @@ window.attachEvent("onload", correctPNG);
 </div>
 <br><br><br>
    <div id="footer">
-  <p>&copy;2013 宜豪健康科技<a href="about.html">天天动</a> | 
+  <p>&copy;2013 宜豪健康科技&nbsp;&nbsp;<a href="about.html">天天动</a> | 
   <a href="duty.html">用前必读</a> | 
   <a href="partner.html">合作伙伴</a>| 
   <a href="contact.html">联系我们</a>|
