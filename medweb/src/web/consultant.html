@@ -4,7 +4,7 @@
 <body>
 <style>
 .consulting_dialog .ui-dialog-titlebar{
-  background:#3099c6;
+  background:#a3d84e;
 }
 .ui-dialog .ui-dialog-content{
   padding:0px;
@@ -12,18 +12,19 @@
 }
 </style>
 <div style="text-align: center;"><img src='image/consultant_head.png' style="height: 160;width: 714px;"/></div>
-<form id="consulting_form" action="jsp/save_consulting.jsp" method="post" style="text-align:left">
+<div style="margin-left:5px">
+<form id="consulting_form" action="jsp/save_consulting.jsp" method="post" style="text-align:left;">
 <div id="messageContainer"></div>
 <table style="font-size:13px;">
 <tr>
   <td style="width:350px">
-    <div style="color:#3099c6;font-weight:bold;">寻求更多帮助</div>
+    <div style="color:#a3d84e;font-weight:bold;">寻求更多帮助</div>
     <div><input type='text' id='user_id' name='user_id' placeholder='邮箱/手机' style="box-shadow: none;width: 250px;"/></div>
     <div style="padding-top: 5px;"><textarea id='content' name='content' rows="4" cols="45" placeholder="你有任何困难建议，都请告诉我们.....                              如：找专家就诊，陪诊，就诊旅途安排和配药等....."></textarea></div>
     <div style="padding-top: 5px;">愿我们专业的个性化健康咨询服务能够更好的帮助您！</div>
     <br>
     <div style="padding-top: 5px;">
-    <a href="javascript:void(0)" id="create_consulting_button" style="background: #3099c6;color: #fff;border-radius: 3px;padding: 6px 26px;">提交</a>
+    <a href="javascript:void(0)" id="create_consulting_button" style="background: #a3d84e;color: #fff;border-radius: 3px;padding: 6px 26px;">提交</a>
     </div>
   </td>
   <td>
@@ -34,6 +35,7 @@
 </tr>
 </table>
 </form>
+</div>
 <script>
 $("#create_consulting_button").click(function(){
 	var userId = $("#user_id", "#consulting_form").val(),

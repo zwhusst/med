@@ -298,14 +298,14 @@
 	color:#48BD48;
 }
 .search_right{
-	width:165px;
-	height:250px;
-	padding:3px 3px 30px 3px;
-	margin-top:24px;
-	border:1px #dddddd solid;
-	position:absolute;
-	right:0px;
-	top:0px;
+  width:165px;
+  height:250px;
+  padding:3px 3px 30px 3px;
+  margin-top:24px;
+  border:1px #dddddd solid;
+  position:absolute;
+  right:0px;
+  top:0px;
 }
 .search_right .title{
 	width:155px;
@@ -319,12 +319,12 @@
 	float:left;
 }
 .search_right .pic{
-	width:165px;
+	width:155px;
 	height:auto;
 	float:left;
 }
 .search_right .pic img{
-	width:165px;
+	width:155px;
 	float:left;
 }
 .search_right .advword{

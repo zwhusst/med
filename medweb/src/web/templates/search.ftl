@@ -225,7 +225,7 @@ $(document).ready(function() {
  </div>
 </div>
 
-<div class="search_right" style="position:absolute">
+<div class="search_right" style="position:absolute;">
   <dt class="title">快乐健康每一天!</dt>
   <dt class="pic"><img src="image/sepic.jpg"></dt>
   <dt class="advword">您的健康，我的使命</dt>
