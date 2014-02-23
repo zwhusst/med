@@ -213,7 +213,7 @@ $(document).ready(function() {
     <tr><td>
       <div id="footer">
         <hr style="width:100%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
-        <p>&copy;2013 宜豪健康科技&nbsp;&nbsp;<a href="about.html">天天动</a> | 
+        <p>&copy;2014 宜豪健康科技&nbsp;&nbsp;<a href="about.html">天天动</a> | 
         <a href="duty.html">用前必读</a> | 
         <a href="partner.html">合作伙伴</a>| 
         <a href="contact.html">联系我们</a>|
