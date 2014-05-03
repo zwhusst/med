@@ -48,6 +48,9 @@ gsc-input {
 div.gsc-control {
   width: 100%;
 }
+.ui-dialog .ui-dialog-content{
+  overflow-y: auto;
+}
 </style>
 <script language="JavaScript">
 <!--
