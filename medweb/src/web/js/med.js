@@ -6,7 +6,7 @@ function sHomeInput(event){
 
 function homeSearch() {
   var val = document.getElementById("search-text").value;
-  window.location.href="rs/ss/"+val+"?qs="+encodeURI(val);
+  window.location.href="/rs/ss/"+val+"?qs="+encodeURI(val);
 }
 
 function paneSearchKeyupHandler(basehref,event){
@@ -106,10 +106,10 @@ function initMenu() {
 	);
 	$('.ul-img').toggle(
 		function(){
-			$(this).css({ "background": "url('image/ulimg02.png')", "background-repeat": "no-repeat" });
+			$(this).css({ "background": "url('/image/ulimg02.png')", "background-repeat": "no-repeat" });
 		},
 		function(){
-			$(this).css({ "background": "url('image/ulimg01.png')", "background-repeat": "no-repeat" });
+			$(this).css({ "background": "url('/image/ulimg01.png')", "background-repeat": "no-repeat" });
 		}
 	);
    }
@@ -145,11 +145,11 @@ function url4KeywordDetails(basehref,detailsKeyId){
 
   var url;
   if ((queryKeywords!=null)&&(queryString!=null)&&(queryString!="")) {
-    url="rs/details"
+    url="/rs/details"
   } else if((queryKeywords==null)&&(queryString!=null)&&(queryString!="")) {
-    url="rs/details4s";
+    url="/rs/details4s";
   } else if((queryKeywords!=null)&&(queryString==null || queryString=="")) {
-    url="rs/details4k";
+    url="/rs/details4k";
   }
   
   if ((tFilter!=null)&&(tFilter!="-1")) {
@@ -189,13 +189,13 @@ function assembleSearchURL(basehref){
   
   var url;
   if ((queryKeywords!=null)&&(queryString!=null)&&(queryString!="")) {
-    url="rs/s"
+    url="/rs/s"
   } else if((queryKeywords==null)&&(queryString!=null)&&(queryString!="")) {
-    url="rs/ss";
+    url="/rs/ss";
   } else if((queryKeywords!=null)&&(queryString==null || queryString=="")) {
-    url="rs/sk";
+    url="/rs/sk";
   } else{
-	url="rs/ss/";
+	url="/rs/ss/";
   }
 
   if ((tFilter!=null)&&(tFilter!="-1")) {
@@ -273,7 +273,7 @@ function renderHtmlData(req, elementId, callback,callbackPara) {
      document.getElementById(elementId).innerHTML="HTTP error "+req.status+": "+req.statusText;
      }
    } else {
-    document.getElementById(elementId).innerHTML="<center><img src='image/ajax_load.gif'></center>";
+    document.getElementById(elementId).innerHTML="<center><img src='/image/ajax_load.gif'></center>";
    }
   }
 }

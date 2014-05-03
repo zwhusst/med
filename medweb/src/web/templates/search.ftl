@@ -2,7 +2,7 @@
 <head>
   <title>天天动 - ${searchData.webQuery!""}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <base href="${baseHref}" />
+  <base href="http://www.ttdong.com.cn" />
   <link href="image/favicon.ico" rel="shortcut icon">
   <link type="text/css" rel="stylesheet" href="style/search.css"/>  
   <link type="text/css" rel="stylesheet" href="style/layout.css"/>
@@ -119,9 +119,9 @@ $(document).ready(function() {
     <div class="head_bg"></div>
     <div class="head_img"></div>
     <div class="s_frame">
-      <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
-      <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
-      <span onclick="javascript:paneSearch('${baseHref}')" title="搜索" class="search_bt"></span>
+      <a href="/"><img alt="天天动" src="image/logo.png" class="logo"></a>
+      <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('',event)" name="querystr" class="search_in">
+      <span onclick="javascript:paneSearch('')" title="搜索" class="search_bt"></span>
       <img alt="" src="image/googlelogo.png" class="google">  
       <div id="panecheckbox" class="panecheckbox" style='left: 320px; position: absolute;top: 75px;'>
         <#if searchData.paneKeywords??>
@@ -151,7 +151,7 @@ $(document).ready(function() {
       </#if>
       <#list guide.categories as category>
       <#if !searchData.outerSite??>
-        <span style="white-space: nowrap;"><a href="${baseHref}rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
+        <span style="white-space: nowrap;"><a href="/rs/guide/hospital/${diagnoseIds}/${guide.keyword.id?c}/${category.id}" target="_blank">${category.name}</a></span>
       <#else>
         <span style="white-space: nowrap;">${category.name}</span>
       </#if>
@@ -172,16 +172,16 @@ $(document).ready(function() {
       <#list searchData.topicSearchData as topicData>
         <table><tbody><tr><td><h4>${topicData.topic.name}</h4></td></tr></tbody></table>
         <#list topicData.data as data>
-          <a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('${baseHref}','dialog${data.id}')">${data.name}</a>
+          <a <#if !data.emptyAlias>title="又名:${data.alias}"</#if> href="javascript:popDialog('','dialog${data.id}')">${data.name}</a>
         </#list>
 
         <#if searchData.singleTopicResult>
         <!--back to multi topic page-->
-          <span><a href="${baseHref}${topicData.ctxUrl}"><<返回</a></span>
+          <span><a href="/${topicData.ctxUrl}"><<返回</a></span>
         <#else>
         <!--go to one specific topic page-->
           <#if topicData.execeedMaxResult>
-          <span><a href="${baseHref}${topicData.ctxUrl}">更多...</a></span>
+          <span><a href="/${topicData.ctxUrl}">更多...</a></span>
           </#if>
         </#if>  
         <div class="tooltip05"></div>
@@ -213,10 +213,10 @@ $(document).ready(function() {
     <tr><td>
       <div id="footer">
         <hr style="width:100%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">  
-        <p>&copy;2014 宜豪健康科技&nbsp;&nbsp;<a href="about.html">天天动</a> | 
-        <a href="duty.html">用前必读</a> | 
-        <a href="partner.html">合作伙伴</a>| 
-        <a href="contact.html">联系我们</a>|
+        <p>&copy;2014 宜豪健康科技&nbsp;&nbsp;<a href="/about.html">天天动</a> | 
+        <a href="/duty.html">用前必读</a> | 
+        <a href="/partner.html">合作伙伴</a>| 
+        <a href="/contact.html">联系我们</a>|
         <a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
       </div>  
     </td></tr>  

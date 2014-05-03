@@ -95,7 +95,7 @@ window.attachEvent("onload", correctPNG);
 <div style="text-align: left;" id="wapper">
 <div id="masthead">  <p class="top_def"><a href="#">就医导航</a>     <a href="#">设为首页</a>  </p>  <div class="line"></div>  <div class="head_bg"></div>
 <div class="head_img"></div>  <div class="s_frame">
-  <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
+  <a href="/"><img alt="天天动" src="image/logo.png" class="logo"></a>
   <input type="text" value="" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
   <a onclick="javascript:paneSearch('${baseHref}')" title="搜索" href="#" class="search_bt"></a>  
   <img alt="" src="image/googlelogo.png" class="google">  
@@ -224,10 +224,10 @@ ${hospitalCategory.name}&nbsp;&nbsp;
 </div></div>
   <div id="footer">
   <hr style="width: 80%;color: #DDD;background-color: #DDD;height: 1px;border: 1;">    
-  <p>&copy;2014 宜豪健康科技&nbsp;&nbsp;<a href="about.html">天天动</a> | 
-  <a href="duty.html">用前必读</a> | 
-  <a href="partner.html">合作伙伴</a>| 
-  <a href="contact.html">联系我们</a>|
+  <p>&copy;2014 宜豪健康科技&nbsp;&nbsp;<a href="/about.html">天天动</a> | 
+  <a href="/duty.html">用前必读</a> | 
+  <a href="/partner.html">合作伙伴</a>| 
+  <a href="/contact.html">联系我们</a>|
   <a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备09022690号</a></p>
   </div>
 </center></body></html>

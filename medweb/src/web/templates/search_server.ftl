@@ -148,7 +148,7 @@ $(document).ready(function() {
   <a href="#">设为首页</a>
   </p>
   <div class="line"></div><div class="head_bg"></div>  <div class="head_img"></div>  <div class="s_frame">
-  <a href="/medweb/"><img alt="天天动" src="image/logo.png" class="logo"></a>
+  <a href="/"><img alt="天天动" src="image/logo.png" class="logo"></a>
   <input type="text" value="${searchData.userQuery!""}" onkeyup="paneSearchKeyupHandler('${baseHref}',event)" name="querystr" class="search_in">
   <span onclick="javascript:paneSearch('${baseHref}')" title="搜索" class="search_bt"></span>
   <img alt="" src="image/googlelogo.png" class="google">  

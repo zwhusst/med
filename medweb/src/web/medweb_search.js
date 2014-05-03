@@ -1,5 +1,5 @@
 ﻿(function(){
-  var site = 'http://www.ttdong.com.cn/medweb';
+  var site = 'http://www.ttdong.com.cn';
   var box_label = 'Search for Health Information';
   var box_width = 165;
   var html = [
