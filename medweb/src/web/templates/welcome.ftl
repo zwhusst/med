@@ -1,10 +1,29 @@
 <html><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="alexaVerifyID" content="FvdMqV6up3fwfYs7x0bwXN5VqNw"/>
+<meta name="baidu-site-verification" content="Wk0Mc4zoA1" />
 <link type="text/css" rel="stylesheet" href="style/main.css" />
 <link rel="stylesheet" href="themes/base/jquery.ui.all.css" type="text/css"/>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
 <script src="js/med.js" type="text/javascript"></script>
+
+<!-- enable google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49507457-4', 'ttdong.com.cn');
+  ga('send', 'pageview');
+</script>
+
+<!-- enable baidu analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8c90c7319aed295f1c5db05618adfb59' type='text/javascript'%3E%3C/script%3E"));
+</script>
 
 <script type="text/javascript"> 
 function correctPNG() { 
